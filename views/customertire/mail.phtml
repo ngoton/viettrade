@@ -1,0 +1,81 @@
+<link rel="stylesheet" type="text/css" href="<?php BASE_URL ?>/public/css/jquery.multiselect.css" />
+<script type="text/javascript" src="<?php BASE_URL ?>/public/js/jquery.multiselect.js"></script>
+<script type="text/javascript" src="<?php echo BASE_URL ?>/public/js/editor/ckeditor.js"></script>
+
+<script type="text/javascript">
+$(function(){
+    $("#customer_email").multiselect();
+});
+</script>
+
+            <div class="login_body">
+                  <form id="send_mail_customer" method="post" action="" enctype="multipart/form-data" >
+                      <table>
+                        <tr>
+                            <td>
+                                Username
+                            </td>
+                            <td>
+                                <input style="width:200px" type="email" id="tendangnhap"  name="tendangnhap" tabindex="1" required="required" value="lopxe@viet-trade.org" >
+                            </td>
+                            <td>
+                                Password
+                            </td>
+                            <td>
+                                <input style="width:200px" type="password" id="matkhau"  name="matkhau" tabindex="2" required="required" value="lopxe!@#$" >
+                            </td>
+                            <td>
+                                Host
+                            </td>
+                            <td>
+                                <input style="width:200px" type="text" id="hostname"  name="hostname" tabindex="3" required="required" value="smtp.zoho.com" >
+                            </td>
+                        </tr>
+                        <tr>
+                            
+                            <td>Tới</td>
+                            <td colspan="4">
+                                <select multiple="multiple" style="width:600px" id="customer_email" name="customer_email" tabindex="3">
+
+                                    <?php 
+                                    $h = -1; $d=1;
+
+                                    echo '<optgroup label="Group '.$d.'">';
+                                        foreach ($customers as $customer) { 
+                                        $h++;
+                                        if ($h==10) {
+                                            $d++;
+                                            echo '<optgroup label="Group '.$d.'">';
+                                            $h=0;
+                                            
+                                        }
+                                    ?>
+                                        <option value="<?php echo $customer->customer_tire_email ?>"><?php echo $customer->customer_tire_company ?></option>
+                                    <?php } ?>
+                                        </optgroup>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Chủ đề</td>
+                            <td colspan="4">
+                                <input style="width:600px" type="text" id="subject"  name="subject" tabindex="4" required="required" >
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Nội dung </td>
+                            <td colspan="5">
+                                <textarea name="mail_content" id="mail_content" tabindex="5" required="required" >
+                                    
+                                </textarea>
+                            </td>
+
+                        </tr>
+                        
+                    </table> 
+                </form>
+            </div>
+
+<script type="text/javascript">
+    CKEDITOR.replace('mail_content');
+</script>
