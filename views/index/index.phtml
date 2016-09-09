@@ -1,0 +1,63 @@
+<div class="main-content-box">
+    <div class="row">
+        <?php foreach ($tire_producers as $tire_producer) { ?>
+            <div class="col-md-2 col-sm-6 col-xs-12">
+                <div class="box box-success">
+                    <?php
+                    $filename = BASE_URL."/public/images/upload/".strtolower(str_replace(' ', '-', $tire_producer->tire_producer_name)).".jpg";
+                    if (@getimagesize($filename)) {
+                    ?>
+                    
+                    <a href="<?php echo BASE_URL ?>/vn/brand/<?php echo strtolower(str_replace(' ', '-', $tire_producer->tire_producer_name)) ?>" title="Lốp xe <?php echo $tire_producer->tire_producer_name ?>">
+                        <img src="<?php echo $filename ?>" width="100%" height="100%">
+                    </a>
+                    <?php
+                    }
+                    else{
+                    ?>
+                        <div class="items-list-prod">
+                            <div class="view_all">
+                                <a class="view_all_link" href="<?php echo BASE_URL ?>/vn/brand/<?php echo strtolower(str_replace(' ', '-', $tire_producer->tire_producer_name)) ?>" title="Lốp xe <?php echo $tire_producer->tire_producer_name ?>">
+                                    <?php echo $tire_producer->tire_producer_name ?> <i class="fa fa-caret-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    <?php
+                    }
+                    ?>
+                </div>
+            </div>
+        <?php } ?>
+    </div>
+</div>
+<style type="text/css">
+.box {
+    position: relative;
+    border-radius: 3px;
+    background: #000;
+    border-top: 3px solid #d2d6de;
+    margin-bottom: 20px;
+    width: 100%;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+}
+.box.box-success {
+    border-top-color: #48b66e;
+}
+.box:hover{
+    -webkit-box-shadow: 2px 4px 28px 0px rgba(32,191,64,1);
+    -moz-box-shadow: 2px 4px 28px 0px rgba(32,191,64,1);
+    box-shadow: 2px 4px 28px 0px rgba(32,191,64,1);
+}
+@media (min-width: 768px){
+    .box {
+        height: 100%;
+    }
+}
+@media (min-width: 992px){
+    .box {
+        height: 50px;
+    }
+}
+
+
+</style>

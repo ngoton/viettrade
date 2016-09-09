@@ -4,10 +4,16 @@
 
 <div class="top-detail">
 
+    <?php
+    $filename = BASE_URL."/public/images/upload/".$tire_products->tire_product_thumb;
+    if (@getimagesize($filename)) {
+    ?>
+
     <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 slide-detail">
 
         <div class="picZoomer">
 
+            
             <img itemprop="image" src="<?php echo BASE_URL ?>/public/images/upload/<?php echo $tire_products->tire_product_thumb ?>" alt="Lốp xe <?php echo $tire_products->tire_producer_name.' '.$tire_products->tire_product_size_number.' '.$tire_products->tire_product_name ?>" width="330px" height="330px" />
 
         </div>
@@ -35,7 +41,43 @@
         </ul>
 
     </div>
+    <?php }
+    else{ 
+    ?>
+    <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 slide-detail">
 
+        <div class="picZoomer">
+
+            
+            <img itemprop="image" src="<?php echo BASE_URL ?>/public/images/upload/<?php echo $tire_products->tire_product_pattern_type ?>.jpg" alt="Lốp xe <?php echo $tire_products->tire_producer_name.' '.$tire_products->tire_product_size_number.' '.$tire_products->tire_product_name ?>" width="330px" height="330px" />
+
+        </div>
+
+        <ul class="piclist thumbnails-carousel clearfix">
+
+            <li>
+
+                <img src="<?php echo BASE_URL ?>/public/images/upload/<?php echo $tire_products->tire_product_pattern_type ?>.jpg" alt="Lốp xe <?php echo $tire_products->tire_producer_name.' '.$tire_products->tire_product_size_number.' '.$tire_products->tire_product_name ?>">
+
+            </li>
+
+            <li>
+
+                <img src="<?php echo BASE_URL ?>/public/images/upload/<?php echo $tire_products->tire_product_pattern_type ?>.jpg" alt="Lốp xe <?php echo $tire_products->tire_producer_name.' '.$tire_products->tire_product_size_number.' '.$tire_products->tire_product_name ?>">
+
+            </li>
+
+            <li>
+
+                <img src="<?php echo BASE_URL ?>/public/images/upload/<?php echo $tire_products->tire_product_pattern_type ?>.jpg" alt="Lốp xe <?php echo $tire_products->tire_producer_name.' '.$tire_products->tire_product_size_number.' '.$tire_products->tire_product_name ?>">
+
+            </li>
+
+        </ul>
+
+    </div>
+
+    <?php } ?>
     
 
     <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12 right-detail">
@@ -108,7 +150,7 @@
 
                     </span>
 
-                    <input id="quantityBuy" class="form-control text-center" value="1" min="1" max="10" type="text">
+                    <input id="quantityBuy" class="form-control text-center" value="1" min="1" type="text">
 
                     <span class="input-group-btn data-up">
 
@@ -128,7 +170,7 @@
 
         <div class="buy-btn">
 
-            <button rel="12" class="btn btn-danger btn-lg buy-btn-detail" id="addToCart" >MUA NGAY</button>
+            <button rel="12" class="btn btn-danger btn-lg buy-btn-detail" id="addToCart" data="<?php echo $tire_products->tire_product_id ?>" >MUA NGAY</button>
 
         </div>
         <div class="external">
@@ -244,9 +286,17 @@
 
                 <a href="<?php echo BASE_URL ?>/vn/detail/<?php echo $tire_product->tire_product_link ?>" title="Lốp xe <?php echo $tire_product->tire_producer_name.' '.$tire_product->tire_product_size_number.' '.$tire_product->tire_product_name ?>">
 
-
+                    <?php
+                    $filename = BASE_URL."/public/images/upload/".$tire_product->tire_product_thumb;
+                    if (@getimagesize($filename)) {
+                    ?>
 
                     <img src="<?php echo BASE_URL ?>/public/images/upload/<?php echo $tire_product->tire_product_thumb ?>" alt="Lốp xe <?php echo $tire_product->tire_producer_name.' '.$tire_product->tire_product_size_number.' '.$tire_product->tire_product_name ?>" />
+                    <?php }
+                    else{
+                    ?>
+                    <img src="<?php echo BASE_URL ?>/public/images/upload/<?php echo $tire_product->tire_product_pattern_type ?>.jpg" alt="Lốp xe <?php echo $tire_product->tire_producer_name.' '.$tire_product->tire_product_size_number.' '.$tire_product->tire_product_name ?>" />
+                    <?php } ?>
 
 
 
@@ -303,19 +353,32 @@
 </div>
 
 
-<div class="main-content-box">
-    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-    <!-- AD 2 -->
-    <ins class="adsbygoogle"
-         style="display:block"
-         data-ad-client="ca-pub-8303573181078043"
-         data-ad-slot="3035456614"
-         data-ad-format="auto"></ins>
-    <script>
-    (adsbygoogle = window.adsbygoogle || []).push({});
-    </script>
-</div>
-
-
-
 <?php } ?>
+
+<script type="text/javascript">
+$('#addToCart').click(function(){
+  var val = $(this).attr('data');
+  var number = $("#quantityBuy").val();
+
+  $.ajax({
+    type: "POST", // phương thức gởi đi
+    url: "<?php echo $this->url('vn/add-to-cart') ?>", // nơi mà dữ liệu sẽ chuyển đến khi submit
+    data: "data="+ val +"&num="+number, // giá trị post
+    success: function(answer){ 
+      $('.cartTopRightQuantity').html(answer);
+      $.ajax({
+        type: "GET", // phương thức gởi đi
+        url: "<?php echo $this->url('vn/show-cart') ?>", // nơi mà dữ liệu sẽ chuyển đến khi submit
+        data: "data=1", // giá trị post
+        success: function(answer){ 
+          $('.item-cart').html(answer);
+        }
+      });
+
+      $('.cart-top').toggleClass('open');
+      $('.cart-fixed').toggleClass('open');
+    }
+  });
+
+});
+</script>

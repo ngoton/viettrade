@@ -2,43 +2,26 @@
 
 
 
-<html xmlns="http://www.w3.org/1999/xhtml"  xml:lang="vi-vn" lang="vi-vn">
+<html itemscope itemtype="http://schema.org/Product" xmlns:og="http://ogp.me/ns#" xmlns="http://www.w3.org/1999/xhtml"  xml:lang="vi-vn" lang="vi-vn">
 
 
 
-<head prefix=
-
-
-
-    "og: http://ogp.me/ns# 
-
-
-
+<head prefix="og: http://ogp.me/ns# 
      fb: http://ogp.me/ns/fb# 
-
-
-
      product: http://ogp.me/ns/product#">
-
-
 
       <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
 
+      <title><?php echo isset($title) ? $title : "Lốp xe giá rẻ, vỏ xe giá rẻ, lốp xe tải, lốp xe container, vỏ xe ô tô" ?></title>
 
 
 
-
-
-      <title><?php echo isset($title) ? $title : null ?>Lốp xe giá rẻ, vỏ xe giá rẻ, lốp xe tải, lốp xe container, vỏ xe ôtô</title>
-
-
-
-      <meta name="description" content="Trung tâm Lốp xe chính hãng - đại lý vỏ xe ôtô, xe tải, container, xe ben, xe khách chất lượng giá rẻ nhất, nhập khẩu trực tiếp từ nhà máy Thái Lan, Ấn Độ, Trung Quốc.Viet-Trade.ORG" />
+      <meta name="description" content="<?php echo isset($description) ? $description : "Trung tâm Lốp xe chính hãng - đại lý vỏ xe ô tô, xe tải, container, xe ben, xe khách chất lượng giá rẻ nhất, nhập khẩu trực tiếp từ nhà máy Thái Lan, Ấn Độ, Trung Quốc.Viet-Trade.ORG" ?>" />
 
 
 
-      <meta name="keywords" content="Lốp xe, lop xe, lốp xe chính hãng, lop xe chinh hang, lop xe gia re, lop xe oto tai, lop xe container, lop xe ben, vo xe tai, vỏ xe ôtô, vo xe o to, lốp xe trung quốc, lốp xe thái lan, lốp xe ấn độ, lop xe trung quoc, lop xe thai lan, lop xe an do" />
+      <meta name="keywords" content="Lốp xe, lop xe, lốp xe chính hãng, lop xe chinh hang, lop xe gia re, lop xe tai, lop xe container, lop xe ben, vo xe tai, vỏ xe ô tô, vo xe o to, lốp xe trung quốc, lốp xe thái lan, lốp xe ấn độ, lop xe trung quoc, lop xe thai lan, lop xe an do" />
 
 
 
@@ -54,7 +37,7 @@
 
 
 
-      <link rel="canonical" href="<?php echo BASE_URL ?>" />
+      <link rel="canonical" href="<?php echo "http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'] ?>" />
 
 
 
@@ -127,34 +110,40 @@
 
 
 
+     <meta itemprop="name" content="<?php echo isset($title) ? $title : "Lốp xe giá rẻ, vỏ xe giá rẻ, lốp xe tải, lốp xe container, vỏ xe ô tô" ?>" />
+
+      <meta itemprop="description" content="<?php echo isset($description) ? $description : "Trung tâm Lốp xe chính hãng - đại lý vỏ xe ô tô, xe tải, container, xe ben, xe khách chất lượng giá rẻ nhất, nhập khẩu trực tiếp từ nhà máy Thái Lan, Ấn Độ, Trung Quốc.Viet-Trade.ORG" ?>" />
+
+      <meta itemprop="url" content="<?php echo "http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'] ?>" />
+
+      <meta itemprop="image" content="<?php echo isset($img_prop)?$img_prop:BASE_URL."/public/images/logo-viet-trade.png" ?>" />
 
 
 
 
 
 
-
-      <meta property="og:site_name" content="Lốp xe" />
-
-
-
-      <meta property="og:image" content="<?php echo BASE_URL ?>/public/images/logo-viet-trade.png" />
+      <meta property="og:site_name" content="Lốp xe, Vỏ xe" />
 
 
 
-      <meta property="og:title" content="Lốp xe giá rẻ, vỏ xe giá rẻ, lốp xe tải, lốp xe container, vỏ xe ôtô" />
+      <meta property="og:image" content="<?php echo isset($img_prop)?$img_prop:BASE_URL."/public/images/logo-viet-trade.png" ?>" />
 
 
 
-      <meta property="og:description" content="Trung tâm Lốp xe chính hãng - đại lý vỏ xe ôtô, xe tải, container, xe ben, xe khách chất lượng giá rẻ nhất, nhập khẩu trực tiếp từ nhà máy Thái Lan, Ấn Độ, Trung Quốc.Viet-Trade.ORG" />
+      <meta property="og:title" content="<?php echo isset($title) ? $title : "Lốp xe giá rẻ, vỏ xe giá rẻ, lốp xe tải, lốp xe container, vỏ xe ô tô" ?>" />
 
 
 
-      <meta property="og:url" content="<?php echo BASE_URL ?>" />
+      <meta property="og:description" content="<?php echo isset($description) ? $description : "Trung tâm Lốp xe chính hãng - đại lý vỏ xe ô tô, xe tải, container, xe ben, xe khách chất lượng giá rẻ nhất, nhập khẩu trực tiếp từ nhà máy Thái Lan, Ấn Độ, Trung Quốc.Viet-Trade.ORG" ?>" />
 
 
 
-      <meta property="og:type" content="article" />
+      <meta property="og:url" content="<?php echo "http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'] ?>" />
+
+
+
+      <meta property="og:type" content="product" />
 
 
 
@@ -164,37 +153,8 @@
 
       <meta property="fb:app_id" content="1444772099185572" />
 
-
-
-
-
-
-
-<script type="text/javascript">
-
-
-
-  var base_url="<?php echo BASE_URL ?>";
-
-
-
-  var current_id_buy_now=0;
-
-
-
-  var checkOutUrl="thanh-toan/step-1";
-
-
-
-</script>
-
-
-
-
-
-
-
-
+      <meta property="product:price:amount"  content="<?php echo isset($price_prop)?$price_prop:"4000000" ?>" /> 
+      <meta property="product:price:currency" content="VND" /> 
 
 
 
@@ -281,6 +241,8 @@
 
 
 
+
+
   <header>
 
 
@@ -297,11 +259,11 @@
 
 
 
-        <div class="col-lg-7 col-md-6 col-sm-12 col-xs-12 search-top-fixed"></div>
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 search-top-fixed"></div>
 
 
 
-        <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 cart-fixed dropdown" id="cartTopRightFix"></div>
+        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 cart-fixed dropdown" id="cartTopRightFix"></div>
 
 
 
@@ -333,7 +295,7 @@
 
 
 
-            <li><a href="<?php echo BASE_URL ?>/vn/giao-nhan-hang" title="Lốp xe chính hãng chất lượng giá tốt nhất thị trường giao nhận hàng">Giao hàng</a></li>
+            <li><a href="<?php echo BASE_URL ?>/vn/bang-gia-lop-xe" title="Bảng giá lốp xe">Bảng giá lốp xe</a></li>
 
 
 
@@ -369,7 +331,7 @@
 
 
 
-            if ($_SESSION) {
+            if (isset($_SESSION['user_logined'])) {
 
 
 
@@ -469,7 +431,7 @@
 
 
 
-      <div class="col-lg-7 col-md-6 col-sm-12 col-xs-12 search-top">
+      <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 search-top">
 
 
 
@@ -493,24 +455,13 @@
 
 
 
-            <div class="suggested-search">Nhiều người tìm kiếm: 
-
-
-
+            <div class="suggested-search">Tìm kiếm nhiều: 
               <a href="<?php echo BASE_URL ?>/vn/lop-xe-bo-kem" title="Lốp xe bố kẽm">Lốp xe bố kẽm</a>
-
-
-
-            <a href="<?php echo BASE_URL ?>/vn/lop-xe-cao-cap" title="Lốp xe cao cấp">Lốp xe cao cấp</a>    
-
-
-
-              <a href="<?php echo BASE_URL ?>/vn/lop-xe-gia-re" title="Lốp xe giá rẻ">Lốp xe giá rẻ</a>   
-
-
-
+              <a href="<?php echo BASE_URL ?>/vn/lop-xe-cao-cap" title="Lốp xe cao cấp">Lốp xe cao cấp</a>    
+              <a href="<?php echo BASE_URL ?>/vn/lop-xe-gia-re" title="Lốp xe giá rẻ">Lốp xe giá rẻ</a>
               <a href="<?php echo BASE_URL ?>/vn/lop-xe-tai" title="Lốp xe tải">Lốp xe tải</a>
-              <a href="<?php echo BASE_URL ?>/vn/vo-xe-oto" title="Vỏ xe ôtô">Vỏ xe ôtô</a>
+              <a href="<?php echo BASE_URL ?>/vn/vo-xe-oto" title="Vỏ xe ôtô">Vỏ xe ô tô</a>
+
             </div>
 
 
@@ -523,15 +474,15 @@
 
 
 
-       <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 cart-top dropdown" id="cartTopRight">
+       <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 cart-top dropdown" id="cartTopRight">
 
 
 
-          <div class="dropdown-toggle" data-toggle="dropdown">
+          <div >
 
 
 
-            <div class="cart-top-right cartTopRightQuantity">0</div>
+            <div class="cart-top-right cartTopRightQuantity"><?php echo isset($_SESSION['cart'])?count($_SESSION['cart']):0 ?></div>
 
 
 
@@ -555,7 +506,7 @@
 
 
 
-                Bạn chưa chọn sản phẩm nào!
+                Loading...
 
 
 
@@ -1019,13 +970,25 @@
 
 
 
-                <a class="menu-link" href="<?php echo BASE_URL ?>/vn/lop-theo-hang-san-xuat" title="Lốp theo hãng sản xuất"><i class="menu-06"></i><h2>Lốp theo hãng sản xuất</h2> </a>
+                <a class="menu-link" href="<?php echo BASE_URL ?>/vn/lop-theo-hang-san-xuat" title="Lốp theo hãng sản xuất"><i class="menu-06"></i><h2>Lốp theo hãng sản xuất</h2> <i class="fa fa-angle-right"></i></a>
 
 
 
                 <span></span>
 
-
+                <ul class="submenu-lv1">
+                  <?php
+                  if (isset($list_tire_producers)) {
+                    foreach ($list_tire_producers as $producer) {
+                  ?>
+                    <li>
+                        <a href="<?php echo BASE_URL ?>/vn/brand/<?php echo strtolower(str_replace(' ', '-', $producer->tire_producer_name)) ?>" title="Lốp xe <?php echo $producer->tire_producer_name ?>">
+                          <?php echo $producer->tire_producer_name ?>
+                      </a>
+                    </li>
+                  <?php } } ?>
+                  
+                </ul>
 
               </li>
 
@@ -1167,7 +1130,7 @@
 
 
 
-          <div class="hotline"><i class="fa fa-phone"></i>  <span>0931.557.775 </span><span>0931.55.99.09</span> <div class="clearFix"></div></div>
+          <div class="hotline"><i class="fa fa-phone"></i>  <span>0931.29.81.89</span><span>0931.55.77.75 </span><br><span>0931.55.77.16</span><span>0931.55.99.09</span> <div class="clearFix"></div></div>
 
 
 
@@ -1297,13 +1260,6 @@
 
 
   </section>
-
-
-
-
-
-
-
 ﻿  <footer>
 
 
@@ -1518,127 +1474,316 @@
 
 
 
-<!-- popup content -->
 
 
 
-<!-- end popup content -->
-
-
-
-
-
-
-
-<!-- popup content -->
-
-
-
-<script type="text/javascript" src="<?php echo BASE_URL ?>/public/theme/javascript/jquery.lightbox_me.js"></script>
-
-
-
-<script type="text/javascript" src="<?php echo BASE_URL ?>/public/theme/javascript/jquery.cookie.js"></script>
-
-
-
-
-
-
-
-<script  type="text/javascript">
-
-
-
-         function popup(){
-
-
-
-      $('.window_popup').lightbox_me({
-
-
-
-      centered: true,
-
-
-
-      });
-
-
-
-      e.preventDefault();
-
-
-
-      $ele.trigger('close');
-
-
-
-    }               
-
-
-
-        $(document).ready(function() {
-
-
-
-            if($.cookie('showOnlyOne')){
-
-
-
-        // nothing to do
-
-
-
-            } else {
-
-
-
-                $.cookie('showOnlyOne', 'showOnlyOne', { expires: 1 });
-
-
-
-        popup() // get popup
-
-
-
-            }
-
-
-
-        });
-
-
-
-        </script>
-
-
-
-<!-- end popup content -->
-
-
-
-
-
-
-
-
-
-
-
+<div class="row-tyre-canvas affix-top">
+  <a href="javascript:void(0);" class="close-btn" data-popup-toggle="tyre-menu"></a>
+  <div class="container tab-content">
+    <div class="col-xs-12">
+      <h3 class="box-title"><em>TÌM LỐP XE</em></h3>
+    </div>
+    <!-- find by tyre -->
+    <div class="col-xs-12 tab-pane fade in active" id="find-by-specification">
+      <form method="post" action="<?php echo BASE_URL ?>/vn/tim-kiem" role="form">
+        <div class="row">
+          <div class="col-xs-4 col-md-4 form-group">
+            <div class="label-holder"><label class="sm">Đường kính mâm</label></div>
+            <select name="rimSize" class="form-control" id="tyre-rim-select">
+              <option></option>
+              <option <?php echo isset($rimSize) && $rimSize=='R16' ? "selected":null ?> value="R16">R16</option>
+              <option <?php echo isset($rimSize) && $rimSize=='R17.5' ? "selected":null ?> value="R17.5">R17.5</option>
+              <option <?php echo isset($rimSize) && $rimSize=='R20' ? "selected":null ?> value="R20">R20</option>
+              <option <?php echo isset($rimSize) && $rimSize=='R22.5' ? "selected":null ?> value="R22.5">R22.5</option>
+              <option <?php echo isset($rimSize) && $rimSize=='R24' ? "selected":null ?> value="R24">R24</option>
+              <option <?php echo isset($rimSize) && $rimSize=='R24.5' ? "selected":null ?> value="R24.5">R24.5</option>
+            </select>
+          </div>
+          <div class="col-xs-4 col-md-4 form-group">
+            <div class="label-holder"><label class="sm">Chiều rộng</label></div>
+            <select name="width" class="form-control" id="tyre-width-select">
+              <option></option>
+              <?php 
+              if(isset($width)){
+              ?>
+              <option value="<?php echo $width ?>"><?php echo $width ?></option>
+              <?php
+              }
+              ?>
+            </select>
+          </div>
+          <div class="col-xs-4 col-md-4 form-group">
+            <div class="label-holder"><label class="sm">Tỷ lệ chiều cao/rộng</label></div>
+            <select name="ratio" class="form-control" id="tyre-ratio-select">
+              <option></option>
+            </select>
+          </div>
+        </div>
+
+        <label>Chọn vị trí lốp</label>
+        <div class="row">
+          <div class="col-xs-6">
+            <img id="tyre-position-image" src="<?php echo BASE_URL ?>/public/images/truck-all-icon.png" alt="Chọn vị trí lốp">
+          </div>
+          <div class="col-xs-6 form-group">
+            <select name="position" id="tyre-position-select" class="form-control">
+              <option <?php echo isset($position) && $position=='all' ? "selected":null ?> value="all">Tất cả vị trí</option>
+              <option <?php echo isset($position) && $position=='front' ? "selected":null ?> value="front">Trục trước</option>
+              <option <?php echo isset($position) && $position=='drive' ? "selected":null ?> value="drive">Trục chủ động</option>
+              <option <?php echo isset($position) && $position=='trailer' ? "selected":null ?> value="trailer">Trục rờ-moóc</option>
+            </select>
+          </div>
+        </div>
+        <label>Chọn loại đường đi</label>
+        <div class="row">
+          <div class="col-xs-12 form-group">
+            <select name="usage" class="form-control">
+              <option></option>
+              <option <?php echo isset($usage) && $usage==1 ? "selected":null ?> value="1">Đường trường</option>
+              <option <?php echo isset($usage) && $usage==2 ? "selected":null ?> value="2">Đường tỉnh lộ/quốc lộ</option>
+              <option <?php echo isset($usage) && $usage==3 ? "selected":null ?> value="3">Đường tốt/xấu</option>
+              <option <?php echo isset($usage) && $usage==4 ? "selected":null ?> value="4">Đường xấu</option>
+              <option <?php echo isset($usage) && $usage==5 ? "selected":null ?> value="5">Đường nội thành</option>
+            </select>
+          </div>
+        </div>
+        <label>Hãng sản xuất</label>
+        <div class="row">
+          <div class="col-xs-12 form-group">
+            <select name="brand" class="form-control">
+              <option></option>
+              <?php
+              if (isset($list_tire_producers)) {
+                foreach ($list_tire_producers as $producer) {
+              ?>
+              <option <?php echo isset($brand) && $brand==$producer->tire_producer_id ? "selected":null ?> value="<?php echo $producer->tire_producer_id ?>"><?php echo $producer->tire_producer_name ?></option>
+              <?php } } ?>
+            </select>
+          </div>
+        </div>
+        <label>Mã gai</label>
+        <div class="row">
+          <div class="col-xs-12 form-group">
+            <select name="pattern" class="form-control">
+              <option></option>
+              <?php 
+              if(isset($pattern)){
+              ?>
+              <option value="<?php echo $pattern ?>"><?php echo $pattern ?></option>
+              <?php
+              }
+              ?>
+            </select>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-5 col-sm-2">
+            <button type="submit" class="btn btn-primary" style="width:100%;">Tìm</button>
+          </div>
+          <div class="col-xs-5 col-sm-2 pull-right">
+            <button type="reset" class="btn btn-reset" style="width:100%;"><i></i>Khôi phục lại</button>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <!-- find by tyre -->
+    <div class="col-xs-12 tab-pane fade" id="find-by-keyword">
+      <form method="post" action="<?php echo BASE_URL ?>/vn/tim-kiem" role="form" id="search-keyword-form">
+
+         <label>Tìm theo từ khóa</label>
+          <div class="row">
+            <div class="col-xs-12">
+              <input name="keyword" type="search" class="form-control" id="keyword-search-input" minlength="3" <?php echo isset($keyword)?'value="'.$keyword.'"':null ?> >
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col-xs-4 col-sm-2">
+              <button type="submit" class="btn btn-primary" id="search-keyword-btn" style="width:100%;">Tìm</button>
+            </div>
+            <div class="col-xs-4 col-sm-2 pull-right">
+              <button type="reset" class="btn btn-reset" style="width:100%;"><i></i>Khôi phục lại</button>
+            </div>
+          </div>
+
+      </form>
+    </div>  
+
+  </div>
+
+  <ul id="find-tab-nav" class="container" role="tablist">
+    <li class="col-xs-6 active">
+      <a href="#find-by-specification" role="tab" data-toggle="tab">Tìm theo <strong>thông số kỹ thuật</strong></a>
+    </li>
+    <li class="col-xs-6">
+      <a href="#find-by-keyword" role="tab" data-toggle="tab">Tìm theo <strong>từ khóa</strong></a>
+    </li>
+  </ul>
+
+</div>
     
 
+<style type="text/css">
+.row-tyre-canvas{position:fixed;top:0;left:0;z-index:9999;width:100%;background:#cacecf;display:none;}
+.row-tyre-canvas .close-btn{width:20px;height:20px;display:block;position:absolute;top:10px;right:10px;background:url(../public/images/close.png) no-repeat top left;z-index:9999}
+.row-tyre-canvas.active{display:block}
+.row-tyre-canvas.affix{top:10px!important}
+.home .row-tyre-canvas.affix{top:50px!important}
+.row-tyre-canvas.active .tab-content{padding-bottom:20px;background:rgba(203,206,208,1);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr='#f5cbced0', endColorstr='#f5cbced0')}
+.row-tyre-canvas .box-title{text-align:center;color:#ffe400;font-weight:700;font-size:1.8em}
+.row-tyre-canvas .box-title em{color:#000;font-weight:400}
+.tyre-section .row-tyre-canvas{width:100%;position:static}
+#tyre-search-holder{background:#fff;padding-top:20px;padding-bottom:20px;margin-bottom:50px}
+#find-tab-nav{list-style:none;margin-top:10px;padding:0}
+#find-tab-nav>li{padding:0}
+#find-tab-nav>li>a{display:block;padding:14px 0;text-align:center;background:#676a6e;color:#fff;font-size:12px}
+#find-tab-nav>li.active>a{background:#cacecf;color:#7e7f7f}
+.btn-reset i{width:18px;height:18px;display:inline-block;background:url(../public/images/reset-btn.png) no-repeat center center;float:left;margin-right:4px;transition:.25s all}
+.btn-reset:hover,.btn-reset:active{color:#000;text-decoration:underline}
+.btn-reset:hover i{transform:rotate(270deg);-ms-transform:rotate(270deg);-webkit-transform:rotate(270deg);-moz-transform:rotate(270deg)}
+</style>
+
+<script type="text/javascript">
+$(document).ready(function() {
+  $(':input[name="txtHeaderSearch"]').click(function(){
+    $('.row-tyre-canvas').slideDown(500);
+    //$('.row-tyre-canvas').addClass('active');
+      <?php if(isset($producer_name->tire_producer_name)){ ?>
+      var val = $(":input[name=brand]").val();
+
+        $.post("<?php echo BASE_URL ?>/vn/getPattern", {data: val},
+         function(data){
+            $(":input[name=pattern]").html("<option></option>"+data);
+         });
+      <?php } ?>
+  });
+  
+  $('.row-tyre-canvas .close-btn').click(function(){
+    $('.row-tyre-canvas').slideUp(500);
+    //$('.row-tyre-canvas').removeClass('active');
+  });
+
+  $("#tyre-position-select").change(function() {
+      $("#tyre-position-image").attr("src", "<?php echo BASE_URL ?>/public/images/truck-" + $(this).val() + "-icon.png")
+  })
+  $("#tyre-rim-select").change(function(){
+    var a = "";
+    var val = $(this).val();
+    if (val == "R16") {
+      a += '<option value="6.50">6.50</option>';
+      a += '<option value="7.00">7.00</option>';
+      a += '<option value="7.50">7.50</option>';
+      a += '<option value="8.25">8.25</option>';
+    }
+    else if (val == "R17.5") {
+      a += '<option value="9.50">9.50</option>';
+      a += '<option value="215/75">215/75</option>';
+      a += '<option value="235/75">235/75</option>';
+      a += '<option value="225/80">225/80</option>';
+      a += '<option value="235/80">235/80</option>';
+    }
+    else if (val == "R20") {
+      a += '<option value="8.25">8.25</option>';
+      a += '<option value="9.00">9.00</option>';
+      a += '<option value="10.00">10.00</option>';
+      a += '<option value="11.00">11.00</option>';
+      a += '<option value="12.00">12.00</option>';
+      a += '<option value="14.00">14.00</option>';
+    }
+    else if (val == "R22.5") {
+      a += '<option value="10">10</option>';
+      a += '<option value="11">11</option>';
+      a += '<option value="12">12</option>';
+      a += '<option value="13">13</option>';
+      a += '<option value="385/65">385/65</option>';
+      a += '<option value="255/70">255/70</option>';
+      a += '<option value="275/70">275/70</option>';
+      a += '<option value="315/70">315/70</option>';
+      a += '<option value="295/75">295/75</option>';
+      a += '<option value="275/80">275/80</option>';
+      a += '<option value="295/80">295/80</option>';
+      a += '<option value="315/80">315/80</option>';
+    }
+    else if (val == "R24") {
+      a += '<option value="12.00">12.00</option>';
+      a += '<option value="325/95">325/95</option>';
+    }
+    else if (val == "R24.5") {
+      a += '<option value="11">11</option>';
+      a += '<option value="285/75">285/75</option>';
+    }
+
+    $("#tyre-width-select").html("<option></option>"+a);
+  });
+
+  $(":input[name=brand]").change(function(){
+    var val = $(this).val();
+
+    $.post("<?php echo BASE_URL ?>/vn/getPattern", {data: val},
+     function(data){
+        $(":input[name=pattern]").html("<option></option>"+data);
+     });
+  });
+});
+
+$('.cart-top-right').click(function(e){
+  if (e.target === this){
+    $.ajax({
+      type: "GET", // phương thức gởi đi
+      url: "<?php echo $this->url('vn/show-cart') ?>", // nơi mà dữ liệu sẽ chuyển đến khi submit
+      data: "data=1", // giá trị post
+      success: function(answer){ 
+        $('.item-cart').html(answer);
+      }
+    });
+
+    $('.cart-top').toggleClass('open');
+  }
+});
+
+$('.cart-fixed').click(function(e){
+  if ($(e.target).hasClass("cartTopRightQuantity")){
+    $.ajax({
+      type: "GET", // phương thức gởi đi
+      url: "<?php echo $this->url('vn/show-cart') ?>", // nơi mà dữ liệu sẽ chuyển đến khi submit
+      data: "data=1", // giá trị post
+      success: function(answer){ 
+        $('.item-cart').html(answer);
+      }
+    });
+
+    $('.cart-fixed').toggleClass('open');
+  }
+});
 
 
+</script>
 
-
-
+<style type="text/css">
+.btn {
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+</style>
 
 <div id="fb-root"></div>
-
-
-
-  
 
 
 
@@ -1662,16 +1807,7 @@
 
 
 
-  <script type="text/javascript" src="<?php echo BASE_URL ?>/public/theme/javascript/tmd/tmd.js"></script>
-
-
-
   <script type="text/javascript" src="<?php echo BASE_URL ?>/public/theme/javascript/tmd/lib.js"></script>
-
-
-
-  <script type="text/javascript" src="<?php echo BASE_URL ?>/public/theme/javascript/tmd/cart.js"></script>
-
 
 
   
@@ -1684,7 +1820,7 @@
 
 #hisella-minimize { background: #3b5998; font-size: 14px; color: #fff; padding: 3px 10px; position: absolute; top: -34px; left: -1px; border: 1px solid #E9EAED; cursor: pointer; }
 
-@media screen and (max-width:768px){ #hisella-facebook { opacity:0; } .hisella-messages { bottom: -300px; right: -135px; } }
+#hisella-facebook { opacity:0; } .hisella-messages { bottom: -300px; right: -135px; }
 
 </style>
 

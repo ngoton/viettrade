@@ -1665,3 +1665,7 @@ Time|User|Action
 
 12/01/2016 07:52:02|nvnghi|login
 
+06/09/2016 16:14:09||logout
+
+06/09/2016 16:14:31|admincmg|login
+

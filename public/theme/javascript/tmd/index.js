@@ -21,6 +21,7 @@ $(".cart-fixed").html($(".cart-top").html());
 $(".main-menu-fixed").hover(function(){
     $(this).find($(".main_menu_dropdown_fixed")).toggleClass("show");
 });
+
 $(window).scroll(function () {
     try {
         if ($(window).scrollTop() >= $('.main-content').offset().top) {
@@ -35,3 +36,8 @@ $(window).scroll(function () {
     } catch (e) {
     }
 });
+$(".hadsub-menu").hover(function(){
+        $(this).find(".submenu-lv1").toggleClass("show");
+        $(this).find("h2").toggleClass("redColor");
+        $(this).toggleClass("borderBt");
+    });  

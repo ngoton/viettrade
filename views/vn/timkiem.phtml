@@ -1,0 +1,99 @@
+<?php if(isset($tire_products)){ ?>
+
+<div class="main-content-box">
+
+
+
+    <h2>Kết quả tìm kiếm: <?php echo $keyword.' '.(isset($producer_name->tire_producer_name)?$producer_name->tire_producer_name:null).' '.$pattern.' '.$width.' '.$rimSize.' '.$position.' '.$usage ?></h2>
+
+
+
+    <div class="items-list-prod">
+
+
+
+        <?php foreach ($tire_products as $tire_product) { ?>
+
+
+
+        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 items">
+
+
+
+            <div class="img-prod">
+
+
+
+                <a href="<?php echo BASE_URL ?>/vn/detail/<?php echo $tire_product->tire_product_link ?>" title="Lốp xe <?php echo $tire_product->tire_producer_name.' '.$tire_product->tire_product_size_number.' '.$tire_product->tire_product_name ?>">
+
+                    <?php
+                    $filename = BASE_URL."/public/images/upload/".$tire_product->tire_product_thumb;
+                    if (@getimagesize($filename)) {
+                    ?>
+
+                        <img src="<?php echo $filename ?>" alt="Lốp xe <?php echo $tire_product->tire_producer_name.' '.$tire_product->tire_product_size_number.' '.$tire_product->tire_product_name ?>" />
+                    <?php }
+                    else{
+                    ?>
+                        <img src="<?php echo BASE_URL ?>/public/images/upload/<?php echo $tire_product->tire_product_pattern_type ?>.jpg" alt="Lốp xe <?php echo $tire_product->tire_producer_name.' '.$tire_product->tire_product_size_number.' '.$tire_product->tire_product_name ?>" />
+                    <?php } ?>
+
+
+
+                </a>
+
+
+
+            </div>
+
+
+
+            <div class="title-prod">
+
+
+
+                <a href="<?php echo BASE_URL ?>/vn/detail/<?php echo $tire_product->tire_product_link ?>" title="Lốp xe <?php echo $tire_product->tire_producer_name.' '.$tire_product->tire_product_size_number.' '.$tire_product->tire_product_name ?>">Lốp xe <?php echo $tire_product->tire_producer_name.' '.$tire_product->tire_product_size_number.' '.$tire_product->tire_product_name ?></a>
+
+
+
+            </div>
+
+
+
+            <div class="price-prod">
+
+
+
+                <div class="price-old-prod"><?php echo $lib->formatMoney(round($tire_product->tire_retail*1.07)) ?> đ</div>
+
+
+
+                <div class="price-new-prod"><?php echo $lib->formatMoney($tire_product->tire_retail) ?> đ</div>
+
+
+
+                <div class="clearFix"></div>
+
+
+
+            </div>
+
+
+
+        </div>
+
+
+
+        <?php } ?>
+
+
+
+
+    </div>
+
+
+
+</div>
+
+
+<?php } ?>
