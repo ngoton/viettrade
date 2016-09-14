@@ -2006,6 +2006,8 @@ Class vnController Extends baseController {
 
             $tire_producer_model = $this->model->get('tireproducerModel');
 
+            $tire_pattern_model = $this->model->get('tireproductpatternModel');
+
 
 
             $join = array('table'=>'tire_producer, tire_product_size, tire_product_pattern','where'=>'tire_pattern=tire_product_pattern_id AND tire_producer=tire_producer_id AND tire_size=tire_product_size_id');
@@ -2031,22 +2033,19 @@ Class vnController Extends baseController {
 
 
             $tire_products = array();
+            $tire_patterns = array();
 
             foreach ($tire_producers as $tire_producer) {
 
-                $data = array(
+                $data_pattern = array(
 
-                    'order_by' => 'RAND()',
-
-                    'limit' => '3',
-
-                    'where' => 'tire_producer = '.$tire_producer->tire_producer_id,
+                    'where' => 'tire_product_pattern_id IN (SELECT tire_pattern FROM tire_product WHERE tire_producer = '.$tire_producer->tire_producer_id.')',
 
                 );
 
 
 
-                $tire_products[$tire_producer->tire_producer_id] = $tire_product_model->getAllTire($data,$join);
+                $tire_patterns[$tire_producer->tire_producer_id] = $tire_pattern_model->getAllTire($data_pattern);
 
             }
 
@@ -2077,6 +2076,8 @@ Class vnController Extends baseController {
             $this->view->data['tire_producers'] = $tire_producers;
 
             $this->view->data['tire_products'] = $tire_products;
+
+            $this->view->data['tire_patterns'] = $tire_patterns;
 
             $this->view->data['link_breadcrumb'] = $link_breadcrumb;
 
@@ -2118,13 +2119,7 @@ Class vnController Extends baseController {
                 $order_by = isset($_POST['order_by']) ? $_POST['order_by'] : null;
 
 
-
                 $order = isset($_POST['order']) ? $_POST['order'] : null;
-
-
-
-                $page = isset($_POST['page']) ? $_POST['page'] : null;
-
 
 
                 $keyword = isset($_POST['keyword']) ? $_POST['keyword'] : null;
@@ -2134,6 +2129,8 @@ Class vnController Extends baseController {
                 $limit = 12;
 
                 $brand_name = isset($_POST['brand']) ? $_POST['brand'] : null;
+
+                $pattern_name = isset($_POST['pattern']) ? $_POST['pattern'] : null;
 
             }
 
@@ -2151,10 +2148,6 @@ Class vnController Extends baseController {
 
 
 
-                $page = $this->registry->router->page ? (int) $this->registry->router->page : 1;
-
-
-
                 $keyword = "";
 
 
@@ -2162,6 +2155,8 @@ Class vnController Extends baseController {
                 $limit = 12;
 
                 $brand_name = ucwords(str_replace('-', ' ', $this->registry->router->param_id));
+
+                $pattern_name = $this->registry->router->page;
 
             }
 
@@ -2181,6 +2176,8 @@ Class vnController Extends baseController {
             $tire_product_model = $this->model->get('tireproductModel');
 
             $tire_producer_model = $this->model->get('tireproducerModel');
+
+            $tire_pattern_model = $this->model->get('tireproductpatternModel');
 
 
 
@@ -2212,15 +2209,38 @@ Class vnController Extends baseController {
 
             $tire_producers = $tire_producer_model->getAllTire($data);
 
-
+            $tire_patterns = array();
 
             $tire_products = array();
 
             foreach ($tire_producers as $tire_producer) {
 
+                $data_pattern = array(
+
+                    'where' => 'tire_product_pattern_id IN (SELECT tire_pattern FROM tire_product WHERE tire_producer = '.$tire_producer->tire_producer_id.')',
+
+                );
 
 
-                if (count($tire_producers) == 1) {
+
+                $tire_patterns[$tire_producer->tire_producer_id] = $tire_pattern_model->getAllTire($data_pattern);
+
+                if ($pattern_name != "") {
+                    $data = array(
+
+                        'where' => 'tire_producer = '.$tire_producer->tire_producer_id.' AND tire_pattern = '.$pattern_name,
+
+                    );
+
+
+
+                    $tire_products = $tire_product_model->getAllTire($data,$join);
+
+                    $this->view->data['tire_brand_name'] = $tire_producer->tire_producer_name;
+                    $this->view->data['tire_pattern_name'] = $tire_pattern_model->getTire($pattern_name);
+                }
+
+                /*if (count($tire_producers) == 1) {
 
                     $sonews = $limit;
 
@@ -2338,7 +2358,7 @@ Class vnController Extends baseController {
 
                     $tire_products[$tire_producer->tire_producer_id] = $tire_product_model->getAllTire($data,$join);
 
-                }
+                }*/
 
                 
 
@@ -2384,7 +2404,9 @@ Class vnController Extends baseController {
 
             $this->view->data['tire_producers'] = $tire_producers;
 
-            $this->view->data['tire_products'] = $tire_products;
+            $this->view->data['tire_patterns'] = $tire_patterns;
+
+            $this->view->data['tire_brand_products'] = $tire_products;
 
             $this->view->data['link_breadcrumb'] = $link_breadcrumb;
 
@@ -2474,9 +2496,9 @@ Class vnController Extends baseController {
 
                     'order_by' => 'RAND()',
 
-                    'limit' => '3',
+                    'limit' => '8',
 
-                    'where' => 'tire_product_vehicle LIKE "%'.$tire_product->tire_product_vehicle.'%"',
+                    'where' => 'tire_size = '.$tire_product->tire_size,
 
                 );
 
