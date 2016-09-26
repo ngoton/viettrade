@@ -277,10 +277,13 @@ $(function(){
 	      data: "email="+val, // giá trị post
 	      success: function(answer){ 
 	        var data = jQuery.parseJSON(answer);
-	        $('#hovaten_cart').val(data.hoten);
-	        $('#dienthoai_cart').val(data.dienthoai);
-	        $('#address_cart').val(data.diachi);
-	        $('#company_cart').val(data.congty);
+	        if (data.hoten != null) {
+	        	$('#hovaten_cart').val(data.hoten);
+		        $('#dienthoai_cart').val(data.dienthoai);
+		        $('#address_cart').val(data.diachi);
+		        $('#company_cart').val(data.congty);
+	        }
+	        
 	      }
 	    });
 	});
