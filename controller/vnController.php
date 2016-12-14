@@ -3176,7 +3176,7 @@ Class vnController Extends baseController {
     public function add_to_cart(){
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-            if ($_SESSION) {
+            if ($_SESSION['user_logined']) {
                 $_SESSION['user_logined'] = $_SESSION['user_logined'];
                 $_SESSION['userid_logined'] = $_SESSION['userid_logined'];
                 $_SESSION['role_logined'] = $_SESSION['role_logined'];
