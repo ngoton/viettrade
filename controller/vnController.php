@@ -20,6 +20,25 @@ Class vnController Extends baseController {
             $this->view->data['lib'] = $this->lib;
 
 
+            $post_model = $this->model->get('postModel');
+
+            $data = array(
+
+                'order_by' => 'post_date',
+
+                'order' => 'DESC',
+
+                'limit' => '10',
+
+                'where' => '1=1',
+
+            );
+
+            $new_posts = $post_model->getAllPost($data);
+
+            $this->view->data['new_posts'] = $new_posts;
+
+
 
             $tire_product_model = $this->model->get('tireproductModel');
 
@@ -80,7 +99,23 @@ Class vnController Extends baseController {
 
             $this->view->data['lib'] = $this->lib;
 
+            $post_model = $this->model->get('postModel');
 
+            $data = array(
+
+                'order_by' => 'post_date',
+
+                'order' => 'DESC',
+
+                'limit' => '10',
+
+                'where' => '1=1',
+
+            );
+
+            $new_posts = $post_model->getAllPost($data);
+
+            $this->view->data['new_posts'] = $new_posts;
 
             $tire_product_model = $this->model->get('tireproductModel');
 
@@ -192,6 +227,24 @@ Class vnController Extends baseController {
 
         $this->view->data['lib'] = $this->lib;
 
+        $post_model = $this->model->get('postModel');
+
+            $data = array(
+
+                'order_by' => 'post_date',
+
+                'order' => 'DESC',
+
+                'limit' => '10',
+
+                'where' => '1=1',
+
+            );
+
+            $new_posts = $post_model->getAllPost($data);
+
+            $this->view->data['new_posts'] = $new_posts;
+
         $tire_product_model = $this->model->get('tireproductModel');
 
 
@@ -250,6 +303,24 @@ Class vnController Extends baseController {
         $this->view->data['title'] = 'Đại lý lốp xe';
 
         $this->view->data['lib'] = $this->lib;
+
+        $post_model = $this->model->get('postModel');
+
+            $data = array(
+
+                'order_by' => 'post_date',
+
+                'order' => 'DESC',
+
+                'limit' => '10',
+
+                'where' => '1=1',
+
+            );
+
+            $new_posts = $post_model->getAllPost($data);
+
+            $this->view->data['new_posts'] = $new_posts;
 
         $tire_product_model = $this->model->get('tireproductModel');
 
@@ -325,6 +396,24 @@ Class vnController Extends baseController {
             $this->view->data['lib'] = $this->lib;
 
 
+            $post_model = $this->model->get('postModel');
+
+            $data = array(
+
+                'order_by' => 'post_date',
+
+                'order' => 'DESC',
+
+                'limit' => '10',
+
+                'where' => '1=1',
+
+            );
+
+            $new_posts = $post_model->getAllPost($data);
+
+            $this->view->data['new_posts'] = $new_posts;
+
 
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
@@ -346,7 +435,7 @@ Class vnController Extends baseController {
 
 
 
-                $limit = 12;
+                $limit = isset($_POST['limit']) ? $_POST['limit'] : null;
 
 
 
@@ -556,7 +645,23 @@ Class vnController Extends baseController {
 
             $this->view->data['lib'] = $this->lib;
 
+            $post_model = $this->model->get('postModel');
 
+            $data = array(
+
+                'order_by' => 'post_date',
+
+                'order' => 'DESC',
+
+                'limit' => '10',
+
+                'where' => '1=1',
+
+            );
+
+            $new_posts = $post_model->getAllPost($data);
+
+            $this->view->data['new_posts'] = $new_posts;
 
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
@@ -578,7 +683,7 @@ Class vnController Extends baseController {
 
 
 
-                $limit = 12;
+                $limit = isset($_POST['limit']) ? $_POST['limit'] : null;
 
 
 
@@ -786,7 +891,23 @@ Class vnController Extends baseController {
 
             $this->view->data['lib'] = $this->lib;
 
+            $post_model = $this->model->get('postModel');
 
+            $data = array(
+
+                'order_by' => 'post_date',
+
+                'order' => 'DESC',
+
+                'limit' => '10',
+
+                'where' => '1=1',
+
+            );
+
+            $new_posts = $post_model->getAllPost($data);
+
+            $this->view->data['new_posts'] = $new_posts;
 
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
@@ -808,7 +929,7 @@ Class vnController Extends baseController {
 
 
 
-                $limit = 12;
+                $limit = isset($_POST['limit']) ? $_POST['limit'] : null;
 
 
 
@@ -1018,7 +1139,23 @@ Class vnController Extends baseController {
 
             $this->view->data['lib'] = $this->lib;
 
+            $post_model = $this->model->get('postModel');
 
+            $data = array(
+
+                'order_by' => 'post_date',
+
+                'order' => 'DESC',
+
+                'limit' => '10',
+
+                'where' => '1=1',
+
+            );
+
+            $new_posts = $post_model->getAllPost($data);
+
+            $this->view->data['new_posts'] = $new_posts;
 
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
@@ -1040,7 +1177,7 @@ Class vnController Extends baseController {
 
 
 
-                $limit = 12;
+                $limit = isset($_POST['limit']) ? $_POST['limit'] : null;
 
 
 
@@ -1250,7 +1387,23 @@ Class vnController Extends baseController {
 
             $this->view->data['lib'] = $this->lib;
 
+            $post_model = $this->model->get('postModel');
 
+            $data = array(
+
+                'order_by' => 'post_date',
+
+                'order' => 'DESC',
+
+                'limit' => '10',
+
+                'where' => '1=1',
+
+            );
+
+            $new_posts = $post_model->getAllPost($data);
+
+            $this->view->data['new_posts'] = $new_posts;
 
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
@@ -1272,7 +1425,7 @@ Class vnController Extends baseController {
 
 
 
-                $limit = 12;
+                $limit = isset($_POST['limit']) ? $_POST['limit'] : null;
 
 
 
@@ -1500,7 +1653,23 @@ Class vnController Extends baseController {
 
             $this->view->data['lib'] = $this->lib;
 
+            $post_model = $this->model->get('postModel');
 
+            $data = array(
+
+                'order_by' => 'post_date',
+
+                'order' => 'DESC',
+
+                'limit' => '10',
+
+                'where' => '1=1',
+
+            );
+
+            $new_posts = $post_model->getAllPost($data);
+
+            $this->view->data['new_posts'] = $new_posts;
 
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
@@ -1522,7 +1691,7 @@ Class vnController Extends baseController {
 
 
 
-                $limit = 12;
+                $limit = isset($_POST['limit']) ? $_POST['limit'] : null;
 
 
 
@@ -1750,7 +1919,23 @@ Class vnController Extends baseController {
 
             $this->view->data['lib'] = $this->lib;
 
+            $post_model = $this->model->get('postModel');
 
+            $data = array(
+
+                'order_by' => 'post_date',
+
+                'order' => 'DESC',
+
+                'limit' => '10',
+
+                'where' => '1=1',
+
+            );
+
+            $new_posts = $post_model->getAllPost($data);
+
+            $this->view->data['new_posts'] = $new_posts;
 
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
@@ -1772,7 +1957,7 @@ Class vnController Extends baseController {
 
 
 
-                $limit = 12;
+                $limit = isset($_POST['limit']) ? $_POST['limit'] : null;
 
 
 
@@ -2000,7 +2185,23 @@ Class vnController Extends baseController {
 
             $this->view->data['lib'] = $this->lib;
 
+            $post_model = $this->model->get('postModel');
 
+            $data = array(
+
+                'order_by' => 'post_date',
+
+                'order' => 'DESC',
+
+                'limit' => '10',
+
+                'where' => '1=1',
+
+            );
+
+            $new_posts = $post_model->getAllPost($data);
+
+            $this->view->data['new_posts'] = $new_posts;
 
             $tire_product_model = $this->model->get('tireproductModel');
 
@@ -2110,7 +2311,23 @@ Class vnController Extends baseController {
 
             $this->view->data['lib'] = $this->lib;
 
+            $post_model = $this->model->get('postModel');
 
+            $data = array(
+
+                'order_by' => 'post_date',
+
+                'order' => 'DESC',
+
+                'limit' => '10',
+
+                'where' => '1=1',
+
+            );
+
+            $new_posts = $post_model->getAllPost($data);
+
+            $this->view->data['new_posts'] = $new_posts;
 
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
@@ -2126,7 +2343,7 @@ Class vnController Extends baseController {
 
 
 
-                $limit = 12;
+                $limit = isset($_POST['limit']) ? $_POST['limit'] : null;
 
                 $brand_name = isset($_POST['brand']) ? $_POST['brand'] : null;
 
@@ -2441,7 +2658,23 @@ Class vnController Extends baseController {
 
             $this->view->data['lib'] = $this->lib;
 
+            $post_model = $this->model->get('postModel');
 
+            $data = array(
+
+                'order_by' => 'post_date',
+
+                'order' => 'DESC',
+
+                'limit' => '10',
+
+                'where' => '1=1',
+
+            );
+
+            $new_posts = $post_model->getAllPost($data);
+
+            $this->view->data['new_posts'] = $new_posts;
 
             $link = $this->registry->router->param_id;
 
@@ -2616,6 +2849,24 @@ Class vnController Extends baseController {
 
             $this->view->data['lib'] = $this->lib;
 
+            $post_model = $this->model->get('postModel');
+
+            $data = array(
+
+                'order_by' => 'post_date',
+
+                'order' => 'DESC',
+
+                'limit' => '10',
+
+                'where' => '1=1',
+
+            );
+
+            $new_posts = $post_model->getAllPost($data);
+
+            $this->view->data['new_posts'] = $new_posts;
+
             $tire_product_model = $this->model->get('tireproductModel');
 
 
@@ -2674,6 +2925,24 @@ Class vnController Extends baseController {
 
         $this->view->setLayout('detail');
         $this->view->data['lib'] = $this->lib;
+
+        $post_model = $this->model->get('postModel');
+
+        $data = array(
+
+            'order_by' => 'post_date',
+
+            'order' => 'DESC',
+
+            'limit' => '10',
+
+            'where' => '1=1',
+
+        );
+
+        $new_posts = $post_model->getAllPost($data);
+
+        $this->view->data['new_posts'] = $new_posts;
 
         $keyword = null;
         $rimSize = null;
@@ -2846,6 +3115,24 @@ Class vnController Extends baseController {
 
         $this->view->data['lib'] = $this->lib;
 
+        $post_model = $this->model->get('postModel');
+
+            $data = array(
+
+                'order_by' => 'post_date',
+
+                'order' => 'DESC',
+
+                'limit' => '10',
+
+                'where' => '1=1',
+
+            );
+
+            $new_posts = $post_model->getAllPost($data);
+
+            $this->view->data['new_posts'] = $new_posts;
+
         $tire_product_model = $this->model->get('tireproductModel');
 
 
@@ -2905,6 +3192,24 @@ Class vnController Extends baseController {
 
         $this->view->data['lib'] = $this->lib;
 
+        $post_model = $this->model->get('postModel');
+
+            $data = array(
+
+                'order_by' => 'post_date',
+
+                'order' => 'DESC',
+
+                'limit' => '10',
+
+                'where' => '1=1',
+
+            );
+
+            $new_posts = $post_model->getAllPost($data);
+
+            $this->view->data['new_posts'] = $new_posts;
+
         $tire_product_model = $this->model->get('tireproductModel');
 
 
@@ -2961,6 +3266,24 @@ Class vnController Extends baseController {
             $this->view->data['title'] = 'Liên hệ';
 
             $this->view->data['lib'] = $this->lib;
+
+            $post_model = $this->model->get('postModel');
+
+            $data = array(
+
+                'order_by' => 'post_date',
+
+                'order' => 'DESC',
+
+                'limit' => '10',
+
+                'where' => '1=1',
+
+            );
+
+            $new_posts = $post_model->getAllPost($data);
+
+            $this->view->data['new_posts'] = $new_posts;
 
             $tire_product_model = $this->model->get('tireproductModel');
 
@@ -3023,6 +3346,24 @@ Class vnController Extends baseController {
 
         $this->view->data['lib'] = $this->lib;
 
+        $post_model = $this->model->get('postModel');
+
+            $data = array(
+
+                'order_by' => 'post_date',
+
+                'order' => 'DESC',
+
+                'limit' => '10',
+
+                'where' => '1=1',
+
+            );
+
+            $new_posts = $post_model->getAllPost($data);
+
+            $this->view->data['new_posts'] = $new_posts;
+
         $tire_product_model = $this->model->get('tireproductModel');
 
 
@@ -3078,6 +3419,24 @@ Class vnController Extends baseController {
         $this->view->setLayout('detail');
         $this->view->data['lib'] = $this->lib;
         $this->view->data['title'] = 'Bảng giá lốp xe';
+
+        $post_model = $this->model->get('postModel');
+
+            $data = array(
+
+                'order_by' => 'post_date',
+
+                'order' => 'DESC',
+
+                'limit' => '10',
+
+                'where' => '1=1',
+
+            );
+
+            $new_posts = $post_model->getAllPost($data);
+
+            $this->view->data['new_posts'] = $new_posts;
 
         $tire_product_model = $this->model->get('tireproductModel');
 
@@ -3597,6 +3956,262 @@ Class vnController Extends baseController {
 
             echo json_encode($arr);
         }
+    }
+
+    public function tin_tuc() {
+
+        $this->view->setLayout('detail');
+
+            $this->view->data['lib'] = $this->lib;
+
+            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+
+
+                $order_by = isset($_POST['order_by']) ? $_POST['order_by'] : null;
+
+
+
+                $order = isset($_POST['order']) ? $_POST['order'] : null;
+
+
+
+                $page = isset($_POST['page']) ? $_POST['page'] : null;
+
+
+
+                $keyword = isset($_POST['keyword']) ? $_POST['keyword'] : null;
+
+
+
+                $limit = isset($_POST['limit']) ? $_POST['limit'] : null;
+
+
+
+            }
+
+
+
+            else{
+
+
+
+                $order_by = $this->registry->router->order_by ? $this->registry->router->order_by : 'post_date';
+
+
+
+                $order = $this->registry->router->order_by ? $this->registry->router->order_by : 'DESC';
+
+
+
+                $page = $this->registry->router->page ? (int) $this->registry->router->page : 1;
+
+
+
+                $keyword = "";
+
+
+
+                $limit = 10;
+
+
+
+            }
+
+            $link = $this->registry->router->param_id;
+
+
+
+            $tire_product_model = $this->model->get('tireproductModel');
+
+            $post_model = $this->model->get('postModel');
+
+            $data = array(
+
+                'order_by' => 'post_date',
+
+                'order' => 'DESC',
+
+                'limit' => '10',
+
+                'where' => '1=1',
+
+            );
+
+            $new_posts = $post_model->getAllPost($data);
+
+            $this->view->data['new_posts'] = $new_posts;
+
+            $join = array('table'=>'user','where'=>'user_id=post_user');
+
+           if ($link != "") {
+
+                
+
+                $data = array(
+
+                    'limit' => '1',
+
+                    'where' => 'post_link = "'.$link.'"',
+
+                );
+
+
+
+                $posts = $post_model->getAllPost($data,$join);
+
+
+                foreach ($posts as $post) {
+
+                    $this->view->data['title'] = $post->post_title;
+
+
+                    $link_breadcrumb = '
+
+                    <span class="arrow">›</span>        
+
+                      <div itemprop="child" itemscope itemtype="http://data-vocabulary.org/Breadcrumb">         
+
+                        <a title="Tin tức" href="'.BASE_URL.'/vn/tin-tuc" itemprop="url">            
+
+                          <span itemprop="title">Tin tức</span>
+
+                        </a>
+
+                        <span class="arrow">›</span>        
+
+                        <div itemprop="child" itemscope itemtype="http://data-vocabulary.org/Breadcrumb">         
+
+                          <a title="'.$post->post_title.'" href="'.BASE_URL.'/vn/tin-tuc/'.$post->post_link.'" itemprop="url">      
+
+                            <span itemprop="title">'.$post->post_title.'</span>
+
+                          </a>
+
+                        </div>
+
+                      </div>
+
+                    ';
+
+                }
+            }
+            else{
+                $sonews = $limit;
+                $x = ($page-1) * $sonews;
+                $pagination_stages = 2;
+
+
+                $data = array(
+                    'where' => '1=1',
+                );
+
+                
+                $tongsodong = count($post_model->getAllPost($data,$join));
+                $tongsotrang = ceil($tongsodong / $sonews);
+                
+
+                $this->view->data['page'] = $page;
+                $this->view->data['order_by'] = $order_by;
+                $this->view->data['order'] = $order;
+                $this->view->data['keyword'] = $keyword;
+                $this->view->data['pagination_stages'] = $pagination_stages;
+                $this->view->data['tongsotrang'] = $tongsotrang;
+                $this->view->data['sonews'] = $sonews;
+                $this->view->data['limit'] = $limit;
+
+                $data = array(
+                    'order_by'=>$order_by,
+                    'order'=>$order,
+                    'limit'=>$x.','.$sonews,
+                    'where' => '1=1',
+                    );
+
+
+                $posts = $post_model->getAllPost($data,$join);
+
+                $this->view->data['lists'] = $posts;
+
+                $photo_model = $this->model->get('photoModel');
+                $photos = $photo_model->getAllPhoto();
+                $photo_data = array();
+                foreach ($photos as $photo) {
+                    $photo_data['link'][$photo->photo_id] = $photo->photo_url;
+                }
+                $this->view->data['photo_data'] = $photo_data;
+
+                $link_breadcrumb = '
+
+                    <span class="arrow">›</span>        
+
+                      <div itemprop="child" itemscope itemtype="http://data-vocabulary.org/Breadcrumb">         
+
+                        <a title="Tin tức" href="'.BASE_URL.'/vn/tin-tuc" itemprop="url">            
+
+                          <span itemprop="title">Tin tức</span>
+
+                        </a>
+
+                      </div>
+
+                    ';
+            }
+
+
+            $join = array('table'=>'tire_producer, tire_product_size, tire_product_pattern','where'=>'tire_pattern=tire_product_pattern_id AND tire_producer=tire_producer_id AND tire_size=tire_product_size_id');
+
+            $data = array(
+
+                'order_by' => 'RAND()',
+
+                'limit' => '10',
+
+                'where' => 'tire_product_feature = 1',
+
+            );
+
+
+
+            $tire_product_features = $tire_product_model->getAllTire($data,$join);
+
+
+            $join = array('table'=>'user','where'=>'user_id=post_user');
+
+            $data = array(
+
+                'order_by' => 'RAND()',
+
+                'limit' => '5',
+
+            );
+
+
+
+            $post_others = $post_model->getAllPost($data,$join);
+
+
+
+            
+
+
+
+            $this->view->data['posts'] = $posts;
+
+            $this->view->data['post_others'] = $post_others;
+
+            $this->view->data['tire_product_features'] = $tire_product_features;
+
+
+            $this->view->data['link_breadcrumb'] = $link_breadcrumb;
+
+            $tire_producer_model = $this->model->get('tireproducerModel');
+            $tire_producers = $tire_producer_model->getAllTire();
+            $this->view->data['list_tire_producers'] = $tire_producers;
+
+            $this->view->show('vn/news');
+
+
+
     }
 
 

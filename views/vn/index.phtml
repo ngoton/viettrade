@@ -184,7 +184,7 @@ function sapxep(page,cot,sapxep){
           $.ajax({
             type: "POST", // phương thức gởi đi
             url: "<?php echo $this->url('vn/lop-xe-bo-kem') ?>", // nơi mà dữ liệu sẽ chuyển đến khi submit
-            data: "page="+ page +"&order_by="+ cot +"&order="+ sapxep+"&limit="+ loc+"&keyword="+ keyword+"&ngaytao="+ ngaytao+"&ngaytaobatdau="+ ngaytaobatdau+"&batdau="+ batdau+"&ketthuc="+ ketthuc+"&trangthai="+ trangthai+"&brand="+ brand, // giá trị post
+            data: "page="+ page +"&order_by="+ cot +"&order="+ sapxep+"&limit=<?php echo $limit ?>&keyword="+ keyword+"&ngaytao="+ ngaytao+"&ngaytaobatdau="+ ngaytaobatdau+"&batdau="+ batdau+"&ketthuc="+ ketthuc+"&trangthai="+ trangthai+"&brand="+ brand, // giá trị post
             success: function(answer){ // if everything goes well
               //alert(answer);
               $('body').html(answer); // đặt kết quả trả về từ test.php vào thẻ div success
@@ -421,7 +421,7 @@ function sapxep(page,cot,sapxep){
           $.ajax({
             type: "POST", // phương thức gởi đi
             url: "<?php echo $this->url('vn/lop-xe-bo-nylon') ?>", // nơi mà dữ liệu sẽ chuyển đến khi submit
-            data: "page="+ page +"&order_by="+ cot +"&order="+ sapxep+"&limit="+ loc+"&keyword="+ keyword+"&ngaytao="+ ngaytao+"&ngaytaobatdau="+ ngaytaobatdau+"&batdau="+ batdau+"&ketthuc="+ ketthuc+"&trangthai="+ trangthai+"&brand="+ brand, // giá trị post
+            data: "page="+ page +"&order_by="+ cot +"&order="+ sapxep+"&limit=<?php echo $limit ?>&keyword="+ keyword+"&ngaytao="+ ngaytao+"&ngaytaobatdau="+ ngaytaobatdau+"&batdau="+ batdau+"&ketthuc="+ ketthuc+"&trangthai="+ trangthai+"&brand="+ brand, // giá trị post
             success: function(answer){ // if everything goes well
               //alert(answer);
               $('body').html(answer); // đặt kết quả trả về từ test.php vào thẻ div success
@@ -626,7 +626,7 @@ function sapxep(page,cot,sapxep){
           $.ajax({
             type: "POST", // phương thức gởi đi
             url: "<?php echo $this->url('vn/lop-xe-co-ruot') ?>", // nơi mà dữ liệu sẽ chuyển đến khi submit
-            data: "page="+ page +"&order_by="+ cot +"&order="+ sapxep+"&limit="+ loc+"&keyword="+ keyword+"&ngaytao="+ ngaytao+"&ngaytaobatdau="+ ngaytaobatdau+"&batdau="+ batdau+"&ketthuc="+ ketthuc+"&trangthai="+ trangthai+"&brand="+ brand, // giá trị post
+            data: "page="+ page +"&order_by="+ cot +"&order="+ sapxep+"&limit=<?php echo $limit ?>&keyword="+ keyword+"&ngaytao="+ ngaytao+"&ngaytaobatdau="+ ngaytaobatdau+"&batdau="+ batdau+"&ketthuc="+ ketthuc+"&trangthai="+ trangthai+"&brand="+ brand, // giá trị post
             success: function(answer){ // if everything goes well
               //alert(answer);
               $('body').html(answer); // đặt kết quả trả về từ test.php vào thẻ div success
@@ -801,7 +801,7 @@ function sapxep(page,cot,sapxep){
           $.ajax({
             type: "POST", // phương thức gởi đi
             url: "<?php echo $this->url('vn/brand') ?>", // nơi mà dữ liệu sẽ chuyển đến khi submit
-            data: "page="+ page +"&order_by="+ cot +"&order="+ sapxep+"&limit="+ loc+"&keyword="+ keyword+"&ngaytao="+ ngaytao+"&ngaytaobatdau="+ ngaytaobatdau+"&batdau="+ batdau+"&ketthuc="+ ketthuc+"&trangthai="+ trangthai+"&brand="+ brand, // giá trị post
+            data: "page="+ page +"&order_by="+ cot +"&order="+ sapxep+"&limit=<?php echo $limit ?>&keyword="+ keyword+"&ngaytao="+ ngaytao+"&ngaytaobatdau="+ ngaytaobatdau+"&batdau="+ batdau+"&ketthuc="+ ketthuc+"&trangthai="+ trangthai+"&brand="+ brand, // giá trị post
             success: function(answer){ // if everything goes well
               //alert(answer);
               $('body').html(answer); // đặt kết quả trả về từ test.php vào thẻ div success
@@ -1012,7 +1012,7 @@ function sapxep(page,cot,sapxep){
           $.ajax({
             type: "POST", // phương thức gởi đi
             url: "<?php echo $this->url('vn/lop-xe-co-ruot') ?>", // nơi mà dữ liệu sẽ chuyển đến khi submit
-            data: "page="+ page +"&order_by="+ cot +"&order="+ sapxep+"&limit="+ loc+"&keyword="+ keyword+"&ngaytao="+ ngaytao+"&ngaytaobatdau="+ ngaytaobatdau+"&batdau="+ batdau+"&ketthuc="+ ketthuc+"&trangthai="+ trangthai+"&brand="+ brand, // giá trị post
+            data: "page="+ page +"&order_by="+ cot +"&order="+ sapxep+"&limit=<?php echo $limit ?>&keyword="+ keyword+"&ngaytao="+ ngaytao+"&ngaytaobatdau="+ ngaytaobatdau+"&batdau="+ batdau+"&ketthuc="+ ketthuc+"&trangthai="+ trangthai+"&brand="+ brand, // giá trị post
             success: function(answer){ // if everything goes well
               //alert(answer);
               $('body').html(answer); // đặt kết quả trả về từ test.php vào thẻ div success
@@ -1249,7 +1249,7 @@ function sapxep(page,cot,sapxep){
           $.ajax({
             type: "POST", // phương thức gởi đi
             url: "<?php echo $this->url('vn/lop-xe-khong-ruot') ?>", // nơi mà dữ liệu sẽ chuyển đến khi submit
-            data: "page="+ page +"&order_by="+ cot +"&order="+ sapxep+"&limit="+ loc+"&keyword="+ keyword+"&ngaytao="+ ngaytao+"&ngaytaobatdau="+ ngaytaobatdau+"&batdau="+ batdau+"&ketthuc="+ ketthuc+"&trangthai="+ trangthai+"&brand="+ brand, // giá trị post
+            data: "page="+ page +"&order_by="+ cot +"&order="+ sapxep+"&limit=<?php echo $limit ?>&keyword="+ keyword+"&ngaytao="+ ngaytao+"&ngaytaobatdau="+ ngaytaobatdau+"&batdau="+ batdau+"&ketthuc="+ ketthuc+"&trangthai="+ trangthai+"&brand="+ brand, // giá trị post
             success: function(answer){ // if everything goes well
               //alert(answer);
               $('body').html(answer); // đặt kết quả trả về từ test.php vào thẻ div success
@@ -1486,7 +1486,7 @@ function sapxep(page,cot,sapxep){
           $.ajax({
             type: "POST", // phương thức gởi đi
             url: "<?php echo $this->url('vn/lop-xe-tai') ?>", // nơi mà dữ liệu sẽ chuyển đến khi submit
-            data: "page="+ page +"&order_by="+ cot +"&order="+ sapxep+"&limit="+ loc+"&keyword="+ keyword+"&ngaytao="+ ngaytao+"&ngaytaobatdau="+ ngaytaobatdau+"&batdau="+ batdau+"&ketthuc="+ ketthuc+"&trangthai="+ trangthai+"&brand="+ brand, // giá trị post
+            data: "page="+ page +"&order_by="+ cot +"&order="+ sapxep+"&limit=<?php echo $limit ?>&keyword="+ keyword+"&ngaytao="+ ngaytao+"&ngaytaobatdau="+ ngaytaobatdau+"&batdau="+ batdau+"&ketthuc="+ ketthuc+"&trangthai="+ trangthai+"&brand="+ brand, // giá trị post
             success: function(answer){ // if everything goes well
               //alert(answer);
               $('body').html(answer); // đặt kết quả trả về từ test.php vào thẻ div success
@@ -1723,7 +1723,7 @@ function sapxep(page,cot,sapxep){
           $.ajax({
             type: "POST", // phương thức gởi đi
             url: "<?php echo $this->url('vn/lop-xe-du-lich') ?>", // nơi mà dữ liệu sẽ chuyển đến khi submit
-            data: "page="+ page +"&order_by="+ cot +"&order="+ sapxep+"&limit="+ loc+"&keyword="+ keyword+"&ngaytao="+ ngaytao+"&ngaytaobatdau="+ ngaytaobatdau+"&batdau="+ batdau+"&ketthuc="+ ketthuc+"&trangthai="+ trangthai+"&brand="+ brand, // giá trị post
+            data: "page="+ page +"&order_by="+ cot +"&order="+ sapxep+"&limit=<?php echo $limit ?>&keyword="+ keyword+"&ngaytao="+ ngaytao+"&ngaytaobatdau="+ ngaytaobatdau+"&batdau="+ batdau+"&ketthuc="+ ketthuc+"&trangthai="+ trangthai+"&brand="+ brand, // giá trị post
             success: function(answer){ // if everything goes well
               //alert(answer);
               $('body').html(answer); // đặt kết quả trả về từ test.php vào thẻ div success
@@ -1959,7 +1959,7 @@ function sapxep(page,cot,sapxep){
           $.ajax({
             type: "POST", // phương thức gởi đi
             url: "<?php echo $this->url('vn/lop-xe-dac-chung') ?>", // nơi mà dữ liệu sẽ chuyển đến khi submit
-            data: "page="+ page +"&order_by="+ cot +"&order="+ sapxep+"&limit="+ loc+"&keyword="+ keyword+"&ngaytao="+ ngaytao+"&ngaytaobatdau="+ ngaytaobatdau+"&batdau="+ batdau+"&ketthuc="+ ketthuc+"&trangthai="+ trangthai+"&brand="+ brand, // giá trị post
+            data: "page="+ page +"&order_by="+ cot +"&order="+ sapxep+"&limit=<?php echo $limit ?>&keyword="+ keyword+"&ngaytao="+ ngaytao+"&ngaytaobatdau="+ ngaytaobatdau+"&batdau="+ batdau+"&ketthuc="+ ketthuc+"&trangthai="+ trangthai+"&brand="+ brand, // giá trị post
             success: function(answer){ // if everything goes well
               //alert(answer);
               $('body').html(answer); // đặt kết quả trả về từ test.php vào thẻ div success

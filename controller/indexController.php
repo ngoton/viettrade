@@ -16,6 +16,24 @@ Class indexController Extends baseController {
 
             $this->view->data['lib'] = $this->lib;
 
+            $post_model = $this->model->get('postModel');
+
+            $data = array(
+
+                'order_by' => 'post_date',
+
+                'order' => 'DESC',
+
+                'limit' => '10',
+
+                'where' => '1=1',
+
+            );
+
+            $new_posts = $post_model->getAllPost($data);
+
+            $this->view->data['new_posts'] = $new_posts;
+
 
 
             $tire_product_model = $this->model->get('tireproductModel');
