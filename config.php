@@ -14,5 +14,5 @@ define('DB_USERNAME_3','root');// User database
 define('DB_PASSWORD_3','');// Password database
 define('DB_SERVER_3','localhost');// IP host
 
-define('BASE_URL',isset($_SERVER["HTTPS"]) ? 'https://' : 'http://'.$_SERVER["SERVER_NAME"]);// IP host
+define('BASE_URL',isset($_SERVER["HTTPS"]) ? 'https://'.$_SERVER["SERVER_NAME"] : 'http://'.$_SERVER["SERVER_NAME"]);// IP host
 ?>
