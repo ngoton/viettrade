@@ -9,7 +9,7 @@ if (isset($lists)) {
         if ($post->post_picture != "") {
             $picture = explode(',', $post->post_picture);
             $link_picture = BASE_URL.'/'.$photo_data['link'][$picture[0]];
-        }
+        
 ?>
     <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 slide-detail">
         <img itemprop="image" src="<?php echo $link_picture ?>" width="95%" />
@@ -34,6 +34,30 @@ if (isset($lists)) {
 
         </div>
     </div>
+    <?php }else{ ?>
+
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 right-detail">
+        <h2 itemprop="name" ><a href="<?php echo BASE_URL ?>/vn/tin-tuc/<?php echo $post->post_link ?>"><?php echo $post->post_title ?></a></h2>
+        <div class="description-detail" itemprop="datePublished" >
+            <i class="fa fa-user"></i> <a href="<?php echo BASE_URL ?>">Lốp xe Việt Trade</a> &nbsp;
+            <i class="fa fa-clock-o"></i> <?php echo $lib->hien_thi_ngay_thang($post->post_date) ?> &nbsp;
+            <i class="fa fa-tags"></i> 
+            <?php 
+            $tags = explode(',', $post->post_tag);
+                foreach ($tags as $tag) {
+                    echo '<a href="'.BASE_URL.'/vn/tag/'.str_replace(" ", "-", $tag).'">'.$tag.'</a>, ';
+                }
+            ?>
+        </div>
+
+        <div class="info-detail" itemprop="description" >
+
+            <?php echo $post->post_desc ?>
+
+        </div>
+    </div>
+
+    <?php } ?>
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 right-detail">
         <hr style="color: #dadde2; height: 1px">
     </div>
