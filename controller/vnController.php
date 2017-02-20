@@ -3023,6 +3023,26 @@ Class vnController Extends baseController {
                 $brand = trim($_POST['brand']);
                 $pattern_name = trim($_POST['pattern']);
                 $usage = trim($_POST['usage']);
+                $price_range = trim($_POST['price_range']);
+
+                $arr = explode(';', $price_range);
+                $min_price = $arr[0];
+                $max_price = $arr[1];
+
+                $gia = 0;
+
+                if ($min_price == "Tất cả" && $min_price == $max_price) {
+                    $gia = -1;
+                }
+                elseif ($min_price == "Tất cả" && $max_price == "Trên 10,000,000") {
+                    $gia = -1;
+                }
+                elseif ($min_price == "Tất cả" && $max_price != "Trên 10,000,000") {
+                    $min_price = 0;
+                }
+                elseif ($min_price == "Trên 10,000,000" && $min_price == $max_price) {
+                    $gia = 10000001;
+                }
 
                 $size = $width.$rimSize;
                 $pattern = $position=="front"?'"DC01","DC02","DC03","DK01","DK02"':($position=="drive"?'"DK01","DK02","NK01","NK02"':($position=="trailer"?'"NC01","BC01","BC02"':null));
@@ -3044,6 +3064,13 @@ Class vnController Extends baseController {
                 }
                 if ($pattern_name != "") {
                     $data['where'] .= ' AND tire_product_pattern_name = "'.$pattern_name.'"';
+                }
+
+                if ($gia == 10000001) {
+                    $data['where'] .= ' AND tire_retail >= '.$gia;
+                }
+                elseif ($gia == 0) {
+                    $data['where'] .= ' AND tire_retail >= '.$min_price.' AND tire_retail <= '.$max_price;
                 }
 
                 $tire_products = $tire_product_model->getAllTire($data,$join);
@@ -3083,6 +3110,8 @@ Class vnController Extends baseController {
         $this->view->data['brand'] = $brand;
         $this->view->data['pattern'] = $pattern_name;
         $this->view->data['usage'] = $usage;
+        $this->view->data['min_price'] = $min_price;
+        $this->view->data['max_price'] = $max_price;
 
         $this->view->show('vn/timkiem');
 

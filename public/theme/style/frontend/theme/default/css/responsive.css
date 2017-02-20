@@ -1,7 +1,11 @@
 /* 
-  - Bản quyền thuộc 2banh.vn
-  - Design by Huynh Hieu
-  - Email: beetiny.hth@gmail.com
+
+  - @TinHocTaiNha
+
+  - Design by Ngo Ton
+
+  - Email: ngoton@tinhoctainha.com
+
  */
  .banner_mobile{ display: none;}
 @media(max-width: 1200px)
@@ -27,7 +31,7 @@
     .prod_thumb{ float:left;padding-top: 15px;
     width: 100%;}
     .event_page .right-detail{ margin-right: 0;}
-    .content_event_page_top{ background: url("http://shop2banh.vn/style/frontend/theme/default/images/saleoff_bg_2.jpg") center top repeat-y;}
+    .content_event_page_top{ background: url("../images/saleoff_bg_2.jpg") center top repeat-y;}
     .banner_mobile{ display: block;}
     .banner_pc{display: none;}
 }
