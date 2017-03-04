@@ -131,66 +131,7 @@
 
 <script type="text/javascript">
 function sapxep(page,cot,sapxep){
-          var sapxep        = sapxep;
-        if(page==""){
-          if($('.sort').attr('class') == "sort DESC"){
-            $('.sort').removeClass('DESC');
-            $('.sort').addClass('ASC');
-            sapxep = "ASC";
-          }
-          else if($('.sort').attr('class') == "sort ASC"){
-            $('.sort').removeClass('ASC');
-            $('.sort').addClass('DESC');
-            sapxep = "DESC";
-          }
-          else if($('.sort').attr('class') == "sort"){
-            
-            $('.sort').addClass('DESC');
-            sapxep = "DESC";
-          }
-        }
-          $('#loading').html("<img src='public/images/loading.gif'/>").fadeIn(500);
-          var cot        = cot;
-          var keyword = $('#search-input').val();
-          var ngaytao = "";
-          var loc =    $('#chonloc').val();
-
-          if($('#chonngaytao') !== null)
-          {
-            var ngaytao = $('#chonngaytao').val();
-          }
-          if($('#chonngaytaobatdau') != null)
-          {
-            var ngaytaobatdau = $('#chonngaytaobatdau').val();
-          }
-          if($('#batdau') != null)
-          {
-            var batdau = $('#batdau').val();
-          }
-          if($('#ketthuc') != null)
-          {
-            var ketthuc = $('#ketthuc').val();
-          }
-          if($('#sl_status') != null)
-          {
-            var trangthai = $('#sl_status').val();
-          }
-
-          var href = window.location.href;
-            var brand = href.substr(href.lastIndexOf('/') + 1);
-            brand = brand.replace("-"," ");
-          
-          
-          $.ajax({
-            type: "POST", // phương thức gởi đi
-            url: "<?php echo $this->url('vn/lop-xe-bo-kem') ?>", // nơi mà dữ liệu sẽ chuyển đến khi submit
-            data: "page="+ page +"&order_by="+ cot +"&order="+ sapxep+"&limit=<?php echo $limit ?>&keyword="+ keyword+"&ngaytao="+ ngaytao+"&ngaytaobatdau="+ ngaytaobatdau+"&batdau="+ batdau+"&ketthuc="+ ketthuc+"&trangthai="+ trangthai+"&brand="+ brand, // giá trị post
-            success: function(answer){ // if everything goes well
-              //alert(answer);
-              $('body').html(answer); // đặt kết quả trả về từ test.php vào thẻ div success
-              $('#loading').fadeOut(500);
-            }
-          });
+  window.location.href = "<?php echo $this->url('vn/lop-xe-bo-kem/page/') ?>"+page+"/"+cot+"/"+sapxep;
 }
 </script>
 <style type="text/css">
@@ -368,66 +309,7 @@ function sapxep(page,cot,sapxep){
 
 <script type="text/javascript">
 function sapxep(page,cot,sapxep){
-          var sapxep        = sapxep;
-        if(page==""){
-          if($('.sort').attr('class') == "sort DESC"){
-            $('.sort').removeClass('DESC');
-            $('.sort').addClass('ASC');
-            sapxep = "ASC";
-          }
-          else if($('.sort').attr('class') == "sort ASC"){
-            $('.sort').removeClass('ASC');
-            $('.sort').addClass('DESC');
-            sapxep = "DESC";
-          }
-          else if($('.sort').attr('class') == "sort"){
-            
-            $('.sort').addClass('DESC');
-            sapxep = "DESC";
-          }
-        }
-          $('#loading').html("<img src='public/images/loading.gif'/>").fadeIn(500);
-          var cot        = cot;
-          var keyword = $('#search-input').val();
-          var ngaytao = "";
-          var loc =    $('#chonloc').val();
-
-          if($('#chonngaytao') !== null)
-          {
-            var ngaytao = $('#chonngaytao').val();
-          }
-          if($('#chonngaytaobatdau') != null)
-          {
-            var ngaytaobatdau = $('#chonngaytaobatdau').val();
-          }
-          if($('#batdau') != null)
-          {
-            var batdau = $('#batdau').val();
-          }
-          if($('#ketthuc') != null)
-          {
-            var ketthuc = $('#ketthuc').val();
-          }
-          if($('#sl_status') != null)
-          {
-            var trangthai = $('#sl_status').val();
-          }
-
-          var href = window.location.href;
-            var brand = href.substr(href.lastIndexOf('/') + 1);
-            brand = brand.replace("-"," ");
-          
-          
-          $.ajax({
-            type: "POST", // phương thức gởi đi
-            url: "<?php echo $this->url('vn/lop-xe-bo-nylon') ?>", // nơi mà dữ liệu sẽ chuyển đến khi submit
-            data: "page="+ page +"&order_by="+ cot +"&order="+ sapxep+"&limit=<?php echo $limit ?>&keyword="+ keyword+"&ngaytao="+ ngaytao+"&ngaytaobatdau="+ ngaytaobatdau+"&batdau="+ batdau+"&ketthuc="+ ketthuc+"&trangthai="+ trangthai+"&brand="+ brand, // giá trị post
-            success: function(answer){ // if everything goes well
-              //alert(answer);
-              $('body').html(answer); // đặt kết quả trả về từ test.php vào thẻ div success
-              $('#loading').fadeOut(500);
-            }
-          });
+  window.location.href = "<?php echo $this->url('vn/lop-xe-bo-nylon/page/') ?>"+page+"/"+cot+"/"+sapxep;
 }
 </script>
 <style type="text/css">
@@ -741,7 +623,7 @@ function sapxep(page,cot,sapxep){
 
 
     </div>
-
+ 
 
 
 </div>
@@ -959,66 +841,7 @@ function sapxep(page,cot,sapxep){
 
 <script type="text/javascript">
 function sapxep(page,cot,sapxep){
-          var sapxep        = sapxep;
-        if(page==""){
-          if($('.sort').attr('class') == "sort DESC"){
-            $('.sort').removeClass('DESC');
-            $('.sort').addClass('ASC');
-            sapxep = "ASC";
-          }
-          else if($('.sort').attr('class') == "sort ASC"){
-            $('.sort').removeClass('ASC');
-            $('.sort').addClass('DESC');
-            sapxep = "DESC";
-          }
-          else if($('.sort').attr('class') == "sort"){
-            
-            $('.sort').addClass('DESC');
-            sapxep = "DESC";
-          }
-        }
-          $('#loading').html("<img src='public/images/loading.gif'/>").fadeIn(500);
-          var cot        = cot;
-          var keyword = $('#search-input').val();
-          var ngaytao = "";
-          var loc =    $('#chonloc').val();
-
-          if($('#chonngaytao') !== null)
-          {
-            var ngaytao = $('#chonngaytao').val();
-          }
-          if($('#chonngaytaobatdau') != null)
-          {
-            var ngaytaobatdau = $('#chonngaytaobatdau').val();
-          }
-          if($('#batdau') != null)
-          {
-            var batdau = $('#batdau').val();
-          }
-          if($('#ketthuc') != null)
-          {
-            var ketthuc = $('#ketthuc').val();
-          }
-          if($('#sl_status') != null)
-          {
-            var trangthai = $('#sl_status').val();
-          }
-
-          var href = window.location.href;
-            var brand = href.substr(href.lastIndexOf('/') + 1);
-            brand = brand.replace("-"," ");
-          
-          
-          $.ajax({
-            type: "POST", // phương thức gởi đi
-            url: "<?php echo $this->url('vn/lop-xe-co-ruot') ?>", // nơi mà dữ liệu sẽ chuyển đến khi submit
-            data: "page="+ page +"&order_by="+ cot +"&order="+ sapxep+"&limit=<?php echo $limit ?>&keyword="+ keyword+"&ngaytao="+ ngaytao+"&ngaytaobatdau="+ ngaytaobatdau+"&batdau="+ batdau+"&ketthuc="+ ketthuc+"&trangthai="+ trangthai+"&brand="+ brand, // giá trị post
-            success: function(answer){ // if everything goes well
-              //alert(answer);
-              $('body').html(answer); // đặt kết quả trả về từ test.php vào thẻ div success
-              $('#loading').fadeOut(500);
-            }
-          });
+  window.location.href = "<?php echo $this->url('vn/lop-xe-co-ruot/page/') ?>"+page+"/"+cot+"/"+sapxep;
 }
 </script>
 <style type="text/css">
@@ -1196,66 +1019,7 @@ function sapxep(page,cot,sapxep){
 
 <script type="text/javascript">
 function sapxep(page,cot,sapxep){
-          var sapxep        = sapxep;
-        if(page==""){
-          if($('.sort').attr('class') == "sort DESC"){
-            $('.sort').removeClass('DESC');
-            $('.sort').addClass('ASC');
-            sapxep = "ASC";
-          }
-          else if($('.sort').attr('class') == "sort ASC"){
-            $('.sort').removeClass('ASC');
-            $('.sort').addClass('DESC');
-            sapxep = "DESC";
-          }
-          else if($('.sort').attr('class') == "sort"){
-            
-            $('.sort').addClass('DESC');
-            sapxep = "DESC";
-          }
-        }
-          $('#loading').html("<img src='public/images/loading.gif'/>").fadeIn(500);
-          var cot        = cot;
-          var keyword = $('#search-input').val();
-          var ngaytao = "";
-          var loc =    $('#chonloc').val();
-
-          if($('#chonngaytao') !== null)
-          {
-            var ngaytao = $('#chonngaytao').val();
-          }
-          if($('#chonngaytaobatdau') != null)
-          {
-            var ngaytaobatdau = $('#chonngaytaobatdau').val();
-          }
-          if($('#batdau') != null)
-          {
-            var batdau = $('#batdau').val();
-          }
-          if($('#ketthuc') != null)
-          {
-            var ketthuc = $('#ketthuc').val();
-          }
-          if($('#sl_status') != null)
-          {
-            var trangthai = $('#sl_status').val();
-          }
-
-          var href = window.location.href;
-            var brand = href.substr(href.lastIndexOf('/') + 1);
-            brand = brand.replace("-"," ");
-          
-          
-          $.ajax({
-            type: "POST", // phương thức gởi đi
-            url: "<?php echo $this->url('vn/lop-xe-khong-ruot') ?>", // nơi mà dữ liệu sẽ chuyển đến khi submit
-            data: "page="+ page +"&order_by="+ cot +"&order="+ sapxep+"&limit=<?php echo $limit ?>&keyword="+ keyword+"&ngaytao="+ ngaytao+"&ngaytaobatdau="+ ngaytaobatdau+"&batdau="+ batdau+"&ketthuc="+ ketthuc+"&trangthai="+ trangthai+"&brand="+ brand, // giá trị post
-            success: function(answer){ // if everything goes well
-              //alert(answer);
-              $('body').html(answer); // đặt kết quả trả về từ test.php vào thẻ div success
-              $('#loading').fadeOut(500);
-            }
-          });
+  window.location.href = "<?php echo $this->url('vn/lop-xe-khong-ruot/page/') ?>"+page+"/"+cot+"/"+sapxep;
 }
 </script>
 <style type="text/css">
@@ -1433,66 +1197,7 @@ function sapxep(page,cot,sapxep){
 
 <script type="text/javascript">
 function sapxep(page,cot,sapxep){
-          var sapxep        = sapxep;
-        if(page==""){
-          if($('.sort').attr('class') == "sort DESC"){
-            $('.sort').removeClass('DESC');
-            $('.sort').addClass('ASC');
-            sapxep = "ASC";
-          }
-          else if($('.sort').attr('class') == "sort ASC"){
-            $('.sort').removeClass('ASC');
-            $('.sort').addClass('DESC');
-            sapxep = "DESC";
-          }
-          else if($('.sort').attr('class') == "sort"){
-            
-            $('.sort').addClass('DESC');
-            sapxep = "DESC";
-          }
-        }
-          $('#loading').html("<img src='public/images/loading.gif'/>").fadeIn(500);
-          var cot        = cot;
-          var keyword = $('#search-input').val();
-          var ngaytao = "";
-          var loc =    $('#chonloc').val();
-
-          if($('#chonngaytao') !== null)
-          {
-            var ngaytao = $('#chonngaytao').val();
-          }
-          if($('#chonngaytaobatdau') != null)
-          {
-            var ngaytaobatdau = $('#chonngaytaobatdau').val();
-          }
-          if($('#batdau') != null)
-          {
-            var batdau = $('#batdau').val();
-          }
-          if($('#ketthuc') != null)
-          {
-            var ketthuc = $('#ketthuc').val();
-          }
-          if($('#sl_status') != null)
-          {
-            var trangthai = $('#sl_status').val();
-          }
-
-          var href = window.location.href;
-            var brand = href.substr(href.lastIndexOf('/') + 1);
-            brand = brand.replace("-"," ");
-          
-          
-          $.ajax({
-            type: "POST", // phương thức gởi đi
-            url: "<?php echo $this->url('vn/lop-xe-tai') ?>", // nơi mà dữ liệu sẽ chuyển đến khi submit
-            data: "page="+ page +"&order_by="+ cot +"&order="+ sapxep+"&limit=<?php echo $limit ?>&keyword="+ keyword+"&ngaytao="+ ngaytao+"&ngaytaobatdau="+ ngaytaobatdau+"&batdau="+ batdau+"&ketthuc="+ ketthuc+"&trangthai="+ trangthai+"&brand="+ brand, // giá trị post
-            success: function(answer){ // if everything goes well
-              //alert(answer);
-              $('body').html(answer); // đặt kết quả trả về từ test.php vào thẻ div success
-              $('#loading').fadeOut(500);
-            }
-          });
+  window.location.href = "<?php echo $this->url('vn/lop-xe-tai/'.$param.'/') ?>"+page+"/"+cot+"/"+sapxep;
 }
 </script>
 <style type="text/css">
@@ -1670,66 +1375,7 @@ function sapxep(page,cot,sapxep){
 
 <script type="text/javascript">
 function sapxep(page,cot,sapxep){
-          var sapxep        = sapxep;
-        if(page==""){
-          if($('.sort').attr('class') == "sort DESC"){
-            $('.sort').removeClass('DESC');
-            $('.sort').addClass('ASC');
-            sapxep = "ASC";
-          }
-          else if($('.sort').attr('class') == "sort ASC"){
-            $('.sort').removeClass('ASC');
-            $('.sort').addClass('DESC');
-            sapxep = "DESC";
-          }
-          else if($('.sort').attr('class') == "sort"){
-            
-            $('.sort').addClass('DESC');
-            sapxep = "DESC";
-          }
-        }
-          $('#loading').html("<img src='public/images/loading.gif'/>").fadeIn(500);
-          var cot        = cot;
-          var keyword = $('#search-input').val();
-          var ngaytao = "";
-          var loc =    $('#chonloc').val();
-
-          if($('#chonngaytao') !== null)
-          {
-            var ngaytao = $('#chonngaytao').val();
-          }
-          if($('#chonngaytaobatdau') != null)
-          {
-            var ngaytaobatdau = $('#chonngaytaobatdau').val();
-          }
-          if($('#batdau') != null)
-          {
-            var batdau = $('#batdau').val();
-          }
-          if($('#ketthuc') != null)
-          {
-            var ketthuc = $('#ketthuc').val();
-          }
-          if($('#sl_status') != null)
-          {
-            var trangthai = $('#sl_status').val();
-          }
-
-          var href = window.location.href;
-            var brand = href.substr(href.lastIndexOf('/') + 1);
-            brand = brand.replace("-"," ");
-          
-          
-          $.ajax({
-            type: "POST", // phương thức gởi đi
-            url: "<?php echo $this->url('vn/lop-xe-du-lich') ?>", // nơi mà dữ liệu sẽ chuyển đến khi submit
-            data: "page="+ page +"&order_by="+ cot +"&order="+ sapxep+"&limit=<?php echo $limit ?>&keyword="+ keyword+"&ngaytao="+ ngaytao+"&ngaytaobatdau="+ ngaytaobatdau+"&batdau="+ batdau+"&ketthuc="+ ketthuc+"&trangthai="+ trangthai+"&brand="+ brand, // giá trị post
-            success: function(answer){ // if everything goes well
-              //alert(answer);
-              $('body').html(answer); // đặt kết quả trả về từ test.php vào thẻ div success
-              $('#loading').fadeOut(500);
-            }
-          });
+  window.location.href = "<?php echo $this->url('vn/lop-xe-du-lich/'.$param.'/') ?>"+page+"/"+cot+"/"+sapxep;
 }
 </script>
 <style type="text/css">
@@ -1906,66 +1552,7 @@ function sapxep(page,cot,sapxep){
 
 <script type="text/javascript">
 function sapxep(page,cot,sapxep){
-          var sapxep        = sapxep;
-        if(page==""){
-          if($('.sort').attr('class') == "sort DESC"){
-            $('.sort').removeClass('DESC');
-            $('.sort').addClass('ASC');
-            sapxep = "ASC";
-          }
-          else if($('.sort').attr('class') == "sort ASC"){
-            $('.sort').removeClass('ASC');
-            $('.sort').addClass('DESC');
-            sapxep = "DESC";
-          }
-          else if($('.sort').attr('class') == "sort"){
-            
-            $('.sort').addClass('DESC');
-            sapxep = "DESC";
-          }
-        }
-          $('#loading').html("<img src='public/images/loading.gif'/>").fadeIn(500);
-          var cot        = cot;
-          var keyword = $('#search-input').val();
-          var ngaytao = "";
-          var loc =    $('#chonloc').val();
-
-          if($('#chonngaytao') !== null)
-          {
-            var ngaytao = $('#chonngaytao').val();
-          }
-          if($('#chonngaytaobatdau') != null)
-          {
-            var ngaytaobatdau = $('#chonngaytaobatdau').val();
-          }
-          if($('#batdau') != null)
-          {
-            var batdau = $('#batdau').val();
-          }
-          if($('#ketthuc') != null)
-          {
-            var ketthuc = $('#ketthuc').val();
-          }
-          if($('#sl_status') != null)
-          {
-            var trangthai = $('#sl_status').val();
-          }
-
-          var href = window.location.href;
-            var brand = href.substr(href.lastIndexOf('/') + 1);
-            brand = brand.replace("-"," ");
-          
-          
-          $.ajax({
-            type: "POST", // phương thức gởi đi
-            url: "<?php echo $this->url('vn/lop-xe-dac-chung') ?>", // nơi mà dữ liệu sẽ chuyển đến khi submit
-            data: "page="+ page +"&order_by="+ cot +"&order="+ sapxep+"&limit=<?php echo $limit ?>&keyword="+ keyword+"&ngaytao="+ ngaytao+"&ngaytaobatdau="+ ngaytaobatdau+"&batdau="+ batdau+"&ketthuc="+ ketthuc+"&trangthai="+ trangthai+"&brand="+ brand, // giá trị post
-            success: function(answer){ // if everything goes well
-              //alert(answer);
-              $('body').html(answer); // đặt kết quả trả về từ test.php vào thẻ div success
-              $('#loading').fadeOut(500);
-            }
-          });
+  window.location.href = "<?php echo $this->url('vn/lop-xe-dac-chung/'.$param.'/') ?>"+page+"/"+cot+"/"+sapxep;
 }
 </script>
 <style type="text/css">

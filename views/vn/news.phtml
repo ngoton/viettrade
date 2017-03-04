@@ -99,8 +99,8 @@ $this->helper('slidePaginator');
             <?php echo $post->post_desc ?>
         </div>
 
-        <div class="info-detail" itemprop="description" >
-                <!-- Quảng cáo -->
+        <!-- <div class="info-detail" itemprop="description" >
+                
                 <ins class="adsbygoogle"
                      style="display:block"
                      data-ad-client="ca-pub-8303573181078043"
@@ -109,7 +109,7 @@ $this->helper('slidePaginator');
                 <script>
                 (adsbygoogle = window.adsbygoogle || []).push({});
                 </script>
-        </div>
+        </div> -->
 
         <div class="external">
 
@@ -143,11 +143,11 @@ $this->helper('slidePaginator');
 
     <h2>Xem thêm</h2>
 
-    <?php foreach ($post_others as $post) { ?>
+    <?php foreach ($post_others as $post_other) { ?>
     <div style="margin:0; padding:0;" class="sub-menu-list tag-link">
-        <a href="<?php echo BASE_URL ?>/vn/tin-tuc/<?php echo $post->post_link ?>">
+        <a href="<?php echo BASE_URL ?>/vn/tin-tuc/<?php echo $post_other->post_link ?>">
 
-        <?php echo $post->post_title ?>
+        <?php echo $post_other->post_title ?>
 
         </a>  
     </div> 
@@ -178,6 +178,9 @@ $this->helper('slidePaginator');
 
 <script type="text/javascript">
 function sapxep(page,cot,sapxep){
+  window.location.href = "<?php echo $this->url('vn/tin-tuc/page/') ?>"+page+"/"+cot+"/"+sapxep;
+}
+/*function sapxep(page,cot,sapxep){
           var sapxep = sapxep;
           var cot = cot;
           var page = page;
@@ -192,5 +195,5 @@ function sapxep(page,cot,sapxep){
               $('#loading').fadeOut(500);
             }
           });
-}
+}*/
 </script>

@@ -669,9 +669,9 @@ $(function() {
         return false;
     });
 
-    $('.close_popup_form').live('click', function() {
+    /*$('.close_popup_form').live('click', function() {
         $('.popup_container, #reg_modal').hide();
-    });
+    });*/
 
     $("#reg_modal, #cancel_button").click(function() {
         $('.popup_container, #reg_modal').hide();

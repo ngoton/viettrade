@@ -60,7 +60,7 @@ Class vnController Extends baseController {
 
             );
 
-
+            $this->view->data['limit'] = 10;
 
             $tire_product_features = $tire_product_model->getAllTire($data,$join);
 
@@ -373,6 +373,158 @@ Class vnController Extends baseController {
         $this->view->show('vn/dailylopxe');
     }
 
+    public function dai_ly() {
+
+        $this->view->setLayout('detail');
+        $this->view->data['lib'] = $this->lib;
+
+        $this->view->data['title'] = 'Đại lý lốp xe, đại lý vỏ xe';
+        $this->view->data['description'] = 'Đại lý lốp xe, đại lý vỏ xe chuyên bán các loại lốp xe, vỏ xe chính hãng chất lượng cao giá rẻ nhất dùng cho xe ô tô, xe tải, xe container, xe ben tại Hồ Chí Minh, Đồng Nai, Bình Dương, Tây Ninh, Bình Phước, Bà Rịa Vũng Tàu...';
+
+        $link_breadcrumb = '
+
+        <span class="arrow">›</span>        
+
+          <div itemprop="child" itemscope itemtype="http://data-vocabulary.org/Breadcrumb">         
+
+            <a title="Đại lý lốp xe" href="'.BASE_URL.'/vn/dai-ly" itemprop="url">            
+
+              <span itemprop="title">Danh sách đại lý</span>
+
+            </a>
+
+          </div>
+
+        ';
+
+        $ten = "";
+
+        $name = $this->registry->router->param_id;
+        if ($name != "") {
+            $arr = array(
+                'mien-bac' => 'Miền Bắc',
+                'mien-trung' => 'Miền Trung',
+                'tay-nguyen' => 'Tây Nguyên',
+                'mien-nam' => 'Miền Nam',
+                'dong-bac-bo' => 'Đông Bắc Bộ',
+                'tay-bac-bo' => 'Tây Bắc Bộ',
+                'ha-noi' => 'Hà Nội',
+                'bac-trung-bo' => 'Bắc Trung Bộ',
+                'da-nang' => 'Đà Nẵng',
+                'quang-nam' => 'Quảng Nam',
+                'quang-ngai' => 'Quảng Ngãi',
+                'binh-dinh' => 'Bình Định',
+                'phu-yen' => 'Phú Yên',
+                'khanh-hoa' => 'Khánh Hòa',
+                'ninh-thuan' => 'Ninh Thuận',
+                'binh-thuan' => 'Bình Thuận',
+                'gia-lai' => 'Gia Lai',
+                'kon-tum' => 'Kon Tum',
+                'dak-lak' => 'Đắk Lắk',
+                'lam-dong' => 'Lâm Đồng',
+                'dak-nong' => 'Đắk Nông',
+                'ho-chi-minh' => 'TP. Hồ Chí Minh',
+                'dong-nai' => 'Đồng Nai',
+                'binh-duong' => 'Bình Dương',
+                'ba-ria-vung-tau' => 'Bà Rịa - Vũng Tàu',
+                'tay-ninh' => 'Tây Ninh',
+                'binh-phuoc' => 'Bình Phước',
+                'long-an' => 'Long An',
+                'can-tho' => 'Cần Thơ',
+            );
+            $ten = $arr[$name];
+        }
+
+        $this->view->data['ten'] = $ten;
+
+        if ($ten != "") {
+            $this->view->data['title'] = 'Đại lý lốp xe tại '.$ten;
+            $this->view->data['description'] = 'Đại lý lốp xe tại '.$ten.', đại lý vỏ xe tại '.$ten.' chuyên bán các loại lốp xe, vỏ xe chính hãng chất lượng cao giá rẻ nhất dùng cho xe ô tô, xe tải, xe container, xe ben';
+
+
+            $link_breadcrumb = '
+
+            <span class="arrow">›</span>        
+
+              <div itemprop="child" itemscope itemtype="http://data-vocabulary.org/Breadcrumb">         
+
+                <a title="Đại lý lốp xe" href="'.BASE_URL.'/vn/dai-ly-lop-xe" itemprop="url">            
+
+                  <span itemprop="title">Danh sách đại lý</span>
+
+                </a>
+
+                <span class="arrow">›</span>        
+
+                <div itemprop="child" itemscope itemtype="http://data-vocabulary.org/Breadcrumb">         
+
+                  <a title="Đại lý lốp xe tại '.$ten.'" href="'.BASE_URL.'/vn/dai-ly/'.$name.'" itemprop="url">      
+
+                    <span itemprop="title">Đại lý lốp xe tại '.$ten.'</span>
+
+                  </a>
+
+                </div>
+
+              </div>
+
+            ';
+        }
+
+
+        $post_model = $this->model->get('postModel');
+
+            $data = array(
+
+                'order_by' => 'post_date',
+
+                'order' => 'DESC',
+
+                'limit' => '10',
+
+                'where' => '1=1',
+
+            );
+
+            $new_posts = $post_model->getAllPost($data);
+
+            $this->view->data['new_posts'] = $new_posts;
+
+        $tire_product_model = $this->model->get('tireproductModel');
+
+
+
+            $join = array('table'=>'tire_producer, tire_product_size, tire_product_pattern','where'=>'tire_pattern=tire_product_pattern_id AND tire_producer=tire_producer_id AND tire_size=tire_product_size_id');
+
+            $data = array(
+
+                'order_by' => 'RAND()',
+
+                'limit' => '10',
+
+                'where' => 'tire_product_feature = 1',
+
+            );
+
+
+
+            $tire_product_features = $tire_product_model->getAllTire($data,$join);
+
+            
+
+            
+
+            $this->view->data['tire_product_features'] = $tire_product_features;
+
+            $this->view->data['link_breadcrumb'] = $link_breadcrumb;
+
+            $tire_producer_model = $this->model->get('tireproducerModel');
+            $tire_producers = $tire_producer_model->getAllTire();
+            $this->view->data['list_tire_producers'] = $tire_producers;
+
+        $this->view->show('vn/daily');
+    }
+
     public function lop_xe_bo_kem() {
 
         $this->view->setLayout('detail');
@@ -447,11 +599,11 @@ Class vnController Extends baseController {
 
 
 
-                $order_by = $this->registry->router->order_by ? $this->registry->router->order_by : 'RAND()';
+                $order_by = $this->registry->router->order_by ? $this->registry->router->order_by : 'tire_producer_id';
 
 
 
-                $order = $this->registry->router->order_by ? $this->registry->router->order_by : null;
+                $order = $this->registry->router->order ? $this->registry->router->order : 'ASC';
 
 
 
@@ -695,11 +847,11 @@ Class vnController Extends baseController {
 
 
 
-                $order_by = $this->registry->router->order_by ? $this->registry->router->order_by : 'RAND()';
+                $order_by = $this->registry->router->order_by ? $this->registry->router->order_by : 'tire_producer_id';
 
 
 
-                $order = $this->registry->router->order_by ? $this->registry->router->order_by : null;
+                $order = $this->registry->router->order ? $this->registry->router->order : 'ASC';
 
 
 
@@ -941,11 +1093,11 @@ Class vnController Extends baseController {
 
 
 
-                $order_by = $this->registry->router->order_by ? $this->registry->router->order_by : 'RAND()';
+                $order_by = $this->registry->router->order_by ? $this->registry->router->order_by : 'tire_producer_id';
 
 
 
-                $order = $this->registry->router->order_by ? $this->registry->router->order_by : null;
+                $order = $this->registry->router->order ? $this->registry->router->order : 'ASC';
 
 
 
@@ -1189,11 +1341,11 @@ Class vnController Extends baseController {
 
 
 
-                $order_by = $this->registry->router->order_by ? $this->registry->router->order_by : 'RAND()';
+                $order_by = $this->registry->router->order_by ? $this->registry->router->order_by : 'tire_producer_id';
 
 
 
-                $order = $this->registry->router->order_by ? $this->registry->router->order_by : null;
+                $order = $this->registry->router->order ? $this->registry->router->order : 'ASC';
 
 
 
@@ -1437,11 +1589,11 @@ Class vnController Extends baseController {
 
 
 
-                $order_by = $this->registry->router->order_by ? $this->registry->router->order_by : 'RAND()';
+                $order_by = $this->registry->router->order_by ? $this->registry->router->order_by : 'tire_producer_id';
 
 
 
-                $order = $this->registry->router->order_by ? $this->registry->router->order_by : null;
+                $order = $this->registry->router->order ? $this->registry->router->order : 'ASC';
 
 
 
@@ -1571,11 +1723,13 @@ Class vnController Extends baseController {
 
             $tire_product_trucks = $tire_product_model->getAllTire($data,$join);
 
-
+            $param_id = $this->registry->router->param_id;
 
             $param = str_replace('?', '', strstr(rawurldecode($_SERVER['REQUEST_URI']),"?"));
 
-
+            if ($param_id != "") {
+                $param = rawurldecode($param_id);
+            }
 
             $link_breadcrumb = '
 
@@ -1703,11 +1857,11 @@ Class vnController Extends baseController {
 
 
 
-                $order_by = $this->registry->router->order_by ? $this->registry->router->order_by : 'RAND()';
+                $order_by = $this->registry->router->order_by ? $this->registry->router->order_by : 'tire_producer_id';
 
 
 
-                $order = $this->registry->router->order_by ? $this->registry->router->order_by : null;
+                $order = $this->registry->router->order ? $this->registry->router->order : 'ASC';
 
 
 
@@ -1839,7 +1993,13 @@ Class vnController Extends baseController {
 
 
 
+            $param_id = $this->registry->router->param_id;
+
             $param = str_replace('?', '', strstr(rawurldecode($_SERVER['REQUEST_URI']),"?"));
+
+            if ($param_id != "") {
+                $param = rawurldecode($param_id);
+            }
 
 
 
@@ -1969,11 +2129,11 @@ Class vnController Extends baseController {
 
 
 
-                $order_by = $this->registry->router->order_by ? $this->registry->router->order_by : 'RAND()';
+                $order_by = $this->registry->router->order_by ? $this->registry->router->order_by : 'tire_producer_id';
 
 
 
-                $order = $this->registry->router->order_by ? $this->registry->router->order_by : null;
+                $order = $this->registry->router->order ? $this->registry->router->order : 'ASC';
 
 
 
@@ -2105,7 +2265,13 @@ Class vnController Extends baseController {
 
 
 
+            $param_id = $this->registry->router->param_id;
+
             $param = str_replace('?', '', strstr(rawurldecode($_SERVER['REQUEST_URI']),"?"));
+
+            if ($param_id != "") {
+                $param = rawurldecode($param_id);
+            }
 
 
 
@@ -2168,7 +2334,7 @@ Class vnController Extends baseController {
         $this->view->setLayout('detail');
 
 
-
+        $this->view->data['limit'] = 10;
         /*** set a template variable ***/
 
 
@@ -2181,7 +2347,7 @@ Class vnController Extends baseController {
 
 
 
-            $this->view->data['title'] = 'Việt Trade';
+            $this->view->data['title'] = 'Hãng sản xuất lốp xe | Việt Trade';
 
             $this->view->data['lib'] = $this->lib;
 
@@ -2246,7 +2412,136 @@ Class vnController Extends baseController {
 
 
 
-                $tire_patterns[$tire_producer->tire_producer_id] = $tire_pattern_model->getAllTire($data_pattern);
+                //$tire_patterns[$tire_producer->tire_producer_id] = $tire_pattern_model->getAllTire($data_pattern);
+                $tire_patterns[$tire_producer->tire_producer_id] = array();
+
+            }
+
+
+
+
+
+            $link_breadcrumb = '
+
+                <span class="arrow">›</span>        
+
+                  <div itemprop="child" itemscope itemtype="http://data-vocabulary.org/Breadcrumb">         
+
+                    <a title="Hãng sản xuất" href="'.BASE_URL.'/vn/lop-xe-theo-hang-san-xuat" itemprop="url">            
+
+                      <span itemprop="title">Hãng sản xuất</span>
+
+                    </a>
+
+                  </div>
+
+                ';
+
+
+
+            $this->view->data['tire_product_features'] = $tire_product_features;
+
+            $this->view->data['tire_producers'] = $tire_producers;
+
+            $this->view->data['tire_products'] = $tire_products;
+
+            $this->view->data['tire_patterns'] = $tire_patterns;
+
+            $this->view->data['link_breadcrumb'] = $link_breadcrumb;
+
+            $this->view->data['list_tire_producers'] = $tire_producers;
+
+            $this->view->show('vn/index');
+
+
+
+    }
+
+    public function lop_theo_hang_san_xuat() {
+
+        $this->view->setLayout('detail');
+
+
+        $this->view->data['limit'] = 10;
+        /*** set a template variable ***/
+
+
+
+            //$this->view->data['welcome'] = 'Welcome to CAI MEP TRADING !';
+
+
+
+        /*** load the index template ***/
+
+
+
+            $this->view->data['title'] = 'Hãng sản xuất lốp xe | Việt Trade';
+
+            $this->view->data['lib'] = $this->lib;
+
+            $post_model = $this->model->get('postModel');
+
+            $data = array(
+
+                'order_by' => 'post_date',
+
+                'order' => 'DESC',
+
+                'limit' => '10',
+
+                'where' => '1=1',
+
+            );
+
+            $new_posts = $post_model->getAllPost($data);
+
+            $this->view->data['new_posts'] = $new_posts;
+
+            $tire_product_model = $this->model->get('tireproductModel');
+
+            $tire_producer_model = $this->model->get('tireproducerModel');
+
+            $tire_pattern_model = $this->model->get('tireproductpatternModel');
+
+
+
+            $join = array('table'=>'tire_producer, tire_product_size, tire_product_pattern','where'=>'tire_pattern=tire_product_pattern_id AND tire_producer=tire_producer_id AND tire_size=tire_product_size_id');
+
+            $data = array(
+
+                'order_by' => 'RAND()',
+
+                'limit' => '10',
+
+                'where' => 'tire_product_feature = 1',
+
+            );
+
+
+
+            $tire_product_features = $tire_product_model->getAllTire($data,$join);
+
+
+
+            $tire_producers = $tire_producer_model->getAllTire();
+
+
+
+            $tire_products = array();
+            $tire_patterns = array();
+
+            foreach ($tire_producers as $tire_producer) {
+
+                $data_pattern = array(
+
+                    'where' => 'tire_product_pattern_id IN (SELECT tire_pattern FROM tire_product WHERE tire_producer = '.$tire_producer->tire_producer_id.')',
+
+                );
+
+
+
+                //$tire_patterns[$tire_producer->tire_producer_id] = $tire_pattern_model->getAllTire($data_pattern);
+                $tire_patterns[$tire_producer->tire_producer_id] = array();
 
             }
 
@@ -2361,7 +2656,7 @@ Class vnController Extends baseController {
 
 
 
-                $order = $this->registry->router->order_by ? $this->registry->router->order_by : null;
+                $order = $this->registry->router->order ? $this->registry->router->order : null;
 
 
 
@@ -2385,7 +2680,7 @@ Class vnController Extends baseController {
                 $this->view->data['description'] = "Lốp xe, vỏ xe ".$brand_name." chính hãng, có ruột, không ruột đảm bảo chất lượng, giá rẻ dùng cho xe tải, xe container, xe ben, xe khách, xe ô tô";
             }
             else{
-                $this->view->data['title'] = 'Việt Trade';
+                $this->view->data['title'] = 'Hãng sản xuất lốp xe | Việt Trade';
             }
 
 
@@ -2422,6 +2717,10 @@ Class vnController Extends baseController {
 
                 );
 
+            if ($brand_name == "") {
+                $data = array();
+            }
+
 
 
             $tire_producers = $tire_producer_model->getAllTire($data);
@@ -2432,29 +2731,33 @@ Class vnController Extends baseController {
 
             foreach ($tire_producers as $tire_producer) {
 
-                $data_pattern = array(
 
-                    'where' => 'tire_product_pattern_id IN (SELECT tire_pattern FROM tire_product WHERE tire_producer = '.$tire_producer->tire_producer_id.')',
+                if ($brand_name == "") {
+                    $tire_patterns[$tire_producer->tire_producer_id] = array();
+                }
+                else{
+                    $data_pattern = array(
 
-                );
-
-
-
-                $tire_patterns[$tire_producer->tire_producer_id] = $tire_pattern_model->getAllTire($data_pattern);
-
-                if ($pattern_name != "") {
-                    $data = array(
-
-                        'where' => 'tire_producer = '.$tire_producer->tire_producer_id.' AND tire_pattern = '.$pattern_name,
+                        'where' => 'tire_product_pattern_id IN (SELECT tire_pattern FROM tire_product WHERE tire_producer = '.$tire_producer->tire_producer_id.')',
 
                     );
 
+                    $tire_patterns[$tire_producer->tire_producer_id] = $tire_pattern_model->getAllTire($data_pattern);
+
+                    if ($pattern_name != "") {
+                        $data = array(
+
+                            'where' => 'tire_producer = '.$tire_producer->tire_producer_id.' AND tire_pattern = '.$pattern_name,
+
+                        );
 
 
-                    $tire_products = $tire_product_model->getAllTire($data,$join);
 
-                    $this->view->data['tire_brand_name'] = $tire_producer->tire_producer_name;
-                    $this->view->data['tire_pattern_name'] = $tire_pattern_model->getTire($pattern_name);
+                        $tire_products = $tire_product_model->getAllTire($data,$join);
+
+                        $this->view->data['tire_brand_name'] = $tire_producer->tire_producer_name;
+                        $this->view->data['tire_pattern_name'] = $tire_pattern_model->getTire($pattern_name);
+                    }
                 }
 
                 /*if (count($tire_producers) == 1) {
@@ -2582,7 +2885,7 @@ Class vnController Extends baseController {
             }
 
 
-
+            $this->view->data['limit'] = $limit;
             
 
 
@@ -2614,6 +2917,50 @@ Class vnController Extends baseController {
                   </div>
 
                 ';
+
+            if (isset($this->view->data['tire_pattern_name'])) {
+                $this->view->data['title'] = "Lốp xe ".$brand_name." mã gai ".$this->view->data['tire_pattern_name']->tire_product_pattern_name;
+
+                $link_breadcrumb = '
+
+                <span class="arrow">›</span>        
+
+                  <div itemprop="child" itemscope itemtype="http://data-vocabulary.org/Breadcrumb">         
+
+                    <a title="Hãng sản xuất" href="'.BASE_URL.'/vn/lop-xe-theo-hang-san-xuat" itemprop="url">            
+
+                      <span itemprop="title">Hãng sản xuất</span>
+
+                    </a>
+
+                    <span class="arrow">›</span>        
+
+                    <div itemprop="child" itemscope itemtype="http://data-vocabulary.org/Breadcrumb">         
+
+                      <a title="'.$brand_name.'" href="'.BASE_URL.'/vn/brand/'.$this->registry->router->param_id.'" itemprop="url">      
+
+                        <span itemprop="title">'.$brand_name.'</span>
+
+                      </a>
+
+                    </div>
+
+                    <span class="arrow">›</span>        
+
+                    <div itemprop="child" itemscope itemtype="http://data-vocabulary.org/Breadcrumb">         
+
+                      <a title="'.$brand_name.' '.$this->view->data['tire_pattern_name']->tire_product_pattern_name.'" href="'.BASE_URL.'/vn/brand/'.$this->registry->router->param_id.'/'.$pattern_name.'" itemprop="url">      
+
+                        <span itemprop="title">'.$this->view->data['tire_pattern_name']->tire_product_pattern_name.'</span>
+
+                      </a>
+
+                    </div>
+
+                  </div>
+
+                ';
+            }
 
 
 
@@ -2700,7 +3047,8 @@ Class vnController Extends baseController {
 
             $this->view->data['data_vehicle'] = $data_vehicle;
 
-
+            $vehicle = null;
+            $link_breadcrumb = "";
 
             $join = array('table'=>'tire_producer, tire_product_size, tire_product_pattern','where'=>'tire_pattern=tire_product_pattern_id AND tire_producer=tire_producer_id AND tire_size=tire_product_size_id');
 
@@ -2844,6 +3192,7 @@ Class vnController Extends baseController {
     }
 
     public function ban_do() {
+        $this->view->setLayout('detail');
 
             $this->view->data['title'] = 'Bản đồ Đại lý lốp xe, vỏ xe chính hãng';
 
@@ -2952,6 +3301,16 @@ Class vnController Extends baseController {
         $ratio = null;
         $position = null;
         $usage = null;
+        $sort_select = 0;
+        $limit = 18;
+        $page = isset($_POST['page']) ? $_POST['page'] : 1;
+        $pagination_stages = 2;
+        $tongsotrang = 0;
+        $sonews = 0;
+        $order_by = 'RAND()';
+        $order = "";
+        $min_price = "Tất cả";
+        $max_price = "Tất cả";
 
         $tire_product_model = $this->model->get('tireproductModel');
 
@@ -2965,48 +3324,139 @@ Class vnController Extends baseController {
 
             if (isset($_POST['keyword'])) {
                 $keyword = trim($_POST['keyword']);
+                $order_by = 'RAND()';
+                $limit = isset($_POST['limit'])?$_POST['limit']:18;
+
+                if (isset($_POST['sort'])) {
+                    if ($_POST['sort'] == 1) {
+                        $order_by = 'tire_retail ASC';
+                    }
+                    elseif ($_POST['sort'] == 2) {
+                        $order_by = 'tire_retail DESC';
+                    }
+                    $sort_select = $_POST['sort'];
+                }
+
+                $sonews = $limit;
+                $x = ($page-1) * $sonews;
+                $pagination_stages = 2;
+
+
                 $data = array(
-                    'order_by' => 'RAND()',
-                    'limit' => 100,
+                    'where' => '"'.$keyword.'" LIKE CONCAT("%",tire_product_link,"%")',
+                );
+
+                
+                $tongsodong = count($tire_product_model->getAllTire($data,$join));
+                $tongsotrang = ceil($tongsodong / $sonews);
+
+                $data = array(
+                    'order_by' => $order_by,
+                    'limit'=>$x.','.$sonews,
                     'where' => '"'.$keyword.'" LIKE CONCAT("%",tire_product_link,"%")',
                 );
                 $tire_products = $tire_product_model->getAllTire($data,$join);
                 if ($tire_products == null) {
+                    $sonews = $limit;
+                    $x = ($page-1) * $sonews;
+                    $pagination_stages = 2;
+
+
                     $data = array(
-                        'order_by' => 'RAND()',
-                        'limit' => 100,
+                        'where' => '"'.$keyword.'" LIKE CONCAT("%",tire_producer_name,"%")',
+                    );
+
+                    
+                    $tongsodong = count($tire_product_model->getAllTire($data,$join));
+                    $tongsotrang = ceil($tongsodong / $sonews);
+
+                    $data = array(
+                        'order_by' => $order_by,
+                        'limit'=>$x.','.$sonews,
                         'where' => '"'.$keyword.'" LIKE CONCAT("%",tire_producer_name,"%")',
                     );
                     $tire_products = $tire_product_model->getAllTire($data,$join);
 
                     if ($tire_products == null) {
+                        $sonews = $limit;
+                        $x = ($page-1) * $sonews;
+                        $pagination_stages = 2;
+
+
                         $data = array(
-                            'order_by' => 'RAND()',
-                            'limit' => 100,
+                            'where' => '"'.$keyword.'" LIKE CONCAT("%",tire_product_size_number,"%")',
+                        );
+
+                        
+                        $tongsodong = count($tire_product_model->getAllTire($data,$join));
+                        $tongsotrang = ceil($tongsodong / $sonews);
+
+                        $data = array(
+                            'order_by' => $order_by,
+                            'limit'=>$x.','.$sonews,
                             'where' => '"'.$keyword.'" LIKE CONCAT("%",tire_product_size_number,"%")',
                         );
                         $tire_products = $tire_product_model->getAllTire($data,$join);
 
                         if ($tire_products == null) {
+                            $sonews = $limit;
+                            $x = ($page-1) * $sonews;
+                            $pagination_stages = 2;
+
+
                             $data = array(
-                                'order_by' => 'RAND()',
-                                'limit' => 100,
+                                'where' => '"'.$keyword.'" LIKE CONCAT("%",tire_product_pattern_name,"%")',
+                            );
+
+                            
+                            $tongsodong = count($tire_product_model->getAllTire($data,$join));
+                            $tongsotrang = ceil($tongsodong / $sonews);
+
+                            $data = array(
+                                'order_by' => $order_by,
+                                'limit'=>$x.','.$sonews,
                                 'where' => '"'.$keyword.'" LIKE CONCAT("%",tire_product_pattern_name,"%")',
                             );
                             $tire_products = $tire_product_model->getAllTire($data,$join);
 
                             if ($tire_products == null) {
+                                $sonews = $limit;
+                                $x = ($page-1) * $sonews;
+                                $pagination_stages = 2;
+
+
                                 $data = array(
-                                    'order_by' => 'RAND()',
-                                    'limit' => 100,
+                                    'where' => '"'.$keyword.'" LIKE CONCAT("%",tire_product_pattern_type,"%")',
+                                );
+
+                                
+                                $tongsodong = count($tire_product_model->getAllTire($data,$join));
+                                $tongsotrang = ceil($tongsodong / $sonews);
+
+                                $data = array(
+                                    'order_by' => $order_by,
+                                    'limit'=>$x.','.$sonews,
                                     'where' => '"'.$keyword.'" LIKE CONCAT("%",tire_product_pattern_type,"%")',
                                 );
                                 $tire_products = $tire_product_model->getAllTire($data,$join);
 
                                 if ($tire_products == null) {
+                                    $sonews = $limit;
+                                    $x = ($page-1) * $sonews;
+                                    $pagination_stages = 2;
+
+
                                     $data = array(
-                                        'order_by' => 'RAND()',
-                                        'limit' => 100,
+                                        'where' => '1=1',
+                                    );
+
+                                    
+                                    $tongsodong = count($tire_product_model->getAllTire($data,$join));
+                                    $tongsotrang = ceil($tongsodong / $sonews);
+
+                                    $data = array(
+                                        'order_by' => $order_by,
+                                        'limit'=>$x.','.$sonews,
                                     );
                                     $tire_products = $tire_product_model->getAllTire($data,$join);
                                 }
@@ -3018,11 +3468,9 @@ Class vnController Extends baseController {
             else{
                 $rimSize = trim($_POST['rimSize']);
                 $width = trim($_POST['width']);
-                $ratio = trim($_POST['ratio']);
                 $position = trim($_POST['position']);
                 $brand = trim($_POST['brand']);
                 $pattern_name = trim($_POST['pattern']);
-                $usage = trim($_POST['usage']);
                 $price_range = trim($_POST['price_range']);
 
                 $arr = explode(';', $price_range);
@@ -3047,9 +3495,55 @@ Class vnController Extends baseController {
                 $size = $width.$rimSize;
                 $pattern = $position=="front"?'"DC01","DC02","DC03","DK01","DK02"':($position=="drive"?'"DK01","DK02","NK01","NK02"':($position=="trailer"?'"NC01","BC01","BC02"':null));
 
+                $order_by = 'RAND()';
+                $limit = isset($_POST['limit'])?$_POST['limit']:18;
+
+                if (isset($_POST['sort'])) {
+                    if ($_POST['sort'] == 1) {
+                        $order_by = 'tire_retail ASC';
+                    }
+                    elseif ($_POST['sort'] == 2) {
+                        $order_by = 'tire_retail DESC';
+                    }
+                    $sort_select = $_POST['sort'];
+                }
+
+                $sonews = $limit;
+                $x = ($page-1) * $sonews;
+                $pagination_stages = 2;
+
+
                 $data = array(
-                    'order_by' => 'RAND()',
-                    'limit' => 100,
+                    'where' => '1=1',
+                );
+                if ($size != "") {
+                    $data['where'] .= ' AND tire_product_size_number LIKE "%'.$size.'%"';
+                }
+                if ($pattern != null) {
+                    $data['where'] .= ' AND tire_product_pattern_type IN ('.$pattern.')';
+                }
+                if ($brand != "") {
+                    $data['where'] .= " AND tire_producer = ".$brand;
+                }
+                if ($pattern_name != "") {
+                    $data['where'] .= ' AND tire_product_pattern_name = "'.$pattern_name.'"';
+                }
+
+                if ($gia == 10000001) {
+                    $data['where'] .= ' AND tire_retail >= '.$gia;
+                }
+                elseif ($gia == 0) {
+                    $data['where'] .= ' AND tire_retail >= '.$min_price.' AND tire_retail <= '.$max_price;
+                }
+
+                
+                $tongsodong = count($tire_product_model->getAllTire($data,$join));
+                $tongsotrang = ceil($tongsodong / $sonews);
+                
+
+                $data = array(
+                    'order_by' => $order_by,
+                    'limit'=>$x.','.$sonews,
                     'where' => '1=1',
                 );
 
@@ -3105,13 +3599,19 @@ Class vnController Extends baseController {
         $this->view->data['keyword'] = $keyword;
         $this->view->data['rimSize'] = $rimSize;
         $this->view->data['width'] = $width;
-        $this->view->data['ratio'] = $ratio;
         $this->view->data['position'] = $position;
         $this->view->data['brand'] = $brand;
         $this->view->data['pattern'] = $pattern_name;
-        $this->view->data['usage'] = $usage;
         $this->view->data['min_price'] = $min_price;
         $this->view->data['max_price'] = $max_price;
+        $this->view->data['sort_select'] = $sort_select;
+        $this->view->data['limit'] = $limit;
+        $this->view->data['page'] = $page;
+        $this->view->data['order_by'] = $sort_select;
+        $this->view->data['order'] = $order;
+        $this->view->data['pagination_stages'] = $pagination_stages;
+        $this->view->data['tongsotrang'] = $tongsotrang;
+        $this->view->data['sonews'] = $sonews;
 
         $this->view->show('vn/timkiem');
 
@@ -3121,6 +3621,7 @@ Class vnController Extends baseController {
     public function getPattern(){
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $brand = trim($_POST['data']);
+            $pattern = isset($_POST['pattern'])?trim($_POST['pattern']):"";
             $str = "";
 
             $tire_product_model = $this->model->get('tireproductModel');
@@ -3129,7 +3630,7 @@ Class vnController Extends baseController {
             $tire_products = $tire_product_model->queryTire('SELECT tire_pattern FROM tire_product WHERE tire_producer = '.$brand.' GROUP BY tire_pattern');
             foreach ($tire_products as $tire_product) {
                 $tire_patterns = $tire_pattern_model->getTire($tire_product->tire_pattern);
-                $str .= '<option value="'.$tire_patterns->tire_product_pattern_name.'">'.$tire_patterns->tire_product_pattern_name.'</option>';
+                $str .= '<option '.($pattern==$tire_patterns->tire_product_pattern_name?"selected":null).' value="'.$tire_patterns->tire_product_pattern_name.'">'.$tire_patterns->tire_product_pattern_name.'</option>';
             }
 
             echo $str;
@@ -3291,6 +3792,7 @@ Class vnController Extends baseController {
     }
 
     public function lien_he() {
+        $this->view->setLayout('detail');
 
             $this->view->data['title'] = 'Liên hệ';
 
@@ -3444,6 +3946,387 @@ Class vnController Extends baseController {
         $this->view->show('vn/huongdan');
     }
 
+    public function thong_tin_thanh_toan() {
+
+        $this->view->setLayout('detail');
+
+        $this->view->data['title'] = 'Thông tin thanh toán';
+
+        $this->view->data['lib'] = $this->lib;
+
+        $post_model = $this->model->get('postModel');
+
+            $data = array(
+
+                'order_by' => 'post_date',
+
+                'order' => 'DESC',
+
+                'limit' => '10',
+
+                'where' => '1=1',
+
+            );
+
+            $new_posts = $post_model->getAllPost($data);
+
+            $this->view->data['new_posts'] = $new_posts;
+
+        $tire_product_model = $this->model->get('tireproductModel');
+
+
+
+            $join = array('table'=>'tire_producer, tire_product_size, tire_product_pattern','where'=>'tire_pattern=tire_product_pattern_id AND tire_producer=tire_producer_id AND tire_size=tire_product_size_id');
+
+            $data = array(
+
+                'order_by' => 'RAND()',
+
+                'limit' => '10',
+
+                'where' => 'tire_product_feature = 1',
+
+            );
+
+
+
+            $tire_product_features = $tire_product_model->getAllTire($data,$join);
+
+            $link_breadcrumb = '
+
+                <span class="arrow">›</span>        
+
+                  <div itemprop="child" itemscope itemtype="http://data-vocabulary.org/Breadcrumb">         
+
+                    <a title="Thông tin thanh toán" href="'.BASE_URL.'/vn/thong-tin-thanh-toan" itemprop="url">            
+
+                      <span itemprop="title">Thông tin thanh toán</span>
+
+                    </a>
+
+                  </div>
+
+                ';
+
+
+
+            
+
+            $this->view->data['tire_product_features'] = $tire_product_features;
+
+            $this->view->data['link_breadcrumb'] = $link_breadcrumb;
+
+            $tire_producer_model = $this->model->get('tireproducerModel');
+            $tire_producers = $tire_producer_model->getAllTire();
+            $this->view->data['list_tire_producers'] = $tire_producers;
+
+        $this->view->show('vn/thongtinthanhtoan');
+    }
+    public function giao_nhan_hang() {
+
+        $this->view->setLayout('detail');
+
+        $this->view->data['title'] = 'Giao hàng & Nhận hàng';
+
+        $this->view->data['lib'] = $this->lib;
+
+        $post_model = $this->model->get('postModel');
+
+            $data = array(
+
+                'order_by' => 'post_date',
+
+                'order' => 'DESC',
+
+                'limit' => '10',
+
+                'where' => '1=1',
+
+            );
+
+            $new_posts = $post_model->getAllPost($data);
+
+            $this->view->data['new_posts'] = $new_posts;
+
+        $tire_product_model = $this->model->get('tireproductModel');
+
+
+
+            $join = array('table'=>'tire_producer, tire_product_size, tire_product_pattern','where'=>'tire_pattern=tire_product_pattern_id AND tire_producer=tire_producer_id AND tire_size=tire_product_size_id');
+
+            $data = array(
+
+                'order_by' => 'RAND()',
+
+                'limit' => '10',
+
+                'where' => 'tire_product_feature = 1',
+
+            );
+
+
+
+            $tire_product_features = $tire_product_model->getAllTire($data,$join);
+
+            $link_breadcrumb = '
+
+                <span class="arrow">›</span>        
+
+                  <div itemprop="child" itemscope itemtype="http://data-vocabulary.org/Breadcrumb">         
+
+                    <a title="Giao hàng & Nhận hàng" href="'.BASE_URL.'/vn/giao-nhan-hang" itemprop="url">            
+
+                      <span itemprop="title">Giao hàng & Nhận hàng</span>
+
+                    </a>
+
+                  </div>
+
+                ';
+
+
+
+            
+
+            $this->view->data['tire_product_features'] = $tire_product_features;
+
+            $this->view->data['link_breadcrumb'] = $link_breadcrumb;
+
+            $tire_producer_model = $this->model->get('tireproducerModel');
+            $tire_producers = $tire_producer_model->getAllTire();
+            $this->view->data['list_tire_producers'] = $tire_producers;
+
+        $this->view->show('vn/giaonhanhang');
+    }
+    public function dieu_khoan_su_dung() {
+
+        $this->view->setLayout('detail');
+
+        $this->view->data['title'] = 'Điều khoản sử dụng';
+
+        $this->view->data['lib'] = $this->lib;
+
+        $post_model = $this->model->get('postModel');
+
+            $data = array(
+
+                'order_by' => 'post_date',
+
+                'order' => 'DESC',
+
+                'limit' => '10',
+
+                'where' => '1=1',
+
+            );
+
+            $new_posts = $post_model->getAllPost($data);
+
+            $this->view->data['new_posts'] = $new_posts;
+
+        $tire_product_model = $this->model->get('tireproductModel');
+
+
+
+            $join = array('table'=>'tire_producer, tire_product_size, tire_product_pattern','where'=>'tire_pattern=tire_product_pattern_id AND tire_producer=tire_producer_id AND tire_size=tire_product_size_id');
+
+            $data = array(
+
+                'order_by' => 'RAND()',
+
+                'limit' => '10',
+
+                'where' => 'tire_product_feature = 1',
+
+            );
+
+
+
+            $tire_product_features = $tire_product_model->getAllTire($data,$join);
+
+            $link_breadcrumb = '
+
+                <span class="arrow">›</span>        
+
+                  <div itemprop="child" itemscope itemtype="http://data-vocabulary.org/Breadcrumb">         
+
+                    <a title="Điều khoản sử dụng" href="'.BASE_URL.'/vn/dieu-khoan-su-dung" itemprop="url">            
+
+                      <span itemprop="title">Điều khoản sử dụng</span>
+
+                    </a>
+
+                  </div>
+
+                ';
+
+
+
+            
+
+            $this->view->data['tire_product_features'] = $tire_product_features;
+
+            $this->view->data['link_breadcrumb'] = $link_breadcrumb;
+
+            $tire_producer_model = $this->model->get('tireproducerModel');
+            $tire_producers = $tire_producer_model->getAllTire();
+            $this->view->data['list_tire_producers'] = $tire_producers;
+
+        $this->view->show('vn/dieukhoan');
+    }
+    public function chinh_sach_bao_mat() {
+
+        $this->view->setLayout('detail');
+
+        $this->view->data['title'] = 'Chính sách bảo mật';
+
+        $this->view->data['lib'] = $this->lib;
+
+        $post_model = $this->model->get('postModel');
+
+            $data = array(
+
+                'order_by' => 'post_date',
+
+                'order' => 'DESC',
+
+                'limit' => '10',
+
+                'where' => '1=1',
+
+            );
+
+            $new_posts = $post_model->getAllPost($data);
+
+            $this->view->data['new_posts'] = $new_posts;
+
+        $tire_product_model = $this->model->get('tireproductModel');
+
+
+
+            $join = array('table'=>'tire_producer, tire_product_size, tire_product_pattern','where'=>'tire_pattern=tire_product_pattern_id AND tire_producer=tire_producer_id AND tire_size=tire_product_size_id');
+
+            $data = array(
+
+                'order_by' => 'RAND()',
+
+                'limit' => '10',
+
+                'where' => 'tire_product_feature = 1',
+
+            );
+
+
+
+            $tire_product_features = $tire_product_model->getAllTire($data,$join);
+
+            $link_breadcrumb = '
+
+                <span class="arrow">›</span>        
+
+                  <div itemprop="child" itemscope itemtype="http://data-vocabulary.org/Breadcrumb">         
+
+                    <a title="Chính sách bảo mật" href="'.BASE_URL.'/vn/chinh-sach-bao-mat" itemprop="url">            
+
+                      <span itemprop="title">Chính sách bảo mật</span>
+
+                    </a>
+
+                  </div>
+
+                ';
+
+
+
+            
+
+            $this->view->data['tire_product_features'] = $tire_product_features;
+
+            $this->view->data['link_breadcrumb'] = $link_breadcrumb;
+
+            $tire_producer_model = $this->model->get('tireproducerModel');
+            $tire_producers = $tire_producer_model->getAllTire();
+            $this->view->data['list_tire_producers'] = $tire_producers;
+
+        $this->view->show('vn/chinhsach');
+    }
+    public function chinh_sach_bao_hanh() {
+
+        $this->view->setLayout('detail');
+
+        $this->view->data['title'] = 'Chính sách bảo hành & đổi trả';
+
+        $this->view->data['lib'] = $this->lib;
+
+        $post_model = $this->model->get('postModel');
+
+            $data = array(
+
+                'order_by' => 'post_date',
+
+                'order' => 'DESC',
+
+                'limit' => '10',
+
+                'where' => '1=1',
+
+            );
+
+            $new_posts = $post_model->getAllPost($data);
+
+            $this->view->data['new_posts'] = $new_posts;
+
+        $tire_product_model = $this->model->get('tireproductModel');
+
+
+
+            $join = array('table'=>'tire_producer, tire_product_size, tire_product_pattern','where'=>'tire_pattern=tire_product_pattern_id AND tire_producer=tire_producer_id AND tire_size=tire_product_size_id');
+
+            $data = array(
+
+                'order_by' => 'RAND()',
+
+                'limit' => '10',
+
+                'where' => 'tire_product_feature = 1',
+
+            );
+
+
+
+            $tire_product_features = $tire_product_model->getAllTire($data,$join);
+
+            $link_breadcrumb = '
+
+                <span class="arrow">›</span>        
+
+                  <div itemprop="child" itemscope itemtype="http://data-vocabulary.org/Breadcrumb">         
+
+                    <a title="Chính sách bảo hành & đổi trả" href="'.BASE_URL.'/vn/chinh-sach-bao-hanh" itemprop="url">            
+
+                      <span itemprop="title">Chính sách bảo hành & đổi trả</span>
+
+                    </a>
+
+                  </div>
+
+                ';
+
+
+
+            
+
+            $this->view->data['tire_product_features'] = $tire_product_features;
+
+            $this->view->data['link_breadcrumb'] = $link_breadcrumb;
+
+            $tire_producer_model = $this->model->get('tireproducerModel');
+            $tire_producers = $tire_producer_model->getAllTire();
+            $this->view->data['list_tire_producers'] = $tire_producers;
+
+        $this->view->show('vn/baohanh');
+    }
+
     public function bang_gia_lop_xe(){
         $this->view->setLayout('detail');
         $this->view->data['lib'] = $this->lib;
@@ -3558,7 +4441,64 @@ Class vnController Extends baseController {
         $this->view->data['tire_prices'] = $tire_prices;
         $this->view->data['row_size'] = $row_size;
 
+        
+
         $this->view->show('vn/quotation');
+    }
+    public function regis(){
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $customer = $this->model->get('customertireModel');
+
+            $data = array(
+                        
+                'customer_tire_company' => trim($_POST['company']),
+                'customer_tire_phone' => trim($_POST['phone']),
+                'customer_tire_email' => trim($_POST['email']),
+                'customer_tire_date' => strtotime(date('d-m-Y')),
+                'customer_tire_sale' => 1
+                
+            );
+            if($customer->getCustomerByWhere(array('customer_tire_email'=>$data['customer_tire_email']))){
+                echo "Thông tin của quý khách đã có trong hệ thống!";
+                return false;
+            }
+            else{
+                $customer->createCustomer($data);
+                echo "Đăng ký thành công!";
+            }
+            
+        }
+    }
+    public function agent(){
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $customer = $this->model->get('tireagentModel');
+
+            $data = array(
+                        
+                'company_name' => trim($_POST['company_name']),
+                'company_mst' => trim($_POST['company_mst']),
+                'company_address' => trim($_POST['company_address']),
+                'company_phone' => trim($_POST['company_phone']),
+                'company_email' => trim($_POST['company_email']),
+                'company_contact' => trim($_POST['company_contact']),
+                'place' => trim($_POST['place']),
+                'tire_agent_date' => strtotime(date('d-m-Y')),
+                
+            );
+            if($customer->getTireByWhere(array('company_mst'=>$data['company_mst']))){
+                echo "Thông tin của quý khách đã có trong hệ thống!";
+                return false;
+            }
+            else if($customer->getTireByWhere(array('company_email'=>$data['company_email']))){
+                echo "Thông tin của quý khách đã có trong hệ thống!";
+                return false;
+            }
+            else{
+                $customer->createTire($data);
+                echo "Đăng ký thành công!";
+            }
+            
+        }
     }
 
     public function add_to_cart(){
@@ -3807,6 +4747,24 @@ Class vnController Extends baseController {
 
         $this->view->data['lib'] = $this->lib;
 
+        $post_model = $this->model->get('postModel');
+
+            $data = array(
+
+                'order_by' => 'post_date',
+
+                'order' => 'DESC',
+
+                'limit' => '10',
+
+                'where' => '1=1',
+
+            );
+
+            $new_posts = $post_model->getAllPost($data);
+
+            $this->view->data['new_posts'] = $new_posts;
+
         $tire_product_model = $this->model->get('tireproductModel');
 
 
@@ -4029,7 +4987,7 @@ Class vnController Extends baseController {
 
 
 
-                $order = $this->registry->router->order_by ? $this->registry->router->order_by : 'DESC';
+                $order = $this->registry->router->order ? $this->registry->router->order : 'DESC';
 
 
 
@@ -4047,7 +5005,7 @@ Class vnController Extends baseController {
 
             }
 
-            $link = $this->registry->router->param_id;
+            $link = $this->registry->router->param_id != "page" ? $this->registry->router->param_id : null;
 
 
 
@@ -4093,6 +5051,7 @@ Class vnController Extends baseController {
                 foreach ($posts as $post) {
 
                     $this->view->data['title'] = $post->post_title;
+                    $this->view->data['description'] = trim(strip_tags($post->post_desc));
 
 
                     $link_breadcrumb = '
@@ -4220,7 +5179,7 @@ Class vnController Extends baseController {
 
 
 
-            
+            $this->view->data['limit'] = $limit;
 
 
 
