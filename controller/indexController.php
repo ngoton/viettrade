@@ -71,6 +71,13 @@ Class indexController Extends baseController {
 
             $this->view->data['list_tire_producers'] = $tire_producers;
 
+            $tire_producers = $tire_producer_model->getAllTire(array('order_by'=>'tire_producer_name','order'=>'ASC'));
+            $tire_producer_data = array();
+            foreach ($tire_producers as $tire) {
+                $tire_producer_data[strtoupper(substr($tire->tire_producer_name, 0, 1))][] = $tire->tire_producer_name;
+            }
+            $this->view->data['tire_producer_data'] = $tire_producer_data;
+
 
 
             $this->view->show('index/index');

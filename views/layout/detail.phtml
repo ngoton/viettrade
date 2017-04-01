@@ -147,12 +147,6 @@
 
 
 
-      <meta property="fb:admins" content="100006939935903" />
-
-
-
-      <meta property="fb:app_id" content="1444772099185572" />
-
       <meta property="product:price:amount"  content="<?php echo isset($price_prop)?$price_prop:"4000000" ?>" /> 
       <meta property="product:price:currency" content="VND" /> 
 
@@ -245,6 +239,9 @@
 </script> -->
 
 <script type="text/javascript" src="https://cdn.ywxi.net/js/1.js" async></script> <!-- McAfee -->
+
+<link rel="stylesheet" href="<?php BASE_URL ?>/public/css/bootstrap-select.min.css" />
+<script src="<?php BASE_URL ?>/public/js/bootstrap-select.min.js"></script>
 
 
 </head>
@@ -1110,7 +1107,7 @@
 
 
           <div class="info maps-link" style="background-color: white; border: 1px dashed #fff; font-size:30px; color: #DB2E66; font-weight:bold"><i class="fa fa-phone-square"></i> <span>083.500.9000</span></div>
-         <div class="hotline"><i class="fa fa-phone"></i>  <span>0931.55.77.75</span><span>0931.55.99.09</span> <div class="clearFix"></div></div>
+         <div class="hotline"><i class="fa fa-phone"></i>  <span>0931.55.77.75</span> <br> <span>0931.55.99.09</span> <div class="clearFix"></div></div>
 
 
 
@@ -1359,85 +1356,49 @@
         </script>
 
         <div class="content-box home-products">
-
-
-
-          <h2>Quan tâm nhiều</h2>
-
-
-
+          <h2>Thương hiệu</h2>
           <div class="items-list-ctb">
+            <div class="panel-group" id="accordion">
+
+              <?php foreach (range('A', 'Z') as $char) { ?>
+              <div class="col-xs-6" style="padding:0">
+                <div class="panel panel-info" id="<?php echo $char ?>">
+                  <a style="color:#31708f" data-toggle="collapse" data-target="#collapseOne_<?php echo $char ?>" class="accordion-toggle">
+                      <div class="panel-heading">
+                        <h4 class="panel-title">
+                          
+                            <?php echo $char ?>
+                          
+                        </h4>
+                      </div>
+                    </a>
+                    
+                    <div id="collapseOne_<?php echo $char ?>" class="panel-collapse collapse">
+                        <div class="panel-body">
+                          <?php if (isset($tire_producer_data[$char])) {
+                          foreach ($tire_producer_data[$char] as $tire) { 
+                          ?>
+                          <div class="title-ctb">
 
 
 
-            <?php foreach ($tire_product_features as $tire_product_feature) { ?>
+                            <a href="<?php echo BASE_URL ?>/vn/brand/<?php echo strtolower(str_replace(' ', '-', $tire)) ?>" title="Lốp xe <?php echo $tire ?>"><?php echo $tire ?></a>
 
 
 
-            <div class="items-ctb">
+                          </div>
 
+                           <?php } } ?>       
 
-
-              <div class="img-ctb">
-
-
-
-                <a href="<?php echo BASE_URL ?>/vn/detail/<?php echo $tire_product_feature->tire_product_link ?>" title="Lốp xe <?php echo $tire_product_feature->tire_producer_name.' '.$tire_product_feature->tire_product_size_number.' '.$tire_product_feature->tire_product_name ?>">
-
-                  <img src="<?php echo BASE_URL ?>/public/images/upload/<?php echo $tire_product_feature->tire_product_thumb ?>" alt="Lốp xe <?php echo $tire_product_feature->tire_producer_name.' '.$tire_product_feature->tire_product_size_number.' '.$tire_product_feature->tire_product_name ?>" />
-
-                </a>
-
-
-
+                        </div>
+                    </div>
+                    
+                </div>
               </div>
-
-
-
-              <div class="title-ctb">
-
-
-
-                <a href="<?php echo BASE_URL ?>/vn/detail/<?php echo $tire_product_feature->tire_product_link ?>" title="Lốp xe <?php echo $tire_product_feature->tire_producer_name.' '.$tire_product_feature->tire_product_size_number.' '.$tire_product_feature->tire_product_name ?>">Lốp xe <?php echo $tire_product_feature->tire_producer_name.' '.$tire_product_feature->tire_product_size_number.' '.$tire_product_feature->tire_product_name ?></a>
-
-
-
-              </div>
-
-
-
-              <div class="price-ctb price-ctb-old"><?php echo $lib->formatMoney(round($tire_product_feature->tire_retail*1.07)) ?> đ</div>
-
-
-
-              <div class="price-ctb"><?php echo $lib->formatMoney($tire_product_feature->tire_retail) ?> đ</div>
-
-
-
-                                                
-
-
-
-              <div class="clearFix"></div>
-
-
-
+              <?php } ?>
+              
             </div>
-
-
-
-            <?php } ?>
-
-
-
-            
-
-
-
           </div>
-
-
-
         </div>
 
         <!-- <div class="content-box home-products">
@@ -1470,7 +1431,108 @@
 
 
 
+<section>
+    <div class="content">
+      <div class="col-lg-12 col-md-12">
+        <div class="brand_list" style="margin-left:0">
+          <div class="well"> 
+            <div id="brandlist" class="carousel slide">
+              <div class="carousel-inner">
+                <?php if(isset($tire_product_features)){ 
+                  $sl_count = 0;
+                ?>
+                
+                <div class="item active">
+                  <div class="row-fluid">
+                    <?php foreach ($tire_product_features as $tire_product_feature) { 
+                      if($sl_count < 5){
+                    ?>
+                    <div class="span3" >
+                      <a href="<?php echo BASE_URL ?>/vn/detail/<?php echo $tire_product_feature->tire_product_link ?>" title="Lốp xe <?php echo $tire_product_feature->tire_producer_name.' '.$tire_product_feature->tire_product_size_number.' '.$tire_product_feature->tire_product_name ?>">
 
+                        <img style="float:left;width:80px;height:80px" src="<?php echo BASE_URL ?>/public/images/upload/<?php echo $tire_product_feature->tire_product_thumb ?>" alt="Lốp xe <?php echo $tire_product_feature->tire_producer_name.' '.$tire_product_feature->tire_product_size_number.' '.$tire_product_feature->tire_product_name ?>" />
+
+                      </a>
+                      <span>
+                        <div class="title-ctb">
+                          <a href="<?php echo BASE_URL ?>/vn/detail/<?php echo $tire_product_feature->tire_product_link ?>" title="Lốp xe <?php echo $tire_product_feature->tire_producer_name.' '.$tire_product_feature->tire_product_size_number.' '.$tire_product_feature->tire_product_name ?>">Lốp xe <?php echo $tire_product_feature->tire_producer_name.' '.$tire_product_feature->tire_product_size_number.' '.$tire_product_feature->tire_product_name ?></a>
+                        </div>
+                        <div style="font-size:12px" class="price-ctb price-ctb-old"><?php echo $lib->formatMoney(round($tire_product_feature->tire_retail*1.07)) ?> đ</div>
+                        <div style="font-size:12px" class="price-ctb"><?php echo $lib->formatMoney($tire_product_feature->tire_retail) ?> đ</div>
+                      </span>
+                    </div>
+                    <?php $sl_count++; } } ?>
+                    
+                  </div>
+                </div>
+                <div class="item">
+                  <div class="row-fluid">
+                    <?php
+                    shuffle($tire_product_features);
+                    $sl_count = 0;
+                     foreach ($tire_product_features as $tire_product_feature) { 
+                      if($sl_count < 5){
+                    ?>
+                    <div class="span3" >
+                      <a href="<?php echo BASE_URL ?>/vn/detail/<?php echo $tire_product_feature->tire_product_link ?>" title="Lốp xe <?php echo $tire_product_feature->tire_producer_name.' '.$tire_product_feature->tire_product_size_number.' '.$tire_product_feature->tire_product_name ?>">
+
+                        <img style="float:left;width:80px;height:80px" src="<?php echo BASE_URL ?>/public/images/upload/<?php echo $tire_product_feature->tire_product_thumb ?>" alt="Lốp xe <?php echo $tire_product_feature->tire_producer_name.' '.$tire_product_feature->tire_product_size_number.' '.$tire_product_feature->tire_product_name ?>" />
+
+                      </a>
+                      <span>
+                        <div class="title-ctb">
+                          <a href="<?php echo BASE_URL ?>/vn/detail/<?php echo $tire_product_feature->tire_product_link ?>" title="Lốp xe <?php echo $tire_product_feature->tire_producer_name.' '.$tire_product_feature->tire_product_size_number.' '.$tire_product_feature->tire_product_name ?>">Lốp xe <?php echo $tire_product_feature->tire_producer_name.' '.$tire_product_feature->tire_product_size_number.' '.$tire_product_feature->tire_product_name ?></a>
+                        </div>
+                        <div style="font-size:12px" class="price-ctb price-ctb-old"><?php echo $lib->formatMoney(round($tire_product_feature->tire_retail*1.07)) ?> đ</div>
+                        <div style="font-size:12px" class="price-ctb"><?php echo $lib->formatMoney($tire_product_feature->tire_retail) ?> đ</div>
+                      </span>
+                    </div>
+                    <?php $sl_count++; }} ?>
+                    
+                  </div>
+                </div>
+                <div class="item">
+                  <div class="row-fluid">
+                    <?php 
+                    shuffle($tire_product_features);
+                    $sl_count = 0;
+                    foreach ($tire_product_features as $tire_product_feature) { 
+                      if($sl_count < 5){
+                    ?>
+                    <div class="span3" >
+                      <a href="<?php echo BASE_URL ?>/vn/detail/<?php echo $tire_product_feature->tire_product_link ?>" title="Lốp xe <?php echo $tire_product_feature->tire_producer_name.' '.$tire_product_feature->tire_product_size_number.' '.$tire_product_feature->tire_product_name ?>">
+
+                        <img style="float:left;width:80px;height:80px" src="<?php echo BASE_URL ?>/public/images/upload/<?php echo $tire_product_feature->tire_product_thumb ?>" alt="Lốp xe <?php echo $tire_product_feature->tire_producer_name.' '.$tire_product_feature->tire_product_size_number.' '.$tire_product_feature->tire_product_name ?>" />
+
+                      </a>
+                      <span>
+                        <div class="title-ctb">
+                          <a href="<?php echo BASE_URL ?>/vn/detail/<?php echo $tire_product_feature->tire_product_link ?>" title="Lốp xe <?php echo $tire_product_feature->tire_producer_name.' '.$tire_product_feature->tire_product_size_number.' '.$tire_product_feature->tire_product_name ?>">Lốp xe <?php echo $tire_product_feature->tire_producer_name.' '.$tire_product_feature->tire_product_size_number.' '.$tire_product_feature->tire_product_name ?></a>
+                        </div>
+                        <div style="font-size:12px" class="price-ctb price-ctb-old"><?php echo $lib->formatMoney(round($tire_product_feature->tire_retail*1.07)) ?> đ</div>
+                        <div style="font-size:12px" class="price-ctb"><?php echo $lib->formatMoney($tire_product_feature->tire_retail) ?> đ</div>
+                      </span>
+                    </div>
+                    <?php $sl_count++; }} ?>
+                    
+                  </div>
+                </div>
+                <?php } ?>                   
+              </div>
+                         
+              <a class="left carousel-control" href="#brandlist" role="button" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+              </a>
+              <a class="right carousel-control" href="#brandlist" role="button" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+              </a>
+            </div>
+                       
+          </div>  
+        </div>
+      </div>
+    </div>
+  </section>
 
 
 
@@ -1950,13 +2012,13 @@
         <label>Hãng sản xuất</label>
         <div class="row">
           <div class="col-xs-12">
-            <select name="brand" class="form-control">
+            <select name="brand" class="form-control selectpicker" data-show-subtext="true" data-live-search="true">
               <option></option>
               <?php
               if (isset($list_tire_producers)) {
                 foreach ($list_tire_producers as $producer) {
               ?>
-              <option <?php echo isset($brand) && $brand==$producer->tire_producer_id ? "selected":null ?> value="<?php echo $producer->tire_producer_id ?>"><?php echo $producer->tire_producer_name ?></option>
+              <option data-subtext="- Thương hiệu <?php echo $producer->tire_producer_name ?> nhập khẩu trực tiếp từ nhà máy" <?php echo isset($brand) && $brand==$producer->tire_producer_id ? "selected":null ?> value="<?php echo $producer->tire_producer_id ?>"><?php echo $producer->tire_producer_name ?></option>
               <?php } } ?>
             </select>
           </div>
@@ -2037,7 +2099,7 @@
     
 
 <style type="text/css">
-.row-tyre-canvas{position:fixed;top:0;left:0;z-index:9999;width:100%;background:#cacecf;display:none;}
+.row-tyre-canvas{position:fixed;top:0;left:0;z-index:9999;width:100%;background:#cacecf;display:none;max-height: 100%}
 .row-tyre-canvas .close-btn{width:20px;height:20px;display:block;position:absolute;top:10px;right:10px;background:url(../public/images/close.png) no-repeat top left;z-index:9999}
 .row-tyre-canvas.active{display:block}
 .row-tyre-canvas.affix{top:10px!important}
@@ -2054,12 +2116,33 @@
 .btn-reset i{width:18px;height:18px;display:inline-block;background:url(../public/images/reset-btn.png) no-repeat center center;float:left;margin-right:4px;transition:.25s all}
 .btn-reset:hover,.btn-reset:active{color:#000;text-decoration:underline}
 .btn-reset:hover i{transform:rotate(270deg);-ms-transform:rotate(270deg);-webkit-transform:rotate(270deg);-moz-transform:rotate(270deg)}
+
+.top-detail{
+  margin-right: -15px;
+  width: 100%;
+}
+
+#accordion .panel-heading{
+  transition: all 0.5s linear;
+  -moz-transition: all 0.5s linear;
+  -ms-transition: all 0.5s linear;
+  -webkit-transition: all 0.5s linear;
+  -o-transition: all 0.5s linear;
+  background: url('public/images/panel-banner-1.png'); 
+}
+#accordion .panel-heading:hover{
+  background: url('public/images/panel-banner.png'); 
+  background-size: cover;
+  color: white;
+
+}
 </style>
 
 <script type="text/javascript">
 $(document).ready(function() {
   $(':input[name="txtHeaderSearch"]').click(function(){
     $('.row-tyre-canvas').slideDown(500);
+    $('#tyre-rim-select').focus();
     //$('.row-tyre-canvas').addClass('active');
     <?php if(isset($producer_name->tire_producer_name)){ ?>
     var val = $(":input[name=brand]").val();

@@ -1,7 +1,7 @@
 <div class="main-content-box">
     <div class="row">
         <?php foreach ($tire_producers as $tire_producer) { ?>
-            <div class="col-md-2 col-sm-6 col-xs-12">
+            <div class="col-md-2 col-xs-6 col-xs-12">
                 <div class="box box-success">
                     <?php
                     $filename = BASE_URL."/public/images/upload/".strtolower(str_replace(' ', '-', $tire_producer->tire_producer_name)).".jpg";

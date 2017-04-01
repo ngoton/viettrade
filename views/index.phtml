@@ -1,175 +1,349 @@
-<div class="main-content-box">
-
-    <h2>Lốp xe bố kẽm</h2>
-
-    <div class="items-list-prod">
-
-        <?php foreach ($tire_product_tbrs as $tire_product_tbr) { ?>
-
-        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 items">
-
-            <div class="img-prod">
-
-                <a href="<?php echo BASE_URL ?>/vn/detail/<?php echo $tire_product_tbr->tire_product_link ?>" title="Lốp xe <?php echo $tire_product_tbr->tire_producer_name.' '.$tire_product_tbr->tire_product_size_number.' '.$tire_product_tbr->tire_product_name ?>">
-
-                    <img src="<?php echo BASE_URL ?>/public/images/upload/<?php echo $tire_product_tbr->tire_product_thumb ?>" alt="Lốp xe <?php echo $tire_product_tbr->tire_producer_name.' '.$tire_product_tbr->tire_product_size_number.' '.$tire_product_tbr->tire_product_name ?>" />
-
-                </a>
-
-            </div>
-
-            <div class="title-prod">
-
-                <a href="<?php echo BASE_URL ?>/vn/detail/<?php echo $tire_product_tbr->tire_product_link ?>" title="Lốp xe <?php echo $tire_product_tbr->tire_producer_name.' '.$tire_product_tbr->tire_product_size_number.' '.$tire_product_tbr->tire_product_name ?>">Lốp xe <?php echo $tire_product_tbr->tire_producer_name.' '.$tire_product_tbr->tire_product_size_number.' '.$tire_product_tbr->tire_product_name ?></a>
-
-            </div>
-
-            <div class="price-prod">
-
-                <div class="price-old-prod"><?php echo $lib->formatMoney(round($tire_product_tbr->tire_retail*1.07)) ?> đ</div>
-
-                <div class="price-new-prod"><?php echo $lib->formatMoney($tire_product_tbr->tire_retail) ?> đ</div>
-
-                <div class="clearFix"></div>
-
-            </div>
-
-        </div>
-
-        <?php } ?>
-
-        <div class="view_all">
-
-            <a class="view_all_link" href="<?php echo BASE_URL ?>/vn/lop-xe-bo-kem" title="Lốp xe bố kẽm">
-
-                Xem tất cả <i class="fa fa-caret-right"></i>
-
-            </a>
-
-        </div>
-
-    </div>
-
-</div>
-
-
-
-<div class="main-content-box">
-
-    <h2>Lốp xe bố nylon</h2>
-
-    <div class="items-list-prod">
-
-                            
-        <?php foreach ($tire_product_nylons as $tire_product_nylon) { ?>
-
-        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 items">
-
-            <div class="img-prod">
-
-                <a href="<?php echo BASE_URL ?>/vn/detail/<?php echo $tire_product_nylon->tire_product_link ?>" title="Lốp xe <?php echo $tire_product_nylon->tire_producer_name.' '.$tire_product_nylon->tire_product_size_number.' '.$tire_product_nylon->tire_product_name ?>">
-
-                    <img src="<?php echo BASE_URL ?>/public/images/upload/<?php echo $tire_product_nylon->tire_product_thumb ?>" alt="Lốp xe <?php echo $tire_product_nylon->tire_producer_name.' '.$tire_product_nylon->tire_product_size_number.' '.$tire_product_nylon->tire_product_name ?>" />
-
-                </a>
-
-            </div>
-
-            <div class="title-prod">
-
-                <a href="<?php echo BASE_URL ?>/vn/detail/<?php echo $tire_product_nylon->tire_product_link ?>" title="Lốp xe <?php echo $tire_product_nylon->tire_producer_name.' '.$tire_product_nylon->tire_product_size_number.' '.$tire_product_nylon->tire_product_name ?>">Lốp xe <?php echo $tire_product_nylon->tire_producer_name.' '.$tire_product_nylon->tire_product_size_number.' '.$tire_product_nylon->tire_product_name ?></a>
-
-            </div>
-
-            <div class="price-prod">
-
-                <div class="price-old-prod"><?php echo $lib->formatMoney(round($tire_product_nylon->tire_retail*1.07)) ?> đ</div>
-
-                <div class="price-new-prod"><?php echo $lib->formatMoney($tire_product_nylon->tire_retail) ?> đ</div>
-
-                <div class="clearFix"></div>
-
-            </div>
-
-        </div>
-
-        <?php } ?>
-        
-
-        
-
-        <div class="view_all">
-
-            <a class="view_all_link" href="<?php echo BASE_URL ?>/vn/lop-xe-bo-nylon" title="Lốp xe bố nylon">
-
-                Xem tất cả <i class="fa fa-caret-right"></i>
-
-            </a>
-
-        </div>
-
-    </div>
-
-</div>
-
-
-<?php foreach ($tire_producers as $tire_producer) { ?>
-
-<div class="main-content-box">
-
-    <h2>Lốp xe <?php echo $tire_producer->tire_producer_name ?></h2>
-
-    <div class="items-list-prod">
-
-                            
-        <?php foreach ($tire_products[$tire_producer->tire_producer_id] as $tire_product) { ?>
-
-        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 items">
-
-            <div class="img-prod">
-
-                <a href="<?php echo BASE_URL ?>/vn/detail/<?php echo $tire_product->tire_product_link ?>" title="Lốp xe <?php echo $tire_product->tire_producer_name.' '.$tire_product->tire_product_size_number.' '.$tire_product->tire_product_name ?>">
-
-                    <img src="<?php echo BASE_URL ?>/public/images/upload/<?php echo $tire_product->tire_product_thumb ?>" alt="Lốp xe <?php echo $tire_product->tire_producer_name.' '.$tire_product->tire_product_size_number.' '.$tire_product->tire_product_name ?>" />
-
-                </a>
-
-            </div>
-
-            <div class="title-prod">
-
-                <a href="<?php echo BASE_URL ?>/vn/detail/<?php echo $tire_product->tire_product_link ?>" title="Lốp xe <?php echo $tire_product->tire_producer_name.' '.$tire_product->tire_product_size_number.' '.$tire_product->tire_product_name ?>">Lốp xe <?php echo $tire_product->tire_producer_name.' '.$tire_product->tire_product_size_number.' '.$tire_product->tire_product_name ?></a>
-
-            </div>
-
-            <div class="price-prod">
-
-                <div class="price-old-prod"><?php echo $lib->formatMoney(round($tire_product->tire_retail*1.07)) ?> đ</div>
-
-                <div class="price-new-prod"><?php echo $lib->formatMoney($tire_product->tire_retail) ?> đ</div>
-
-                <div class="clearFix"></div>
-
-            </div>
-
-        </div>
-
-        <?php } ?>
-        
-
-        
-
-        <div class="view_all">
-
-            <a class="view_all_link" href="<?php echo BASE_URL ?>/vn/brand/<?php echo strtolower(str_replace(' ', '-', $tire_producer->tire_producer_name)) ?>" title="Lốp xe <?php $tire_producer->tire_producer_name ?>">
-
-                Xem tất cả <i class="fa fa-caret-right"></i>
-
-            </a>
-
-        </div>
-
-    </div>
-
-</div>
+<div class="main-content-box">
+
+
+
+    <h2>Lốp xe bố kẽm</h2>
+
+
+
+    <div class="items-list-prod">
+
+
+
+        <?php foreach ($tire_product_tbrs as $tire_product_tbr) { ?>
+
+
+
+        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 items">
+
+
+
+            <div class="img-prod">
+
+
+
+                <a href="<?php echo BASE_URL ?>/vn/detail/<?php echo $tire_product_tbr->tire_product_link ?>" title="Lốp xe <?php echo $tire_product_tbr->tire_producer_name.' '.$tire_product_tbr->tire_product_size_number.' '.$tire_product_tbr->tire_product_name ?>">
+
+
+
+                    <img src="<?php echo BASE_URL ?>/public/images/upload/<?php echo $tire_product_tbr->tire_product_thumb ?>" alt="Lốp xe <?php echo $tire_product_tbr->tire_producer_name.' '.$tire_product_tbr->tire_product_size_number.' '.$tire_product_tbr->tire_product_name ?>" />
+
+
+
+                </a>
+
+
+
+            </div>
+
+
+
+            <div class="title-prod">
+
+
+
+                <a href="<?php echo BASE_URL ?>/vn/detail/<?php echo $tire_product_tbr->tire_product_link ?>" title="Lốp xe <?php echo $tire_product_tbr->tire_producer_name.' '.$tire_product_tbr->tire_product_size_number.' '.$tire_product_tbr->tire_product_name ?>">Lốp xe <?php echo $tire_product_tbr->tire_producer_name.' '.$tire_product_tbr->tire_product_size_number.' '.$tire_product_tbr->tire_product_name ?></a>
+
+
+
+            </div>
+
+
+
+            <div class="price-prod">
+
+
+
+                <div class="price-old-prod"><?php echo $lib->formatMoney(round($tire_product_tbr->tire_retail*1.07)) ?> đ</div>
+
+
+
+                <div class="price-new-prod"><?php echo $lib->formatMoney($tire_product_tbr->tire_retail) ?> đ</div>
+
+
+
+                <div class="clearFix"></div>
+
+
+
+            </div>
+
+
+
+        </div>
+
+
+
+        <?php } ?>
+
+
+
+        <div class="view_all">
+
+
+
+            <a class="view_all_link" href="<?php echo BASE_URL ?>/vn/lop-xe-bo-kem" title="Lốp xe bố kẽm">
+
+
+
+                Xem tất cả <i class="fa fa-caret-right"></i>
+
+
+
+            </a>
+
+
+
+        </div>
+
+
+
+    </div>
+
+
+
+</div>
+
+
+
+
+
+
+
+<div class="main-content-box">
+
+
+
+    <h2>Lốp xe bố nylon</h2>
+
+
+
+    <div class="items-list-prod">
+
+
+
+                            
+
+        <?php foreach ($tire_product_nylons as $tire_product_nylon) { ?>
+
+
+
+        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 items">
+
+
+
+            <div class="img-prod">
+
+
+
+                <a href="<?php echo BASE_URL ?>/vn/detail/<?php echo $tire_product_nylon->tire_product_link ?>" title="Lốp xe <?php echo $tire_product_nylon->tire_producer_name.' '.$tire_product_nylon->tire_product_size_number.' '.$tire_product_nylon->tire_product_name ?>">
+
+
+
+                    <img src="<?php echo BASE_URL ?>/public/images/upload/<?php echo $tire_product_nylon->tire_product_thumb ?>" alt="Lốp xe <?php echo $tire_product_nylon->tire_producer_name.' '.$tire_product_nylon->tire_product_size_number.' '.$tire_product_nylon->tire_product_name ?>" />
+
+
+
+                </a>
+
+
+
+            </div>
+
+
+
+            <div class="title-prod">
+
+
+
+                <a href="<?php echo BASE_URL ?>/vn/detail/<?php echo $tire_product_nylon->tire_product_link ?>" title="Lốp xe <?php echo $tire_product_nylon->tire_producer_name.' '.$tire_product_nylon->tire_product_size_number.' '.$tire_product_nylon->tire_product_name ?>">Lốp xe <?php echo $tire_product_nylon->tire_producer_name.' '.$tire_product_nylon->tire_product_size_number.' '.$tire_product_nylon->tire_product_name ?></a>
+
+
+
+            </div>
+
+
+
+            <div class="price-prod">
+
+
+
+                <div class="price-old-prod"><?php echo $lib->formatMoney(round($tire_product_nylon->tire_retail*1.07)) ?> đ</div>
+
+
+
+                <div class="price-new-prod"><?php echo $lib->formatMoney($tire_product_nylon->tire_retail) ?> đ</div>
+
+
+
+                <div class="clearFix"></div>
+
+
+
+            </div>
+
+
+
+        </div>
+
+
+
+        <?php } ?>
+
+        
+
+
+
+        
+
+
+
+        <div class="view_all">
+
+
+
+            <a class="view_all_link" href="<?php echo BASE_URL ?>/vn/lop-xe-bo-nylon" title="Lốp xe bố nylon">
+
+
+
+                Xem tất cả <i class="fa fa-caret-right"></i>
+
+
+
+            </a>
+
+
+
+        </div>
+
+
+
+    </div>
+
+
+
+</div>
+
+
+
+
+
+<?php foreach ($tire_producers as $tire_producer) { ?>
+
+
+
+<div class="main-content-box">
+
+
+
+    <h2>Lốp xe <?php echo $tire_producer->tire_producer_name ?></h2>
+
+
+
+    <div class="items-list-prod">
+
+
+
+                            
+
+        <?php foreach ($tire_products[$tire_producer->tire_producer_id] as $tire_product) { ?>
+
+
+
+        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 items">
+
+
+
+            <div class="img-prod">
+
+
+
+                <a href="<?php echo BASE_URL ?>/vn/detail/<?php echo $tire_product->tire_product_link ?>" title="Lốp xe <?php echo $tire_product->tire_producer_name.' '.$tire_product->tire_product_size_number.' '.$tire_product->tire_product_name ?>">
+
+
+
+                    <img src="<?php echo BASE_URL ?>/public/images/upload/<?php echo $tire_product->tire_product_thumb ?>" alt="Lốp xe <?php echo $tire_product->tire_producer_name.' '.$tire_product->tire_product_size_number.' '.$tire_product->tire_product_name ?>" />
+
+
+
+                </a>
+
+
+
+            </div>
+
+
+
+            <div class="title-prod">
+
+
+
+                <a href="<?php echo BASE_URL ?>/vn/detail/<?php echo $tire_product->tire_product_link ?>" title="Lốp xe <?php echo $tire_product->tire_producer_name.' '.$tire_product->tire_product_size_number.' '.$tire_product->tire_product_name ?>">Lốp xe <?php echo $tire_product->tire_producer_name.' '.$tire_product->tire_product_size_number.' '.$tire_product->tire_product_name ?></a>
+
+
+
+            </div>
+
+
+
+            <div class="price-prod">
+
+
+
+                <div class="price-old-prod"><?php echo $lib->formatMoney(round($tire_product->tire_retail*1.07)) ?> đ</div>
+
+
+
+                <div class="price-new-prod"><?php echo $lib->formatMoney($tire_product->tire_retail) ?> đ</div>
+
+
+
+                <div class="clearFix"></div>
+
+
+
+            </div>
+
+
+
+        </div>
+
+
+
+        <?php } ?>
+
+        
+
+
+
+        
+
+
+
+        <div class="view_all">
+
+
+
+            <a class="view_all_link" href="<?php echo BASE_URL ?>/vn/brand/<?php echo strtolower(str_replace(' ', '-', $tire_producer->tire_producer_name)) ?>" title="Lốp xe <?php $tire_producer->tire_producer_name ?>">
+
+
+
+                Xem tất cả <i class="fa fa-caret-right"></i>
+
+
+
+            </a>
+
+
+
+        </div>
+
+
+
+    </div>
+
+
+
+</div>
+
 <?php } ?>
