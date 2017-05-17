@@ -4,39 +4,10 @@ class baseModel {
 
     private static $instance;
 
-    
-
-    public $host;
-
-    public $db_name; 
-
-    public $db_username; 
-
-    public $db_password;
 
     public $dbh;
 
-
-
-    public $host2;
-
-    public $db_name2; 
-
-    public $db_username2; 
-
-    public $db_password2;
-
     public $dbh2;
-
-
-
-    public $host3;
-
-    public $db_name3; 
-
-    public $db_username3; 
-
-    public $db_password3;
 
     public $dbh3;
 
@@ -48,74 +19,11 @@ class baseModel {
 
     */
 
-    function __construct($config = array('host'=>DB_SERVER,'db_name'=>DB_DATABASE,'db_username'=>DB_USERNAME,'db_password'=>DB_PASSWORD,'host2'=>DB_SERVER_2,'db_name2'=>DB_DATABASE_2,'db_username2'=>DB_USERNAME_2,'db_password2'=>DB_PASSWORD_2,'host3'=>DB_SERVER_3,'db_name3'=>DB_DATABASE_3,'db_username3'=>DB_USERNAME_3,'db_password3'=>DB_PASSWORD_3)) 
-
+    function __construct() 
     {
-
-        if(is_array($config))
-
-        {
-
-            $this->host = $config['host'];
-
-            $this->db_name = $config['db_name'];
-
-            $this->db_username = $config['db_username'];
-
-            $this->db_password = $config['db_password'];
-
-
-
-            $this->host2 = $config['host2'];
-
-            $this->db_name2 = $config['db_name2'];
-
-            $this->db_username2 = $config['db_username2'];
-
-            $this->db_password2 = $config['db_password2'];
-
-
-
-            $this->host3 = $config['host3'];
-
-            $this->db_name3 = $config['db_name3'];
-
-            $this->db_username3 = $config['db_username3'];
-
-            $this->db_password3 = $config['db_password3'];
-
-        }   
-
-        try 
-
-        {
-
-            $this->dbh = new PDO("mysql:host=" . $this->host . ";dbname=" . $this->db_name, $this->db_username, $this->db_password);
-
-            $this->dbh->exec("SET CHARACTER SET utf8");
-
-
-
-            $this->dbh2 = new PDO("mysql:host=" . $this->host2 . ";dbname=" . $this->db_name2, $this->db_username2, $this->db_password2);
-
-            $this->dbh2->exec("SET CHARACTER SET utf8");
-
-
-
-            $this->dbh3 = new PDO("mysql:host=" . $this->host3 . ";dbname=" . $this->db_name3, $this->db_username3, $this->db_password3);
-
-            $this->dbh3->exec("SET CHARACTER SET utf8");
-
-        }
-
-        catch (PDOException $e)
-
-        {
-
-            throw new Exception($e->getMessage());
-
-        }
-
+        $this->dbh = Db::dbConnection();
+        $this->dbh2 = Db::dbConnection2();
+        $this->dbh3 = Db::dbConnection3();
     }
 
 

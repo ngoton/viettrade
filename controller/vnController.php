@@ -4605,10 +4605,6 @@ Class vnController Extends baseController {
 
         $this->view->data['link_breadcrumb'] = $link_breadcrumb;
 
-        $tire_producer_model = $this->model->get('tireproducerModel');
-        $tire_producers = $tire_producer_model->getAllTire();
-        $this->view->data['list_tire_producers'] = $tire_producers;
-
 
         $tire_price_model = $this->model->get('tirequotationModel');
 
@@ -4651,6 +4647,10 @@ Class vnController Extends baseController {
         $this->view->data['tire_sizes'] = $tire_sizes;
         $this->view->data['tire_prices'] = $tire_prices;
         $this->view->data['row_size'] = $row_size;
+
+        $tire_producer_model = $this->model->get('tireproducerModel');
+        $tire_producers = $tire_producer_model->getAllTire();
+        $this->view->data['list_tire_producers'] = $tire_producers;
 
         $tire_producers = $tire_producer_model->getAllTire(array('order_by'=>'tire_producer_name','order'=>'ASC'));
             $tire_producer_data = array();
