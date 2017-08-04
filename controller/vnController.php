@@ -65,7 +65,7 @@ Class vnController Extends baseController {
             $tire_product_features = $tire_product_model->getAllTire($data,$join);
 
 
-            $tire_producers = $tire_producer_model->getAllTire();
+            $tire_producers = $tire_producer_model->getAllTire(array('order_by'=>'tire_producer_position ASC, tire_producer_name ASC'));
 
 
 
@@ -180,7 +180,7 @@ Class vnController Extends baseController {
 
 
 
-            $tire_producers = $tire_producer_model->getAllTire();
+            $tire_producers = $tire_producer_model->getAllTire(array('order_by'=>'tire_producer_position ASC, tire_producer_name ASC'));
 
 
 
@@ -304,7 +304,7 @@ Class vnController Extends baseController {
             $this->view->data['link_breadcrumb'] = $link_breadcrumb;
 
             $tire_producer_model = $this->model->get('tireproducerModel');
-            $tire_producers = $tire_producer_model->getAllTire();
+            $tire_producers = $tire_producer_model->getAllTire(array('order_by'=>'tire_producer_position ASC, tire_producer_name ASC'));
             $this->view->data['list_tire_producers'] = $tire_producers;
 
             $tire_producers = $tire_producer_model->getAllTire(array('order_by'=>'tire_producer_name','order'=>'ASC'));
@@ -314,19 +314,7 @@ Class vnController Extends baseController {
             }
             $this->view->data['tire_producer_data'] = $tire_producer_data;
 
-            $tire_producers = $tire_producer_model->getAllTire(array('order_by'=>'tire_producer_name','order'=>'ASC'));
-            $tire_producer_data = array();
-            foreach ($tire_producers as $tire) {
-                $tire_producer_data[strtoupper(substr($tire->tire_producer_name, 0, 1))][] = $tire->tire_producer_name;
-            }
-            $this->view->data['tire_producer_data'] = $tire_producer_data;
-
-            $tire_producers = $tire_producer_model->getAllTire(array('order_by'=>'tire_producer_name','order'=>'ASC'));
-            $tire_producer_data = array();
-            foreach ($tire_producers as $tire) {
-                $tire_producer_data[strtoupper(substr($tire->tire_producer_name, 0, 1))][] = $tire->tire_producer_name;
-            }
-            $this->view->data['tire_producer_data'] = $tire_producer_data;
+            
 
         $this->view->show('vn/thongsolop');
     }
@@ -402,7 +390,7 @@ Class vnController Extends baseController {
             $this->view->data['link_breadcrumb'] = $link_breadcrumb;
 
             $tire_producer_model = $this->model->get('tireproducerModel');
-            $tire_producers = $tire_producer_model->getAllTire();
+            $tire_producers = $tire_producer_model->getAllTire(array('order_by'=>'tire_producer_position ASC, tire_producer_name ASC'));
             $this->view->data['list_tire_producers'] = $tire_producers;
 
             $tire_producers = $tire_producer_model->getAllTire(array('order_by'=>'tire_producer_name','order'=>'ASC'));
@@ -561,7 +549,7 @@ Class vnController Extends baseController {
             $this->view->data['link_breadcrumb'] = $link_breadcrumb;
 
             $tire_producer_model = $this->model->get('tireproducerModel');
-            $tire_producers = $tire_producer_model->getAllTire();
+            $tire_producers = $tire_producer_model->getAllTire(array('order_by'=>'tire_producer_position ASC, tire_producer_name ASC'));
             $this->view->data['list_tire_producers'] = $tire_producers;
 
             $tire_producers = $tire_producer_model->getAllTire(array('order_by'=>'tire_producer_name','order'=>'ASC'));
@@ -813,7 +801,7 @@ Class vnController Extends baseController {
             $this->view->data['link_breadcrumb'] = $link_breadcrumb;
 
             $tire_producer_model = $this->model->get('tireproducerModel');
-            $tire_producers = $tire_producer_model->getAllTire();
+            $tire_producers = $tire_producer_model->getAllTire(array('order_by'=>'tire_producer_position ASC, tire_producer_name ASC'));
             $this->view->data['list_tire_producers'] = $tire_producers;
 
             $tire_producers = $tire_producer_model->getAllTire(array('order_by'=>'tire_producer_name','order'=>'ASC'));
@@ -1066,7 +1054,7 @@ Class vnController Extends baseController {
             $this->view->data['link_breadcrumb'] = $link_breadcrumb;
 
             $tire_producer_model = $this->model->get('tireproducerModel');
-            $tire_producers = $tire_producer_model->getAllTire();
+            $tire_producers = $tire_producer_model->getAllTire(array('order_by'=>'tire_producer_position ASC, tire_producer_name ASC'));
             $this->view->data['list_tire_producers'] = $tire_producers;
 
             $tire_producers = $tire_producer_model->getAllTire(array('order_by'=>'tire_producer_name','order'=>'ASC'));
@@ -1076,12 +1064,6 @@ Class vnController Extends baseController {
             }
             $this->view->data['tire_producer_data'] = $tire_producer_data;
 
-            $tire_producers = $tire_producer_model->getAllTire(array('order_by'=>'tire_producer_name','order'=>'ASC'));
-            $tire_producer_data = array();
-            foreach ($tire_producers as $tire) {
-                $tire_producer_data[strtoupper(substr($tire->tire_producer_name, 0, 1))][] = $tire->tire_producer_name;
-            }
-            $this->view->data['tire_producer_data'] = $tire_producer_data;
 
             $this->view->show('vn/index');
 
@@ -1328,7 +1310,7 @@ Class vnController Extends baseController {
             $this->view->data['link_breadcrumb'] = $link_breadcrumb;
 
             $tire_producer_model = $this->model->get('tireproducerModel');
-            $tire_producers = $tire_producer_model->getAllTire();
+            $tire_producers = $tire_producer_model->getAllTire(array('order_by'=>'tire_producer_position ASC, tire_producer_name ASC'));
             $this->view->data['list_tire_producers'] = $tire_producers;
 
             $tire_producers = $tire_producer_model->getAllTire(array('order_by'=>'tire_producer_name','order'=>'ASC'));
@@ -1583,7 +1565,7 @@ Class vnController Extends baseController {
             $this->view->data['link_breadcrumb'] = $link_breadcrumb;
 
             $tire_producer_model = $this->model->get('tireproducerModel');
-            $tire_producers = $tire_producer_model->getAllTire();
+            $tire_producers = $tire_producer_model->getAllTire(array('order_by'=>'tire_producer_position ASC, tire_producer_name ASC'));
             $this->view->data['list_tire_producers'] = $tire_producers;
 
             $tire_producers = $tire_producer_model->getAllTire(array('order_by'=>'tire_producer_name','order'=>'ASC'));
@@ -1858,7 +1840,7 @@ Class vnController Extends baseController {
             $this->view->data['param'] = $param;
 
             $tire_producer_model = $this->model->get('tireproducerModel');
-            $tire_producers = $tire_producer_model->getAllTire();
+            $tire_producers = $tire_producer_model->getAllTire(array('order_by'=>'tire_producer_position ASC, tire_producer_name ASC'));
             $this->view->data['list_tire_producers'] = $tire_producers;
 
             $tire_producers = $tire_producer_model->getAllTire(array('order_by'=>'tire_producer_name','order'=>'ASC'));
@@ -2137,7 +2119,7 @@ Class vnController Extends baseController {
             $this->view->data['param'] = $param;
 
             $tire_producer_model = $this->model->get('tireproducerModel');
-            $tire_producers = $tire_producer_model->getAllTire();
+            $tire_producers = $tire_producer_model->getAllTire(array('order_by'=>'tire_producer_position ASC, tire_producer_name ASC'));
             $this->view->data['list_tire_producers'] = $tire_producers;
 
             $tire_producers = $tire_producer_model->getAllTire(array('order_by'=>'tire_producer_name','order'=>'ASC'));
@@ -2416,7 +2398,7 @@ Class vnController Extends baseController {
             $this->view->data['param'] = $param;
 
             $tire_producer_model = $this->model->get('tireproducerModel');
-            $tire_producers = $tire_producer_model->getAllTire();
+            $tire_producers = $tire_producer_model->getAllTire(array('order_by'=>'tire_producer_position ASC, tire_producer_name ASC'));
             $this->view->data['list_tire_producers'] = $tire_producers;
 
             $tire_producers = $tire_producer_model->getAllTire(array('order_by'=>'tire_producer_name','order'=>'ASC'));
@@ -2500,7 +2482,7 @@ Class vnController Extends baseController {
 
 
 
-            $tire_producers = $tire_producer_model->getAllTire();
+            $tire_producers = $tire_producer_model->getAllTire(array('order_by'=>'tire_producer_position ASC, tire_producer_name ASC'));
 
 
 
@@ -2635,7 +2617,7 @@ Class vnController Extends baseController {
 
 
 
-            $tire_producers = $tire_producer_model->getAllTire();
+            $tire_producers = $tire_producer_model->getAllTire(array('order_by'=>'tire_producer_position ASC, tire_producer_name ASC'));
 
 
 
@@ -3093,7 +3075,7 @@ Class vnController Extends baseController {
 
             $this->view->data['link_breadcrumb'] = $link_breadcrumb;
 
-            $tire_producers = $tire_producer_model->getAllTire();
+            $tire_producers = $tire_producer_model->getAllTire(array('order_by'=>'tire_producer_position ASC, tire_producer_name ASC'));
             $this->view->data['list_tire_producers'] = $tire_producers;
 
             $tire_producers = $tire_producer_model->getAllTire(array('order_by'=>'tire_producer_name','order'=>'ASC'));
@@ -3308,7 +3290,7 @@ Class vnController Extends baseController {
             $this->view->data['link_breadcrumb'] = $link_breadcrumb;
 
             $tire_producer_model = $this->model->get('tireproducerModel');
-            $tire_producers = $tire_producer_model->getAllTire();
+            $tire_producers = $tire_producer_model->getAllTire(array('order_by'=>'tire_producer_position ASC, tire_producer_name ASC'));
             $this->view->data['list_tire_producers'] = $tire_producers;
 
             $tire_producers = $tire_producer_model->getAllTire(array('order_by'=>'tire_producer_name','order'=>'ASC'));
@@ -3394,7 +3376,7 @@ Class vnController Extends baseController {
             $this->view->data['link_breadcrumb'] = $link_breadcrumb;
 
             $tire_producer_model = $this->model->get('tireproducerModel');
-            $tire_producers = $tire_producer_model->getAllTire();
+            $tire_producers = $tire_producer_model->getAllTire(array('order_by'=>'tire_producer_position ASC, tire_producer_name ASC'));
             $this->view->data['list_tire_producers'] = $tire_producers;
 
             $tire_producers = $tire_producer_model->getAllTire(array('order_by'=>'tire_producer_name','order'=>'ASC'));
@@ -3730,7 +3712,7 @@ Class vnController Extends baseController {
         $tire_product_features = $tire_product_model->getAllTire($data,$join);
         $this->view->data['tire_product_features'] = $tire_product_features;
 
-        $tire_producers = $tire_producer_model->getAllTire();
+        $tire_producers = $tire_producer_model->getAllTire(array('order_by'=>'tire_producer_position ASC, tire_producer_name ASC'));
         $this->view->data['list_tire_producers'] = $tire_producers;
 
         $producer = $tire_producer_model->getTire($brand);
@@ -3855,7 +3837,7 @@ Class vnController Extends baseController {
             $this->view->data['link_breadcrumb'] = $link_breadcrumb;
 
             $tire_producer_model = $this->model->get('tireproducerModel');
-            $tire_producers = $tire_producer_model->getAllTire();
+            $tire_producers = $tire_producer_model->getAllTire(array('order_by'=>'tire_producer_position ASC, tire_producer_name ASC'));
             $this->view->data['list_tire_producers'] = $tire_producers;
 
             $tire_producers = $tire_producer_model->getAllTire(array('order_by'=>'tire_producer_name','order'=>'ASC'));
@@ -3939,7 +3921,7 @@ Class vnController Extends baseController {
             $this->view->data['link_breadcrumb'] = $link_breadcrumb;
 
             $tire_producer_model = $this->model->get('tireproducerModel');
-            $tire_producers = $tire_producer_model->getAllTire();
+            $tire_producers = $tire_producer_model->getAllTire(array('order_by'=>'tire_producer_position ASC, tire_producer_name ASC'));
             $this->view->data['list_tire_producers'] = $tire_producers;
 
             $tire_producers = $tire_producer_model->getAllTire(array('order_by'=>'tire_producer_name','order'=>'ASC'));
@@ -4022,7 +4004,7 @@ Class vnController Extends baseController {
             $this->view->data['link_breadcrumb'] = $link_breadcrumb;
 
             $tire_producer_model = $this->model->get('tireproducerModel');
-            $tire_producers = $tire_producer_model->getAllTire();
+            $tire_producers = $tire_producer_model->getAllTire(array('order_by'=>'tire_producer_position ASC, tire_producer_name ASC'));
             $this->view->data['list_tire_producers'] = $tire_producers;
 
             $tire_producers = $tire_producer_model->getAllTire(array('order_by'=>'tire_producer_name','order'=>'ASC'));
@@ -4108,7 +4090,7 @@ Class vnController Extends baseController {
             $this->view->data['link_breadcrumb'] = $link_breadcrumb;
 
             $tire_producer_model = $this->model->get('tireproducerModel');
-            $tire_producers = $tire_producer_model->getAllTire();
+            $tire_producers = $tire_producer_model->getAllTire(array('order_by'=>'tire_producer_position ASC, tire_producer_name ASC'));
             $this->view->data['list_tire_producers'] = $tire_producers;
 
             $tire_producers = $tire_producer_model->getAllTire(array('order_by'=>'tire_producer_name','order'=>'ASC'));
@@ -4192,7 +4174,7 @@ Class vnController Extends baseController {
             $this->view->data['link_breadcrumb'] = $link_breadcrumb;
 
             $tire_producer_model = $this->model->get('tireproducerModel');
-            $tire_producers = $tire_producer_model->getAllTire();
+            $tire_producers = $tire_producer_model->getAllTire(array('order_by'=>'tire_producer_position ASC, tire_producer_name ASC'));
             $this->view->data['list_tire_producers'] = $tire_producers;
 
             $tire_producers = $tire_producer_model->getAllTire(array('order_by'=>'tire_producer_name','order'=>'ASC'));
@@ -4275,7 +4257,7 @@ Class vnController Extends baseController {
             $this->view->data['link_breadcrumb'] = $link_breadcrumb;
 
             $tire_producer_model = $this->model->get('tireproducerModel');
-            $tire_producers = $tire_producer_model->getAllTire();
+            $tire_producers = $tire_producer_model->getAllTire(array('order_by'=>'tire_producer_position ASC, tire_producer_name ASC'));
             $this->view->data['list_tire_producers'] = $tire_producers;
 
             $tire_producers = $tire_producer_model->getAllTire(array('order_by'=>'tire_producer_name','order'=>'ASC'));
@@ -4358,7 +4340,7 @@ Class vnController Extends baseController {
             $this->view->data['link_breadcrumb'] = $link_breadcrumb;
 
             $tire_producer_model = $this->model->get('tireproducerModel');
-            $tire_producers = $tire_producer_model->getAllTire();
+            $tire_producers = $tire_producer_model->getAllTire(array('order_by'=>'tire_producer_position ASC, tire_producer_name ASC'));
             $this->view->data['list_tire_producers'] = $tire_producers;
 
             $tire_producers = $tire_producer_model->getAllTire(array('order_by'=>'tire_producer_name','order'=>'ASC'));
@@ -4441,7 +4423,7 @@ Class vnController Extends baseController {
             $this->view->data['link_breadcrumb'] = $link_breadcrumb;
 
             $tire_producer_model = $this->model->get('tireproducerModel');
-            $tire_producers = $tire_producer_model->getAllTire();
+            $tire_producers = $tire_producer_model->getAllTire(array('order_by'=>'tire_producer_position ASC, tire_producer_name ASC'));
             $this->view->data['list_tire_producers'] = $tire_producers;
 
             $tire_producers = $tire_producer_model->getAllTire(array('order_by'=>'tire_producer_name','order'=>'ASC'));
@@ -4524,7 +4506,7 @@ Class vnController Extends baseController {
             $this->view->data['link_breadcrumb'] = $link_breadcrumb;
 
             $tire_producer_model = $this->model->get('tireproducerModel');
-            $tire_producers = $tire_producer_model->getAllTire();
+            $tire_producers = $tire_producer_model->getAllTire(array('order_by'=>'tire_producer_position ASC, tire_producer_name ASC'));
             $this->view->data['list_tire_producers'] = $tire_producers;
 
             $tire_producers = $tire_producer_model->getAllTire(array('order_by'=>'tire_producer_name','order'=>'ASC'));
@@ -4649,7 +4631,7 @@ Class vnController Extends baseController {
         $this->view->data['row_size'] = $row_size;
 
         $tire_producer_model = $this->model->get('tireproducerModel');
-        $tire_producers = $tire_producer_model->getAllTire();
+        $tire_producers = $tire_producer_model->getAllTire(array('order_by'=>'tire_producer_position ASC, tire_producer_name ASC'));
         $this->view->data['list_tire_producers'] = $tire_producers;
 
         $tire_producers = $tire_producer_model->getAllTire(array('order_by'=>'tire_producer_name','order'=>'ASC'));
@@ -5028,7 +5010,7 @@ Class vnController Extends baseController {
             $this->view->data['link_breadcrumb'] = $link_breadcrumb;
 
             $tire_producer_model = $this->model->get('tireproducerModel');
-            $tire_producers = $tire_producer_model->getAllTire();
+            $tire_producers = $tire_producer_model->getAllTire(array('order_by'=>'tire_producer_position ASC, tire_producer_name ASC'));
             $this->view->data['list_tire_producers'] = $tire_producers;
 
             $tire_producers = $tire_producer_model->getAllTire(array('order_by'=>'tire_producer_name','order'=>'ASC'));
@@ -5418,7 +5400,7 @@ Class vnController Extends baseController {
             $this->view->data['link_breadcrumb'] = $link_breadcrumb;
 
             $tire_producer_model = $this->model->get('tireproducerModel');
-            $tire_producers = $tire_producer_model->getAllTire();
+            $tire_producers = $tire_producer_model->getAllTire(array('order_by'=>'tire_producer_position ASC, tire_producer_name ASC'));
             $this->view->data['list_tire_producers'] = $tire_producers;
 
             $tire_producers = $tire_producer_model->getAllTire(array('order_by'=>'tire_producer_name','order'=>'ASC'));

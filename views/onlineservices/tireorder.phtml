@@ -1,0 +1,240 @@
+
+<div class="main-content-box">
+
+    <h2>Tra cứu đơn hàng</h2>
+
+    <div class="items-list-prod">
+        <?php
+        if (!isset($orders) || !$orders) {
+        ?>
+            <div class="wrap_detail">
+                Không tồn tại đơn hàng nào!
+            </div>
+        <?php
+        }
+        else{ 
+        ?>
+        <div class="wrap_detail">
+            <div class="row">
+                <div class="col-md-6 col-xs-12">
+                    Số đơn hàng: <b><?php echo $orders->order_number ?></b>
+                </div>
+                <div class="col-md-6 col-xs-12">
+                    Ngày giao hàng: <b><?php echo $orders->delivery_date>0?date('d/m/Y',$orders->delivery_date):"Chưa giao hàng" ?></b>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 col-xs-12">
+                    Khách hàng: <b><?php echo $customers->company_name ?></b>
+                </div>
+                <div class="col-md-6 col-xs-12">
+                    Nhân viên: <b><?php echo $staffs->staff_name ?></b>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 col-xs-12">
+                    Số lượng: <b><?php echo $orders->order_tire_number ?></b>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 col-xs-12">
+                    Giá trị đơn hàng: <b><?php echo $lib->formatMoney($orders->total) ?> vnđ</b>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-8 col-xs-8">
+                    <table width="100%" border="0">       
+                          
+                        <tr>
+                            <td>
+                                <span style="color:#6099FB;font-family:Tahoma;font-size:Smaller;"><b>Chi tiết sản phẩm:</b></span>
+             
+                            </td>
+                        </tr>        
+                        <tr>                    
+                            <td>
+                                <table id="chitiet" cellspacing="1" cellpadding="3" border="1" style="background-color:rgba(188, 210, 249, 0.52);border-color:White;border-width:2px;border-style:None;font-family:Tahoma;font-size:Small;width:100%;">
+                                    <tbody>
+                                        <tr style="color:white;background-color:#6099FB;font-weight:bold;">
+                                            <td align="center">
+                                               <span id="stt" class="title2">STT</span>
+                                           </td>
+                                           <td align="center">
+                                               <span id="loaihang" class="title2">Tên hàng</span>
+                                           </td>
+                                           <td align="center">
+                                               <span id="loaihang" class="title2">Loại hàng</span>
+                                           </td>
+                                           <td align="center">
+                                               <span id="sl" class="title2">Số lượng</span>
+                                           </td>
+                                           <td align="center">
+                                               <span id="dongia" class="title2">Đơn giá</span>
+                                           </td>
+                                           <td align="center">
+                                               <span id="tt" class="title2">Thành tiền</span>
+                                           </td>
+                                        </tr>
+                                        <?php 
+                                        $i=1; $tongtien=0;
+                                        foreach ($order_types as $row) { 
+                                            $tien = ($orders->check_price_vat==1?$row->tire_price_vat:$row->tire_price)*$row->tire_number;
+                                            $tongtien += $tien;
+                                        ?>
+                                        <tr>
+                                            <td align="center">
+                                               <?php echo $i++ ?>
+                                           </td>
+                                           <td align="center">
+                                               <?php echo $row->tire_brand_name ?>
+                                           </td>
+                                           <td align="center">
+                                               <?php echo $row->tire_size_number.' '.$row->tire_pattern_name ?>
+                                           </td>
+                                           <td align="center">
+                                               <?php echo $row->tire_number ?>
+                                           </td>
+                                           <td align="center">
+                                               <?php echo $lib->formatMoney($orders->check_price_vat==1?$row->tire_price_vat:$row->tire_price) ?>
+                                           </td>
+                                           <td align="center">
+                                               <?php echo $lib->formatMoney($tien) ?>
+                                           </td>
+                                        </tr>
+                                        <?php } ?>
+                                        <tr style="font-weight: bold;">
+                                            <td align="center" colspan="3">
+                                               Cộng
+                                            </td>
+                                            <td align="center">
+                                               <?php echo $orders->order_tire_number ?>
+                                           </td>
+                                           <td align="center">
+                                            </td>
+                                            <td align="center" colspan="3">
+                                               <?php echo $lib->formatMoney($tongtien) ?>
+                                            </td>
+                                        </tr>
+                                        <?php if ($orders->check_price_vat!=1 && $orders->vat>0) { ?>
+                                        <tr style="font-weight: bold;">
+                                            <td align="center" colspan="3">
+                                               VAT
+                                            </td>
+                                            <td align="center">
+                                           </td>
+                                           <td align="center">
+                                            </td>
+                                            <td align="center" colspan="3">
+                                               <?php echo $lib->formatMoney($orders->vat) ?>
+                                            </td>
+                                        </tr>
+                                        <?php } ?>
+                                        <?php if ($orders->discount+$orders->reduce != 0) { ?>
+                                        <tr style="font-weight: bold;">
+                                            <td align="center" colspan="3">
+                                               Giảm trừ
+                                            </td>
+                                            <td align="center">
+                                           </td>
+                                           <td align="center">
+                                            </td>
+                                            <td align="center" colspan="3">
+                                               <?php echo $lib->formatMoney($orders->discount+$orders->reduce) ?>
+                                            </td>
+                                        </tr>
+                                        <?php } ?>
+                                        <?php if (($orders->check_price_vat!=1 && $orders->vat>0) || ($orders->discount+$orders->reduce != 0)) { ?>
+                                        <tr style="font-weight: bold;">
+                                            <td align="center" colspan="3">
+                                               Tổng cộng
+                                            </td>
+                                            <td align="center">
+                                           </td>
+                                           <td align="center">
+                                            </td>
+                                            <td align="center" colspan="3">
+                                               <?php echo $lib->formatMoney($tongtien+$orders->vat-$orders->discount-$orders->reduce) ?>
+                                            </td>
+                                        </tr>
+                                        <?php } ?>
+                                    </tbody>
+                                </table>
+                            </td>
+                       </tr>                         
+                                
+                       
+                        <tr>
+                            <td>
+                                <span style="color:#BA5C15;font-family:Tahoma;font-size:Smaller;"><b>Chi tiết thanh toán:</b></span>
+             
+                            </td>
+                        </tr>
+                        
+                        <tr>                    
+                            <td>
+                        
+                                <table id="thanhtoan" accesskey="1" cellspacing="1" cellpadding="3" rules="all" border="1" style="background-color:rgba(247, 199, 157, 0.52);border-color:White;border-style:None;font-family:Tahoma;font-size:Small;width:100%;">
+                                    <tbody>
+                                        <tr style="color:White;background-color:#FA9B48;font-weight:bold;">
+                                            <td width="5%" align="center">
+                                                <span id="stttt">STT</span>
+                                            </td>    
+                                            <td width="10%" align="center">
+                                                <span id="ngaytt">Ngày</span>
+                                            </td>                                                   
+                                            <td width="15%" align="center">
+                                               <span id="sotien">Số tiền</span>
+                                           </td>  
+                                            
+                                            <td width="30%" align="center">
+                                                <span id="noidung">Nội dung</span>
+                                            </td>
+                                            <td width="10%" align="center">
+                                                <span id="taikhoan">Tài khoản</span>
+                                            </td>  
+                                        </tr>
+                                        <?php $k=1; $tong = 0; ?>
+                                        <?php foreach ($receives as $receive) : ?>
+                                        <?php $tong += $receive->money; ?>
+                                            
+                                            <tr >
+                                                <td align="center"><?php echo $k++; ?></td>
+                                                <td align="center"><?php echo $lib->hien_thi_ngay_thang($receive->receive_date); ?></td>
+                                                <td align="center"><?php echo $lib->formatMoney($receive->money); ?></td>
+                                                <td align="center"><?php echo $receive->receive_comment; ?></td> 
+                                                <td align="center"><?php echo $receive->bank_name; ?></td>
+                                                
+                                                           
+                                            </tr>
+                                            
+                                        <?php endforeach; ?>
+                                        <tr style="text-align:center; font-weight: bold;">
+                                            <td colspan="2" >Tổng cộng</td>
+                                            <td ><?php echo $lib->formatMoney($tong); ?></td>
+                                            <td colspan="2" ></td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+                            </td>
+                        </tr>
+                       
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <?php } ?>
+        <div class="clearAll"></div>
+
+    </div>
+
+
+
+</div>
+
+<style type="text/css">
+.items-list-prod{
+    background: white;
+}
+</style>

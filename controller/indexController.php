@@ -61,7 +61,7 @@ Class indexController Extends baseController {
             $tire_product_features = $tire_product_model->getAllTire($data,$join);
 
 
-            $tire_producers = $tire_producer_model->getAllTire();
+            $tire_producers = $tire_producer_model->getAllTire(array('order_by'=>'tire_producer_position ASC, tire_producer_name ASC'));
 
 
 
@@ -157,7 +157,7 @@ Class indexController Extends baseController {
 
 
 
-            $tire_producers = $tire_producer_model->getAllTire();
+            $tire_producers = $tire_producer_model->getAllTire(array('order_by'=>'tire_producer_position ASC, tire_producer_name ASC'));
 
 
 
