@@ -3201,7 +3201,7 @@ Class vnController Extends baseController {
 
 
 
-                $l_v = $vehicle->tire_vehicle_type==1?"lop-xe-tai":($vehicle->tire_vehicle_type==2?"lop-xe-du-lich":($vehicle->tire_vehicle_type==3?"lop-xe-dac-chung":"lop-xe"));
+                $l_v = !isset($vehicle->tire_vehicle_type)?"lop-xe":($vehicle->tire_vehicle_type==1?"lop-xe-tai":($vehicle->tire_vehicle_type==2?"lop-xe-du-lich":($vehicle->tire_vehicle_type==3?"lop-xe-dac-chung":"lop-xe")));
 
 
 

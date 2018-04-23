@@ -65,7 +65,51 @@ Class userController Extends baseController {
     }
 
     public function login() {
+        $this->view->setLayout('detail');
         $this->view->data['title'] = 'Đăng nhập';
+        $this->view->data['lib'] = $this->lib;
+
+        $post_model = $this->model->get('postModel');
+
+        $data = array(
+            'order_by' => 'post_date',
+            'order' => 'DESC',
+            'limit' => '10',
+            'where' => '1=1',
+        );
+
+        $new_posts = $post_model->getAllPost($data);
+
+        $this->view->data['new_posts'] = $new_posts;
+
+        $tire_product_model = $this->model->get('tireproductModel');
+        $tire_producer_model = $this->model->get('tireproducerModel');
+
+        $join = array('table'=>'tire_producer, tire_product_size, tire_product_pattern','where'=>'tire_pattern=tire_product_pattern_id AND tire_producer=tire_producer_id AND tire_size=tire_product_size_id');
+
+        $data = array(
+            'order_by' => 'RAND()',
+            'limit' => '10',
+            'where' => 'tire_product_feature = 1',
+        );
+
+        $this->view->data['limit'] = 10;
+
+        $tire_product_features = $tire_product_model->getAllTire($data,$join);
+
+        $tire_producers = $tire_producer_model->getAllTire(array('order_by'=>'tire_producer_position ASC, tire_producer_name ASC'));
+
+        $this->view->data['tire_product_features'] = $tire_product_features;
+        $this->view->data['tire_producers'] = $tire_producers;
+        $this->view->data['list_tire_producers'] = $tire_producers;
+
+        $tire_producers = $tire_producer_model->getAllTire(array('order_by'=>'tire_producer_name','order'=>'ASC'));
+        $tire_producer_data = array();
+        foreach ($tire_producers as $tire) {
+            $tire_producer_data[strtoupper(substr($tire->tire_producer_name, 0, 1))][] = $tire->tire_producer_name;
+        }
+        $this->view->data['tire_producer_data'] = $tire_producer_data;
+
         /*Kiểm tra CSDL*/
         if (isset($_POST['submit'])) {
             if ($_POST['username'] != '' && $_POST['password'] != '' ) {
@@ -74,7 +118,7 @@ Class userController Extends baseController {
                 $row = $user->getUserByUsername(addslashes($_POST['username']));
                 
                 if ($row) {
-                    if ($row->password == md5($_POST['password'])) {
+                    if ($row->password == md5($_POST['password']) && $row->user_lock != 1) {
                         $_SESSION['user_logined'] = $row->username;
                         $_SESSION['userid_logined'] = $row->user_id;
                         $_SESSION['role_logined'] = $row->role;
@@ -88,9 +132,25 @@ Class userController Extends baseController {
                             setcookie("up", 'oi'.md5($_POST['password']),time()+30*60*24*100,"/");
                          }
 
+                        $ipaddress = '';
+                        if (getenv('HTTP_CLIENT_IP'))
+                            $ipaddress = getenv('HTTP_CLIENT_IP');
+                        else if(getenv('HTTP_X_FORWARDED_FOR'))
+                            $ipaddress = getenv('HTTP_X_FORWARDED_FOR');
+                        else if(getenv('HTTP_X_FORWARDED'))
+                            $ipaddress = getenv('HTTP_X_FORWARDED');
+                        else if(getenv('HTTP_FORWARDED_FOR'))
+                            $ipaddress = getenv('HTTP_FORWARDED_FOR');
+                        else if(getenv('HTTP_FORWARDED'))
+                           $ipaddress = getenv('HTTP_FORWARDED');
+                        else if(getenv('REMOTE_ADDR'))
+                            $ipaddress = getenv('REMOTE_ADDR');
+                        else
+                            $ipaddress = 'UNKNOWN';
+
                         date_default_timezone_set("Asia/Ho_Chi_Minh"); 
                         $filename = "user_logs.txt";
-                        $text = date('d/m/Y H:i:s')."|".$_SESSION['user_logined']."|"."login"."\n"."\r\n";
+                        $text = date('d/m/Y H:i:s')."|".$_SESSION['user_logined']."|"."login"."|".$ipaddress."\n"."\r\n";
                         
                         $fh = fopen($filename, "a") or die("Could not open log file.");
                         fwrite($fh, $text) or die("Could not write file!");
@@ -201,6 +261,7 @@ Class userController Extends baseController {
         $this->view->data['title'] = 'Cập nhật tài khoản';
         $user = $this->model->get('userModel');
         $user_data = $user->getUser($id);
+        $this->view->data['user_data'] = $user_data;
         
         if (!$user_data) {
             $this->view->redirect('user');
@@ -233,6 +294,7 @@ Class userController Extends baseController {
                             'role' => trim($_POST['role']),
                             'user_group' => trim($_POST['user_group']),
                             'user_dept' => trim($_POST['user_dept']),
+                            'user_lock' => trim($_POST['userlock']),
                             );
                     }
                     else{
@@ -240,6 +302,7 @@ Class userController Extends baseController {
                             'role' => trim($_POST['role']),
                             'user_group' => trim($_POST['user_group']),
                             'user_dept' => trim($_POST['user_dept']),
+                            'user_lock' => trim($_POST['userlock']),
                             );
                     }
                         $user->updateUser($data,array('user_id'=>$id));
@@ -321,7 +384,52 @@ Class userController Extends baseController {
             return $this->view->redirect('user/login');
         }
         
+        $this->view->setLayout('detail');
         $this->view->data['title'] = 'Thông tin tài khoản';
+        $this->view->data['lib'] = $this->lib;
+
+        $post_model = $this->model->get('postModel');
+
+        $data = array(
+            'order_by' => 'post_date',
+            'order' => 'DESC',
+            'limit' => '10',
+            'where' => '1=1',
+        );
+
+        $new_posts = $post_model->getAllPost($data);
+
+        $this->view->data['new_posts'] = $new_posts;
+
+        $tire_product_model = $this->model->get('tireproductModel');
+        $tire_producer_model = $this->model->get('tireproducerModel');
+
+        $join = array('table'=>'tire_producer, tire_product_size, tire_product_pattern','where'=>'tire_pattern=tire_product_pattern_id AND tire_producer=tire_producer_id AND tire_size=tire_product_size_id');
+
+        $data = array(
+            'order_by' => 'RAND()',
+            'limit' => '10',
+            'where' => 'tire_product_feature = 1',
+        );
+
+        $this->view->data['limit'] = 10;
+
+        $tire_product_features = $tire_product_model->getAllTire($data,$join);
+
+        $tire_producers = $tire_producer_model->getAllTire(array('order_by'=>'tire_producer_position ASC, tire_producer_name ASC'));
+
+        $this->view->data['tire_product_features'] = $tire_product_features;
+        $this->view->data['tire_producers'] = $tire_producers;
+        $this->view->data['list_tire_producers'] = $tire_producers;
+
+        $tire_producers = $tire_producer_model->getAllTire(array('order_by'=>'tire_producer_name','order'=>'ASC'));
+        $tire_producer_data = array();
+        foreach ($tire_producers as $tire) {
+            $tire_producer_data[strtoupper(substr($tire->tire_producer_name, 0, 1))][] = $tire->tire_producer_name;
+        }
+        $this->view->data['tire_producer_data'] = $tire_producer_data;
+        
+        
         $user = $this->model->get('userModel');
         $user_data = $user->getUser($id);
         
