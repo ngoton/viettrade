@@ -87,6 +87,7 @@ Class onlineservicesController Extends baseController {
     }
 
     public function tireorder() {
+        $this->view->redirect('index');
 
         $this->view->setLayout('detail');
 
